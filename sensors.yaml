@@ -1,0 +1,24 @@
+###SENSORS###
+
+
+
+     #####ESPRESENCE#####
+     
+# One Entry For Each Beacon To Track
+
+##EDDIES PHONE
+- platform: mqtt_room
+  name: "EDDIES BLE IPHONE16"
+  device_id: "phone:iphone16-pm"
+  state_topic: "espresense/devices/phone:iphone16-pm"
+  timeout: 5
+  away_timeout: 30  
+  
+  
+##JANETS PHONE
+- platform: mqtt_room
+  name: "JANETS BLE IPHONE14"
+  device_id: "phone:janets-iphone14"
+  state_topic: "espresense/devices/phone:janets-iphone14"
+  timeout: 5
+  away_timeout: 30    

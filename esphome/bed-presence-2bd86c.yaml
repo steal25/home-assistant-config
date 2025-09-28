@@ -1,0 +1,57 @@
+esphome:
+  name: bed-presence-2bd86c
+  friendly_name: Bed Occupancy Sensor 2
+  min_version: 2024.6.0
+  name_add_mac_suffix: false
+  project:
+    name: ElevatedSensors.BedPresenceMk1
+    version: DIY
+  platformio_options:
+    board_build.flash_mode: dio
+
+esp32:
+  board: esp32-c3-devkitm-1
+  framework:
+    type: esp-idf
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+
+# Enable wifi
+wifi:
+  # Set up a wifi access point
+  ap: {}
+
+# In combination with the `ap` this allows the user
+# to provision wifi credentials to the device via WiFi AP.
+captive_portal:
+
+# Enable esphome OTA updates
+ota:
+- platform: esphome
+
+################################################################################
+packages:
+  remote_package:
+    url: https://github.com/ElevatedSensors/sensor-configs
+    ref: main
+    files: [bed-presence-mk1/base.yaml]
+    refresh: 1s
+
+# See https://github.com/ElevatedSensors/sensor-configs/blob/main/bed-presence-mk1/sensor.yaml for a detailed
+# description of available substitutions.
+#
+# substitutions:
+#   trigger_percentile: '0.75'
+#   averaging_window_samples: '5'
+#   fast_delayed_on: '0ms'
+#   fast_delayed_off: '0ms'
+#   standard_delayed_on: '0s'
+#   standard_delayed_off: '1s'
+#   reporting_delta: '1.0'
+#   reporting_interval_max: '180s'
+#   calibrate_100: '408000'
+#   calibrate_0: '276000'

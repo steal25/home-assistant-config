@@ -1,0 +1,128 @@
+homeassistant: true
+advanced:
+  network_key:
+    - 54
+    - 212
+    - 157
+    - 115
+    - 230
+    - 121
+    - 26
+    - 31
+    - 66
+    - 22
+    - 213
+    - 49
+    - 138
+    - 211
+    - 151
+    - 235
+  pan_id: 25313
+  ext_pan_id:
+    - 197
+    - 152
+    - 212
+    - 186
+    - 7
+    - 141
+    - 175
+    - 66
+  homeassistant_legacy_entity_attributes: false
+  legacy_api: false
+  legacy_availability_payload: false
+  log_level: info
+mqtt:
+  server: mqtt://core-mosquitto:1883
+  user: mqtt-user2
+  password: mqttuser2
+  port: 8099
+device_options:
+  legacy: false
+devices:
+  '0x00158d000af2af29':
+    friendly_name: Garage Door Opener(master)
+  '0x00158d000af29cc0':
+    friendly_name: Garage Door Opener (kitchen)
+  '0x54ef441000c7c7e8':
+    friendly_name: Aqara Motion (closet)
+  '0x54ef441000c64199':
+    friendly_name: Aqara Motion (office)
+  '0x00158d000ae4c796':
+    friendly_name: Outlet Network Rack Fans
+  '0x282c02bfffea87df':
+    friendly_name: 'Motion Sensor Make Up '
+  '0x54ef441000b40c41':
+    friendly_name: Switch Master Bedroom Main
+  '0x54ef441000c1437e':
+    friendly_name: Switch Bathroom
+  '0x54ef441000a62632':
+    friendly_name: Switch Kitchen
+  '0x282c02bfffea7bf4':
+    friendly_name: Motion Sensor Kitchen
+  '0x001788010d8258e8':
+    friendly_name: Light Closet 2
+  '0x001788010de9af2f':
+    friendly_name: Light Lamp
+  '0x001788010d82560a':
+    friendly_name: Light Closet 1
+  '0x00158d008afe14ce':
+    friendly_name: Temp/Humidity Sensor (office)
+  '0x54ef441000c140fa':
+    friendly_name: Switch Dining Room
+  '0x001788010cce8600':
+    friendly_name: Light Closet 3
+  '0x001788010d58db09':
+    friendly_name: Light Kitchen Porch
+  '0x00158d000af1fb01':
+    friendly_name: Temp/Humidity Sensor (master)
+  '0x00158d008afe1557':
+    friendly_name: Temp/Humidity Sensor (living)
+  '0x00158d008afe1551':
+    friendly_name: Temp/Humidity Sensor (kitchen)
+  '0x00158d000af1d167':
+    friendly_name: Temp/Humidity Sensor (network rack)
+  '0x00158d000af1f50e':
+    friendly_name: Temp/Humidity Sensor (bathroom)
+  '0x54ef441000a443af':
+    friendly_name: Aqara Motion (hallway)
+  '0x54ef441000a42bdf':
+    friendly_name: Aqara Motion (bathroom)
+  '0x54ef4410009410c9':
+    friendly_name: Switch Closet
+  '0x54ef441000c14385':
+    friendly_name: Switch Master Bedroom Door
+  '0x001788010de9bab9':
+    friendly_name: 'Light Hue Front porch '
+  '0x001788010d941fa1':
+    friendly_name: Light Hue Back Driveway
+  '0xa4c138f58ed785a9':
+    friendly_name: Tundra Alarm Zigbee
+  '0x881a14fffe4212dc':
+    friendly_name: Living Room Fan
+  '0x00158d000af2ca9d':
+    friendly_name: Garage Door opener(garage)
+  '0x001788010e2f121a':
+    friendly_name: 'Bathroom Under Cabinet '
+  '0x001788010e2f1299':
+    friendly_name: Under TV Cabinet
+  '0x282c02bfffec2808':
+    friendly_name: Christmas Tree Lights
+  '0x282c02bfffec2e16':
+    friendly_name: 'Christmas Window Lights '
+  '0x001788010cce88d5':
+    friendly_name: Dining Room 1 spare
+  '0x001788010e1bc4f2':
+    friendly_name: Dining Room 1
+  '0x001788010e1bc3d5':
+    friendly_name: Dining Room 2
+  '0x001788010e1b5e31':
+    friendly_name: Dining Room 3
+blocklist:
+  - '0xa4c13891e243b6d9'
+serial:
+  port: >-
+    /dev/serial/by-id/usb-ITead_Sonoff_Zigbee_3.0_USB_Dongle_Plus_bcb3e2855fe7ed119aeb646262c613ac-if00-port0
+  adapter: ember
+adapter: ember
+frontend:
+  port: 8099

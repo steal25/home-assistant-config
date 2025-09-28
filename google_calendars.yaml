@@ -1,0 +1,43 @@
+- cal_id: steeleirons@gmail.com
+  entities:
+    - device_id: steele_calendar
+      name: steele events
+      search: "#event"
+      track: true
+- cal_id: en.usa#holiday@group.v.calendar.google.com
+  entities:
+  - device_id: holidays_in_united_states
+    ignore_availability: true
+    name: Holidays in United States
+    search: "#event"
+    track: true
+
+- cal_id: lbschools.net_v9oe0ms453jq2lc01npllbgo1g@group.calendar.google.com
+  entities:
+  - device_id: cabrillo_athletics_practice_schedule
+    ignore_availability: true
+    name: 'Cabrillo Athletics: Practice Schedule'
+
+- cal_id: fi6jjabe7ejoqi3603upvb5n5k@group.calendar.google.com
+  entities:
+  - device_id: los_angeles_lakers
+    ignore_availability: true
+    name: Los Angeles Lakers
+
+- cal_id: curkfdij2gurjcknejpek8l92k@group.calendar.google.com
+  entities:
+  - device_id: nba_schedule_los_angeles_lakers
+    ignore_availability: true
+    name: NBA Schedule - Los Angeles Lakers
+
+- cal_id: 8c31e0593e6f0a628fe3cd05920f750b6a56b53e6ff7161913e85cced724a841@group.calendar.google.com
+  entities:
+  - device_id: espn
+    ignore_availability: true
+    name: ESPN
+
+- cal_id: eddiesteele25@gmail.com
+  entities:
+  - device_id: eddiesteele25_gmail_com
+    ignore_availability: true
+    name: eddiesteele25@gmail.com

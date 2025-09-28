@@ -1,0 +1,60 @@
+blueprint:
+  name: Aqara Wireless Switch (single, double, triple, quadruple)
+  description: Control anything using Aqara Wireless Switch
+  domain: automation
+  input:
+    switch:
+      name: Switch
+      description: Action sensor of Aqara Wireless Switch to use
+      selector:
+        entity:
+          domain:
+          - sensor
+          integration: mqtt
+          multiple: false
+    press_single:
+      name: Single button press
+      description: Action to run on single button press
+      default: []
+      selector:
+        action: {}
+    press_double:
+      name: Double button press
+      description: Action to run on double button press
+      default: []
+      selector:
+        action: {}
+    press_triple:
+      name: Triple button press
+      description: Action to run on triple press
+      default: []
+      selector:
+        action: {}
+    press_quadruple:
+      name: Quadruple button press
+      description: Action to run on quadruple press
+      default: []
+      selector:
+        action: {}
+  source_url: https://community.home-assistant.io/t/zigbee2mqtt-aqara-wireless-switch-single-double-triple-quadruple/258789
+mode: queued
+max_exceeded: silent
+trigger:
+- platform: state
+  entity_id: !input switch
+action:
+- variables:
+    command: '{{ trigger.to_state.state }}'
+- choose:
+  - conditions:
+    - '{{ command == ''single'' }}'
+    sequence: !input press_single
+  - conditions:
+    - '{{ command == ''double'' }}'
+    sequence: !input press_double
+  - conditions:
+    - '{{ command == ''triple'' }}'
+    sequence: !input press_triple
+  - conditions:
+    - '{{ command == ''quadruple'' }}'
+    sequence: !input press_quadruple

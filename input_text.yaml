@@ -1,0 +1,10 @@
+
+
+                      #########################TEXT###########################
+                      
+                      
+  sprinklers_last_reason:
+    name: Sprinklers Last Reason
+    max: 255
+    icon: mdi:note-text
+    

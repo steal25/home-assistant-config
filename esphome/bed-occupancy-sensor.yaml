@@ -1,0 +1,96 @@
+esphome:
+  name: bed-occupancy-sensor
+  friendly_name: Bed Occupancy Sensor
+
+esp32:
+  board: esp32dev
+  framework:
+    type: arduino
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+  encryption:
+    key: "XwtIetArmWIhL8+k7P8hUcvl+lpItgSjl1b6ypZ6EHI="
+
+ota:
+  - platform: esphome
+    password: "9ab0a5e8ca15518ee326280260dce32a"
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Bed-Occupancy-Sensor"
+    password: "a7VM6WH099b2"
+
+captive_portal:
+
+number:
+  - platform: template
+    name: "Left Voltage Threshold"
+    id: "left_threshold"
+    optimistic: true
+    min_value: .2
+    max_value: 3.3
+    step: .02
+    restore_value: True
+    entity_category: "config"
+    on_value:
+    - lambda: |- 
+        id(bin_left).set_upper_threshold(x);
+        id(bin_left).set_lower_threshold(x);
+
+  - platform: template
+    name: "Right Voltage Threshold"
+    id: "right_threshold"
+    optimistic: true
+    min_value: .2
+    max_value: 3.3
+    step: .02
+    restore_value: True
+    entity_category: "config"
+    on_value:
+    - lambda: |- 
+        id(bin_right).set_upper_threshold(x);
+        id(bin_right).set_lower_threshold(x);
+
+binary_sensor:
+  - platform: analog_threshold
+    id: "bin_left"
+    device_class: "occupancy"
+    name: "Bed Left Occupancy"
+    sensor_id: pressure_left
+    threshold: 0.2
+    filters:
+      - invert:
+
+  - platform: analog_threshold
+    id: "bin_right"
+    device_class: "occupancy"
+    name: "Bed Right Occupancy"
+    sensor_id: pressure_right
+    threshold: 0.2
+    filters:
+      - invert:
+
+sensor:
+  - platform: adc
+    id: "pressure_left"
+    pin: GPIO35
+    name: "Bed Pressure Left"
+    update_interval: 10s
+    entity_category: "diagnostic"
+    attenuation: auto
+
+  - platform: adc
+    id: "pressure_right"
+    pin: GPIO34
+    name: "Bed Pressure Right"
+    update_interval: 10s
+    entity_category: "diagnostic"
+    attenuation: auto

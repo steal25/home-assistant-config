@@ -1,0 +1,16 @@
+secrets.yaml
+*.db
+*.db-shm
+*.db-wal
+home-assistant_v2.db
+home-assistant.log
+.OZW_Log.txt
+.cloud/
+.storage/
+deps/
+__pycache__/
+tts/
+custom_components/*/__pycache__/
+.ezvizcache/
+*.pyc
+*.swp

@@ -1,0 +1,32 @@
+esphome:
+  name: satellite1-office
+  friendly_name: Satellite1 (office) 
+
+esp32:
+  board: esp32-s3-devkitc-1
+  framework:
+    type: esp-idf
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+  encryption:
+    key: "xZK/JYZvA1nnC2VIjrjGKT7cXxDZV0spdvAmSyBTSPE="
+
+ota:
+  - platform: esphome
+    password: "65cdae6b6a193bf6e0183800ccb91a3e"
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Satellite1-Office"
+    password: "0p6SKJT2XLMO"
+
+captive_portal:
+    

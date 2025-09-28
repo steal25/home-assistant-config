@@ -1,0 +1,1262 @@
+toggle_night_light:
+  alias: toggle night light
+  use_blueprint:
+    path: datebo/toggle-scene-on-off-script.yaml
+    input:
+      the_scene: scene.night_light
+  description: ''
+send_message_to_my_phone:
+  alias: Send Message to My Phone
+  sequence:
+  - action: notify.mobile_app_iphone
+    data:
+      message: '{{message}}'
+      title: '{{title}}'
+  description: ''
+  icon: mdi:bell-outline
+  fields:
+    title:
+      selector:
+        text:
+      name: Title
+      required: true
+      description: Enter a Title
+    message:
+      selector:
+        text:
+      name: Message
+      description: Enter a Message
+toggle_office_light:
+  alias: Toggle Office Light
+  sequence:
+  - action: light.toggle
+    metadata: {}
+    data:
+      brightness_pct: 100
+    target:
+      entity_id:
+      - light.office_ceiling_fan_new
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 0
+      milliseconds: 500
+  - action: light.toggle
+    metadata: {}
+    data:
+      brightness_pct: 100
+    target:
+      entity_id:
+      - light.office_ceiling_fan_new
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 0
+      milliseconds: 500
+  - action: light.toggle
+    metadata: {}
+    data:
+      brightness_pct: 100
+    target:
+      entity_id:
+      - light.office_ceiling_fan_new
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 0
+      milliseconds: 500
+  - action: light.toggle
+    metadata: {}
+    data:
+      brightness_pct: 100
+    target:
+      entity_id:
+      - light.office_ceiling_fan_new
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 0
+      milliseconds: 500
+  - action: light.toggle
+    metadata: {}
+    data:
+      brightness_pct: 100
+    target:
+      entity_id:
+      - light.office_ceiling_fan_new
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 0
+      milliseconds: 500
+  - action: light.toggle
+    metadata: {}
+    data:
+      brightness_pct: 100
+    target:
+      entity_id:
+      - light.office_ceiling_fan_new
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 0
+      milliseconds: 500
+  - action: light.toggle
+    metadata: {}
+    data:
+      brightness_pct: 100
+    target:
+      entity_id:
+      - light.office_ceiling_fan_new
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 0
+      milliseconds: 500
+  - action: light.toggle
+    metadata: {}
+    data:
+      brightness_pct: 100
+    target:
+      entity_id:
+      - light.office_ceiling_fan_new
+  description: ''
+  icon: mdi:lightbulb-alert
+toggle_garage_light:
+  alias: Toggle Garage Light
+  sequence:
+  - action: light.toggle
+    metadata: {}
+    data:
+      brightness_pct: 100
+    target:
+      entity_id:
+      - light.garage_light_1_new
+  - action: light.toggle
+    metadata: {}
+    data:
+      brightness_pct: 100
+    target:
+      entity_id:
+      - light.garage_light_1_new
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 0
+      milliseconds: 500
+  - action: light.toggle
+    metadata: {}
+    data:
+      brightness_pct: 100
+    target:
+      entity_id:
+      - light.garage_light_1_new
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 0
+      milliseconds: 500
+  - action: light.toggle
+    metadata: {}
+    data:
+      brightness_pct: 100
+    target:
+      entity_id:
+      - light.garage_light_1_new
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 0
+      milliseconds: 500
+  - action: light.toggle
+    metadata: {}
+    data:
+      brightness_pct: 100
+    target:
+      entity_id:
+      - light.garage_light_1_new
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 0
+      milliseconds: 500
+  - action: light.toggle
+    metadata: {}
+    data:
+      brightness_pct: 100
+    target:
+      entity_id:
+      - light.garage_light_1_new
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 0
+      milliseconds: 500
+  - action: light.toggle
+    metadata: {}
+    data:
+      brightness_pct: 100
+    target:
+      entity_id:
+      - light.garage_light_1_new
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 0
+      milliseconds: 500
+  - action: light.toggle
+    metadata: {}
+    data:
+      brightness_pct: 100
+    target:
+      entity_id:
+      - light.garage_light_1_new
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 0
+      milliseconds: 500
+  - action: light.toggle
+    metadata: {}
+    data:
+      brightness_pct: 100
+    target:
+      entity_id:
+      - light.garage_light_1_new
+  description: ''
+  icon: mdi:lightbulb-alert
+toggle_bathroom_light:
+  alias: Toggle Bathroom Light
+  sequence:
+  - action: light.toggle
+    metadata: {}
+    data:
+      brightness_pct: 100
+    target:
+      entity_id:
+      - light.bathroom_ceiling_light
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 0
+      milliseconds: 500
+  - action: light.toggle
+    metadata: {}
+    data:
+      brightness_pct: 100
+    target:
+      entity_id: light.bathroom_ceiling_light
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 0
+      milliseconds: 500
+  - action: light.toggle
+    metadata: {}
+    data:
+      brightness_pct: 100
+    target:
+      entity_id:
+      - light.bathroom_ceiling_light
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 0
+      milliseconds: 500
+  - action: light.toggle
+    metadata: {}
+    data:
+      brightness_pct: 100
+    target:
+      entity_id:
+      - light.bathroom_ceiling_light
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 0
+      milliseconds: 500
+  - action: light.toggle
+    metadata: {}
+    data:
+      brightness_pct: 100
+    target:
+      entity_id:
+      - light.bathroom_ceiling_light
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 0
+      milliseconds: 500
+  - action: light.toggle
+    metadata: {}
+    data:
+      brightness_pct: 100
+    target:
+      entity_id:
+      - light.bathroom_ceiling_light
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 0
+      milliseconds: 500
+  - action: light.toggle
+    metadata: {}
+    data:
+      brightness_pct: 100
+    target:
+      entity_id:
+      - light.bathroom_ceiling_light
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 0
+      milliseconds: 500
+  - action: light.toggle
+    metadata: {}
+    data:
+      brightness_pct: 100
+    target:
+      entity_id: light.bathroom_ceiling_light
+  description: ''
+  icon: mdi:lightbulb-alert
+bathroom_red_toggle:
+  alias: Bathroom red toggle
+  use_blueprint:
+    path: datebo/toggle-scene-on-off-script.yaml
+    input:
+      the_scene: scene.bathroom_red
+  description: ''
+toggle_tv_backlight:
+  alias: Toggle TV Backlight
+  sequence:
+  - action: light.toggle
+    metadata: {}
+    data:
+      rgb_color:
+      - 212
+      - 0
+      - 1
+      brightness_pct: 80
+    target:
+      entity_id: light.living_room_tv_backlight
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 0
+      milliseconds: 750
+  - action: light.toggle
+    metadata: {}
+    data:
+      rgb_color:
+      - 212
+      - 0
+      - 1
+      brightness_pct: 80
+    target:
+      entity_id: light.living_room_tv_backlight
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 0
+      milliseconds: 500
+  - action: light.toggle
+    metadata: {}
+    data:
+      rgb_color:
+      - 212
+      - 0
+      - 1
+      brightness_pct: 80
+    target:
+      entity_id: light.living_room_tv_backlight
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 0
+      milliseconds: 500
+  - action: light.toggle
+    metadata: {}
+    data:
+      rgb_color:
+      - 212
+      - 0
+      - 1
+      brightness_pct: 80
+    target:
+      entity_id: light.living_room_tv_backlight
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 0
+      milliseconds: 500
+  - action: light.toggle
+    metadata: {}
+    data:
+      rgb_color:
+      - 212
+      - 0
+      - 1
+      brightness_pct: 80
+    target:
+      entity_id: light.living_room_tv_backlight
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 0
+      milliseconds: 500
+  - action: light.toggle
+    metadata: {}
+    data:
+      rgb_color:
+      - 212
+      - 0
+      - 1
+      brightness_pct: 80
+    target:
+      entity_id: light.living_room_tv_backlight
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 0
+      milliseconds: 500
+  - action: light.toggle
+    metadata: {}
+    data:
+      rgb_color:
+      - 212
+      - 0
+      - 1
+      brightness_pct: 80
+    target:
+      entity_id: light.living_room_tv_backlight
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 0
+      milliseconds: 500
+  - action: light.toggle
+    metadata: {}
+    data:
+      rgb_color:
+      - 212
+      - 0
+      - 1
+      brightness_pct: 80
+    target:
+      entity_id: light.living_room_tv_backlight
+  description: ''
+  icon: cil:tv
+toggle_shelf_lights:
+  sequence:
+  - action: light.toggle
+    metadata: {}
+    data:
+      rgb_color:
+      - 255
+      - 58
+      - 48
+      brightness_pct: 100
+    target:
+      entity_id: light.shelf_lights_local_group
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 0
+      milliseconds: 500
+  - action: light.toggle
+    metadata: {}
+    data:
+      rgb_color:
+      - 255
+      - 58
+      - 48
+      brightness_pct: 100
+    target:
+      entity_id: light.shelf_lights_local_group
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 0
+      milliseconds: 500
+  - action: light.toggle
+    metadata: {}
+    data:
+      rgb_color:
+      - 255
+      - 58
+      - 48
+      brightness_pct: 100
+    target:
+      entity_id: light.shelf_lights_local_group
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 0
+      milliseconds: 500
+  - action: light.toggle
+    metadata: {}
+    data:
+      rgb_color:
+      - 255
+      - 58
+      - 48
+      brightness_pct: 100
+    target:
+      entity_id: light.shelf_lights_local_group
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 0
+      milliseconds: 500
+  - action: light.toggle
+    metadata: {}
+    data:
+      rgb_color:
+      - 255
+      - 58
+      - 48
+      brightness_pct: 100
+    target:
+      entity_id: light.shelf_lights_local_group
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 0
+      milliseconds: 500
+  - action: light.toggle
+    metadata: {}
+    data:
+      rgb_color:
+      - 255
+      - 58
+      - 48
+      brightness_pct: 100
+    target:
+      entity_id: light.shelf_lights_local_group
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 0
+      milliseconds: 500
+  - action: light.toggle
+    metadata: {}
+    data:
+      rgb_color:
+      - 255
+      - 58
+      - 48
+      brightness_pct: 100
+    target:
+      entity_id: light.shelf_lights_local_group
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 0
+      milliseconds: 500
+  - action: light.toggle
+    metadata: {}
+    data:
+      rgb_color:
+      - 255
+      - 58
+      - 48
+      brightness_pct: 100
+    target:
+      entity_id: light.shelf_lights_local_group
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 0
+      milliseconds: 500
+  - action: light.toggle
+    metadata: {}
+    data:
+      rgb_color:
+      - 255
+      - 58
+      - 48
+      brightness_pct: 100
+    target:
+      entity_id: light.shelf_lights_local_group
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 0
+      milliseconds: 500
+  - action: light.toggle
+    metadata: {}
+    data:
+      rgb_color:
+      - 255
+      - 58
+      - 48
+      brightness_pct: 100
+    target:
+      entity_id: light.shelf_lights_local_group
+  alias: Toggle Shelf Lights
+  description: ''
+new_script:
+  sequence:
+  - action: light.toggle
+    metadata: {}
+    data:
+      brightness_pct: 100
+    target:
+      entity_id:
+      - light.master_bedroom_main_switch_bottom
+      - light.hue_closet_lights_group
+      - light.master_bedroom_main_switch_top
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 0
+      milliseconds: 500
+  - action: light.toggle
+    metadata: {}
+    data:
+      brightness_pct: 100
+    target:
+      entity_id:
+      - light.master_bedroom_main_switch_bottom
+      - light.hue_closet_lights_group
+      - light.master_bedroom_main_switch_top
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 0
+      milliseconds: 500
+  - action: light.toggle
+    metadata: {}
+    data:
+      brightness_pct: 100
+    target:
+      entity_id:
+      - light.master_bedroom_main_switch_bottom
+      - light.hue_closet_lights_group
+      - light.master_bedroom_main_switch_top
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 0
+      milliseconds: 500
+  - action: light.toggle
+    metadata: {}
+    data:
+      brightness_pct: 100
+    target:
+      entity_id:
+      - light.master_bedroom_main_switch_bottom
+      - light.hue_closet_lights_group
+      - light.master_bedroom_main_switch_top
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 0
+      milliseconds: 500
+  - action: light.toggle
+    metadata: {}
+    data:
+      brightness_pct: 100
+    target:
+      entity_id:
+      - light.master_bedroom_main_switch_bottom
+      - light.hue_closet_lights_group
+      - light.master_bedroom_main_switch_top
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 0
+      milliseconds: 500
+  - action: light.toggle
+    metadata: {}
+    data:
+      brightness_pct: 100
+    target:
+      entity_id:
+      - light.master_bedroom_main_switch_bottom
+      - light.hue_closet_lights_group
+      - light.master_bedroom_main_switch_top
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 0
+      milliseconds: 500
+  - action: light.toggle
+    metadata: {}
+    data:
+      brightness_pct: 100
+    target:
+      entity_id:
+      - light.master_bedroom_main_switch_bottom
+      - light.hue_closet_lights_group
+      - light.master_bedroom_main_switch_top
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 0
+      milliseconds: 500
+  - action: light.toggle
+    metadata: {}
+    data:
+      brightness_pct: 100
+    target:
+      entity_id:
+      - light.master_bedroom_main_switch_bottom
+      - light.hue_closet_lights_group
+      - light.master_bedroom_main_switch_top
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 0
+      milliseconds: 500
+  - action: light.toggle
+    metadata: {}
+    data:
+      brightness_pct: 100
+    target:
+      entity_id:
+      - light.master_bedroom_main_switch_bottom
+      - light.hue_closet_lights_group
+      - light.master_bedroom_main_switch_top
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 0
+      milliseconds: 500
+  - action: light.toggle
+    metadata: {}
+    data:
+      brightness_pct: 100
+    target:
+      entity_id:
+      - light.master_bedroom_main_switch_bottom
+      - light.hue_closet_lights_group
+      - light.master_bedroom_main_switch_top
+  alias: Toggle Master Lights
+  description: ''
+toggle_hallway:
+  alias: 'TOGGLE: Hallway'
+  use_blueprint:
+    path: datebo/toggle-scene-on-off-script.yaml
+    input:
+      the_scene: scene.hallway_light_30
+  description: ''
+alias: Play KROQ on Master Bedroom Stereo
+sequence:
+- service: shell_command.ma510_init
+- delay: 00:00:01
+- service: shell_command.ma510_power_on
+- delay: 00:00:01
+- service: shell_command.ma510_input_media
+- delay: 00:00:01
+- service: shell_command.ma510_volume_40
+- delay: 00:00:02
+- service: media_player.play_media
+  data:
+    entity_id: media_player.wiim_pro
+    media_content_type: music
+    media_content_id: https://go.audacy.com/kroq/listen
+mode: single
+play_kroq_on_master_bedroom_stereo:
+  sequence:
+  - action: shell_command.ma510_init
+    data: {}
+  - action: shell_command.ma510_power_on
+    data: {}
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 5
+      milliseconds: 0
+  - action: linkplay.play_preset
+    target:
+      entity_id: media_player.wiim_pro_master
+    data:
+      preset_number: 1
+  - action: shell_command.ma510_input_media
+    data: {}
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 0
+      milliseconds: 500
+  - action: shell_command.ma510_volume_40
+    data: {}
+  alias: Play KROQ on Master Bedroom Stereo
+  description: ''
+play_the_wave_on_master_bedroom_stereo:
+  sequence:
+  - action: shell_command.ma510_init
+    data: {}
+  - action: shell_command.ma510_power_on
+    data: {}
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 5
+      milliseconds: 0
+  - action: linkplay.play_preset
+    target:
+      entity_id: media_player.wiim_pro_master
+    data:
+      preset_number: 2
+  - action: shell_command.ma510_input_media
+    data: {}
+  - action: shell_command.ma510_volume_40
+    data: {}
+  alias: Play THE WAVE on Master Bedroom Stereo
+  description: ''
+play_kroq_on_master_bedroom_stereo_after_10:
+  sequence:
+  - action: shell_command.ma510_init
+    data: {}
+  - action: shell_command.ma510_power_on
+    data: {}
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 5
+      milliseconds: 0
+  - action: linkplay.play_preset
+    target:
+      entity_id: media_player.wiim_pro_master
+    data:
+      preset_number: 1
+  - action: shell_command.ma510_input_media
+    data: {}
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 0
+      milliseconds: 500
+  - action: shell_command.ma510_volume_35
+    data: {}
+  alias: Play KROQ on Master Bedroom Stereo After 10
+  description: ''
+play_the_wave_on_master_bedroom_stereo_after_9:
+  sequence:
+  - action: shell_command.ma510_init
+    data: {}
+  - action: shell_command.ma510_power_on
+    data: {}
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 5
+      milliseconds: 0
+  - action: linkplay.play_preset
+    target:
+      entity_id: media_player.wiim_pro_master
+    data:
+      preset_number: 2
+  - action: shell_command.ma510_input_media
+    data: {}
+  - action: shell_command.ma510_volume_35
+    data: {}
+  alias: Play THE WAVE on Master Bedroom Stereo After 10
+  description: ''
+media_players_70:
+  sequence:
+  - action: media_player.volume_set
+    metadata: {}
+    data:
+      volume_level: 0.7
+    target:
+      entity_id:
+      - media_player.echo_dot_master_bedroom
+      - media_player.echo_dot_kitchen
+      - media_player.echo_dot_living_room
+      - media_player.echo_dot_living_room_2
+      - media_player.echo_dot_office
+      - media_player.office_home_pod
+      - media_player.living_room_home_pod
+      - media_player.echo_dot_adu
+  alias: Media Players 70
+  description: ''
+media_players_60:
+  sequence:
+  - action: media_player.volume_set
+    metadata: {}
+    data:
+      volume_level: 0.6
+    target:
+      entity_id:
+      - media_player.echo_dot_master_bedroom
+      - media_player.echo_dot_kitchen
+      - media_player.echo_dot_living_room
+      - media_player.echo_dot_living_room_2
+      - media_player.echo_dot_office
+      - media_player.office_home_pod
+      - media_player.living_room_home_pod
+      - media_player.echo_dot_adu
+  alias: Media Players 60
+  description: ''
+media_players_50:
+  sequence:
+  - action: media_player.volume_set
+    metadata: {}
+    data:
+      volume_level: 0.5
+    target:
+      entity_id:
+      - media_player.echo_dot_master_bedroom
+      - media_player.echo_dot_kitchen
+      - media_player.echo_dot_living_room
+      - media_player.echo_dot_living_room_2
+      - media_player.echo_dot_office
+      - media_player.office_home_pod
+      - media_player.living_room_home_pod
+      - media_player.echo_dot_adu
+  alias: Media Players 50
+  description: ''
+media_players_40:
+  sequence:
+  - action: media_player.volume_set
+    metadata: {}
+    data:
+      volume_level: 0.4
+    target:
+      entity_id:
+      - media_player.echo_dot_master_bedroom
+      - media_player.echo_dot_kitchen
+      - media_player.echo_dot_living_room
+      - media_player.echo_dot_living_room_2
+      - media_player.echo_dot_office
+      - media_player.office_home_pod
+      - media_player.living_room_home_pod
+      - media_player.echo_dot_adu
+  alias: Media Players 40
+  description: ''
+media_players_30:
+  sequence:
+  - action: media_player.volume_set
+    metadata: {}
+    data:
+      volume_level: 0.3
+    target:
+      entity_id:
+      - media_player.echo_dot_master_bedroom
+      - media_player.echo_dot_kitchen
+      - media_player.echo_dot_living_room
+      - media_player.echo_dot_living_room_2
+      - media_player.echo_dot_office
+      - media_player.office_home_pod
+      - media_player.living_room_home_pod
+      - media_player.echo_dot_adu
+  alias: Media Players 30
+  description: ''
+media_players_20:
+  sequence:
+  - action: media_player.volume_set
+    metadata: {}
+    data:
+      volume_level: 0.2
+    target:
+      entity_id:
+      - media_player.echo_dot_master_bedroom
+      - media_player.echo_dot_kitchen
+      - media_player.echo_dot_living_room
+      - media_player.echo_dot_living_room_2
+      - media_player.echo_dot_office
+      - media_player.office_home_pod
+      - media_player.living_room_home_pod
+      - media_player.echo_dot_adu
+  alias: Media Players 20
+  description: ''
+media_players_50_before_11:
+  sequence:
+  - action: media_player.volume_set
+    metadata: {}
+    data:
+      volume_level: 0.5
+    target:
+      entity_id:
+      - media_player.echo_dot_kitchen
+      - media_player.echo_dot_living_room
+      - media_player.echo_dot_living_room_2
+      - media_player.living_room_home_pod
+      - media_player.echo_dot_master_bedroom
+      - media_player.echo_dot_office
+      - media_player.office_home_pod
+      - media_player.echo_dot_adu
+  alias: Media Players 50 before 11
+  description: ''
+media_players_50_before_11_eddie_in_bed:
+  sequence:
+  - action: media_player.volume_set
+    metadata: {}
+    data:
+      volume_level: 0.61
+    target:
+      entity_id:
+      - media_player.echo_dot_kitchen
+      - media_player.echo_dot_living_room
+      - media_player.echo_dot_living_room_2
+      - media_player.living_room_home_pod
+      - media_player.echo_dot_adu
+  - action: media_player.volume_set
+    metadata: {}
+    data:
+      volume_level: 0
+    target:
+      entity_id:
+      - media_player.echo_dot_master_bedroom
+      - media_player.office_home_pod
+      - media_player.echo_dot_office
+  alias: Media Players 50 before 11 Eddie in Bed
+  description: ''
+toggle_kitchen_lights:
+  sequence:
+  - action: light.toggle
+    metadata: {}
+    data:
+      brightness_pct: 100
+      rgb_color:
+      - 250
+      - 0
+      - 0
+    target:
+      entity_id:
+      - light.kitchen_lights
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 0
+      milliseconds: 500
+  - action: light.toggle
+    metadata: {}
+    data:
+      brightness_pct: 100
+      rgb_color:
+      - 250
+      - 0
+      - 0
+    target:
+      entity_id:
+      - light.kitchen_lights
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 0
+      milliseconds: 500
+  - action: light.toggle
+    metadata: {}
+    data:
+      brightness_pct: 100
+      rgb_color:
+      - 250
+      - 0
+      - 0
+    target:
+      entity_id:
+      - light.kitchen_lights
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 0
+      milliseconds: 500
+  - action: light.toggle
+    metadata: {}
+    data:
+      brightness_pct: 100
+      rgb_color:
+      - 250
+      - 0
+      - 0
+    target:
+      entity_id:
+      - light.kitchen_lights
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 0
+      milliseconds: 500
+  - action: light.toggle
+    metadata: {}
+    data:
+      brightness_pct: 100
+      rgb_color:
+      - 250
+      - 0
+      - 0
+    target:
+      entity_id:
+      - light.kitchen_lights
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 0
+      milliseconds: 500
+  - action: light.toggle
+    metadata: {}
+    data:
+      brightness_pct: 100
+      rgb_color:
+      - 250
+      - 0
+      - 0
+    target:
+      entity_id:
+      - light.kitchen_lights
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 0
+      milliseconds: 500
+  - action: light.toggle
+    metadata: {}
+    data:
+      brightness_pct: 100
+      rgb_color:
+      - 250
+      - 0
+      - 0
+    target:
+      entity_id:
+      - light.kitchen_lights
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 0
+      milliseconds: 500
+  - action: light.toggle
+    metadata: {}
+    data:
+      brightness_pct: 100
+      rgb_color:
+      - 250
+      - 0
+      - 0
+    target:
+      entity_id:
+      - light.kitchen_lights
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 0
+      milliseconds: 500
+  - action: light.toggle
+    metadata: {}
+    data:
+      brightness_pct: 100
+      rgb_color:
+      - 250
+      - 0
+      - 0
+    target:
+      entity_id:
+      - light.kitchen_lights
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 0
+      milliseconds: 500
+  - action: light.toggle
+    metadata: {}
+    data:
+      brightness_pct: 100
+      rgb_color:
+      - 250
+      - 0
+      - 0
+    target:
+      entity_id:
+      - light.kitchen_lights
+  alias: Toggle Kitchen Lights
+  description: ''
+toggle_garage_bathroom_light:
+  sequence:
+  - action: light.toggle
+    metadata: {}
+    data:
+      brightness_pct: 100
+    target:
+      entity_id:
+      - light.garage_bathroom_double_switch
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 0
+      milliseconds: 500
+  - action: light.toggle
+    metadata: {}
+    data:
+      brightness_pct: 100
+    target:
+      entity_id:
+      - light.garage_bathroom_double_switch
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 0
+      milliseconds: 500
+  - action: light.toggle
+    metadata: {}
+    data:
+      brightness_pct: 100
+    target:
+      entity_id:
+      - light.garage_bathroom_double_switch
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 0
+      milliseconds: 500
+  - action: light.toggle
+    metadata: {}
+    data:
+      brightness_pct: 100
+    target:
+      entity_id:
+      - light.garage_bathroom_double_switch
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 0
+      milliseconds: 500
+  - action: light.toggle
+    metadata: {}
+    data:
+      brightness_pct: 100
+    target:
+      entity_id:
+      - light.garage_bathroom_double_switch
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 0
+      milliseconds: 500
+  - action: light.toggle
+    metadata: {}
+    data:
+      brightness_pct: 100
+    target:
+      entity_id:
+      - light.garage_bathroom_double_switch
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 0
+      milliseconds: 500
+  - action: light.toggle
+    metadata: {}
+    data:
+      brightness_pct: 100
+    target:
+      entity_id:
+      - light.garage_bathroom_double_switch
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 0
+      milliseconds: 500
+  - action: light.toggle
+    metadata: {}
+    data:
+      brightness_pct: 100
+    target:
+      entity_id:
+      - light.garage_bathroom_double_switch
+  alias: Toggle Garage Bathroom Light
+  description: ''
+  icon: mdi:lightbulb-alert

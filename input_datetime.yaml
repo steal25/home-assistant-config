@@ -1,0 +1,19 @@
+
+
+                          #####################DATE/TIME#####################  
+    
+
+  master_bedroom_off_at:
+    name: Master Bedroom Off At
+    has_date: true
+    has_time: true    
+    
+  sprinklers_last_action_at:
+    name: Sprinklers Last Action At
+    has_date: true
+    has_time: true    
+    
+  master_or_janet_last_manual_on:
+    name: Master/Janet last manual/voice ON
+    has_date: true
+    has_time: true    

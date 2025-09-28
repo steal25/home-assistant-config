@@ -1,0 +1,48 @@
+
+
+                             ###############BOOLEANS#####################
+## Play KROQ in master ##
+
+  play_kroq_bedroom:
+    name: Play KROQ in Master Bedroom
+    initial: off
+    icon: mdi:radio
+    
+## Play WAVE in master ##
+  play_wave_bedroom:
+    name: Play The Wave in Master Bedroom
+    initial: off
+    icon: mdi:radio   
+    
+## Play KROQ in office ##
+  play_kroq_office:
+    name: Play KROQ in The Office
+    initial: off
+    icon: mdi:radio
+    
+## Play WAVE in office ##
+  play_wave_office:
+    name: Play The Wave in The Office
+    initial: off
+    icon: mdi:radio        
+    
+## Turn Off JBL MA510 ##
+  turn_off_jblma510:
+    name: Turn Off JBL MA510
+    initial: off
+    icon: mdi:radio-off        
+    
+## Turn Off WiiM Mini Office ##
+  turn_off_wiim_mini_office:
+    name: Turn Off WiiM Mini Office
+    initial: off
+    icon: mdi:radio-off      
+    
+  water_anyway:
+    name: Water Anyway (override)
+    icon: mdi:water-plus    
+    
+  sprinklers_skipped_last:
+    name: Sprinklers Skipped (last)
+    icon: mdi:cancel    
+        

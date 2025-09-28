@@ -1,0 +1,272 @@
+blueprint:
+  name: Zooz ZEN34 Blueprint for Lights
+  description: Control Lights with single-tap and double-tap; pressing-and-holding
+    rocker buttons support dimming until released.
+  domain: automation
+  author: Dinos
+  input:
+    zooz_zen34:
+      name: Zooz ZEN34
+      description: The ZEN34 Switch to interact with.
+      selector:
+        device:
+          integration: zwave_js
+          manufacturer: Zooz
+          model: ZEN34
+          multiple: false
+    paddle_up_1x:
+      name: Top Paddle 1x
+      description: Single tap action to run the top paddle.
+      default: []
+      selector:
+        action: {}
+    paddle_up_2x:
+      name: Top Paddle 2x
+      description: Double tap action to run the top paddle.
+      default: []
+      selector:
+        action: {}
+    paddle_up_3x:
+      name: Top Paddle 3x
+      description: Triple tap action to run the top paddle.
+      default: []
+      selector:
+        action: {}
+    paddle_up_4x:
+      name: Top Paddle 4x
+      description: Quadruple tap action to run the top paddle.
+      default: []
+      selector:
+        action: {}
+    paddle_up_5x:
+      name: Top Paddle 5x
+      description: Quintuple tap action to run the top paddle.
+      default: []
+      selector:
+        action: {}
+    paddle_down_1x:
+      name: Bottom Paddle 1x
+      description: Single tap action to run the bottom paddle.
+      default: []
+      selector:
+        action: {}
+    paddle_down_2x:
+      name: Bottom Paddle 2x
+      description: Double tap action to run the bottom paddle.
+      default: []
+      selector:
+        action: {}
+    paddle_down_3x:
+      name: Bottom Paddle 3x
+      description: Triple tap action to run the bottom paddle.
+      default: []
+      selector:
+        action: {}
+    paddle_down_4x:
+      name: Bottom Paddle 4x
+      description: Quadruple tap action to run the bottom paddle.
+      default: []
+      selector:
+        action: {}
+    paddle_down_5x:
+      name: Bottom Paddle 5x
+      description: Quintuple tap action to run the bottom paddle.
+      default: []
+      selector:
+        action: {}
+    light_target:
+      name: Light(s)
+      description: Light(s) to control dimming while holding the top and bottom rocker
+        switch buttons; stops when buttons are released.
+      selector:
+        target:
+          entity:
+          - domain:
+            - light
+    brightness:
+      name: Brightness
+      description: Incrementally change the light(s) brightness in percentages.
+      selector:
+        number:
+          min: 0.0
+          max: 100.0
+          unit_of_measurement: '%'
+          mode: slider
+          step: 1.0
+      default: 20
+    speed:
+      name: Speed
+      description: The speed in which to update the light(s) while the button(s) is
+        being held.
+      selector:
+        number:
+          min: 0.0
+          max: 1000.0
+          unit_of_measurement: milliseconds
+          mode: slider
+          step: 1.0
+      default: 100
+  source_url: https://gist.github.com/computergreek/847ad5194168cf3f26a0c908acc9431c
+variables:
+  var_speed: !input speed
+  var_brightness: !input brightness
+trigger:
+- platform: event
+  event_type: zwave_js_value_notification
+  event_data:
+    device_id: !input zooz_zen34
+    label: Scene 001
+    value: KeyPressed
+  id: paddle_up_1x
+- platform: event
+  event_type: zwave_js_value_notification
+  event_data:
+    device_id: !input zooz_zen34
+    label: Scene 001
+    value: KeyPressed2x
+  id: paddle_up_2x
+- platform: event
+  event_type: zwave_js_value_notification
+  event_data:
+    device_id: !input zooz_zen34
+    label: Scene 001
+    value: KeyPressed3x
+  id: paddle_up_3x
+- platform: event
+  event_type: zwave_js_value_notification
+  event_data:
+    device_id: !input zooz_zen34
+    label: Scene 001
+    value: KeyPressed4x
+  id: paddle_up_4x
+- platform: event
+  event_type: zwave_js_value_notification
+  event_data:
+    device_id: !input zooz_zen34
+    label: Scene 001
+    value: KeyPressed5x
+  id: paddle_up_5x
+- platform: event
+  event_type: zwave_js_value_notification
+  event_data:
+    device_id: !input zooz_zen34
+    label: Scene 001
+    value: KeyHeldDown
+  id: paddle_up_hold
+- platform: event
+  event_type: zwave_js_value_notification
+  event_data:
+    device_id: !input zooz_zen34
+    label: Scene 001
+    value: KeyReleased
+  id: paddle_up_release
+- platform: event
+  event_type: zwave_js_value_notification
+  event_data:
+    device_id: !input zooz_zen34
+    label: Scene 002
+    value: KeyPressed
+  id: paddle_down_1x
+- platform: event
+  event_type: zwave_js_value_notification
+  event_data:
+    device_id: !input zooz_zen34
+    label: Scene 002
+    value: KeyPressed2x
+  id: paddle_down_2x
+- platform: event
+  event_type: zwave_js_value_notification
+  event_data:
+    device_id: !input zooz_zen34
+    label: Scene 002
+    value: KeyPressed3x
+  id: paddle_down_3x
+- platform: event
+  event_type: zwave_js_value_notification
+  event_data:
+    device_id: !input zooz_zen34
+    label: Scene 002
+    value: KeyPressed4x
+  id: paddle_down_4x
+- platform: event
+  event_type: zwave_js_value_notification
+  event_data:
+    device_id: !input zooz_zen34
+    label: Scene 002
+    value: KeyPressed5x
+  id: paddle_down_5x
+- platform: event
+  event_type: zwave_js_value_notification
+  event_data:
+    device_id: !input zooz_zen34
+    label: Scene 002
+    value: KeyHeldDown
+  id: paddle_down_hold
+- platform: event
+  event_type: zwave_js_value_notification
+  event_data:
+    device_id: !input zooz_zen34
+    label: Scene 002
+    value: KeyReleased
+  id: paddle_down_release
+condition: []
+action:
+- choose:
+  - conditions:
+    - condition: trigger
+      id:
+      - paddle_up_hold
+    sequence:
+    - repeat:
+        while:
+        - condition: trigger
+          id:
+          - paddle_up_hold
+        sequence:
+        - service: light.turn_on
+          data:
+            brightness_step_pct: !input brightness
+          target: !input light_target
+        - delay:
+            milliseconds: !input speed
+  - conditions:
+    - condition: trigger
+      id:
+      - paddle_down_hold
+    sequence:
+    - repeat:
+        while:
+        - condition: trigger
+          id:
+          - paddle_down_hold
+        sequence:
+        - service: light.turn_on
+          data:
+            brightness_step_pct: '{{ (var_brightness * -1) }}'
+          target: !input light_target
+        - delay:
+            milliseconds: !input speed
+  alias: Control Brightness
+- choose:
+  - conditions: '{{ ''paddle_up_1x'' in trigger.id }}'
+    sequence: !input paddle_up_1x
+  - conditions: '{{ ''paddle_up_2x'' in trigger.id }}'
+    sequence: !input paddle_up_2x
+  - conditions: '{{ ''paddle_up_3x'' in trigger.id }}'
+    sequence: !input paddle_up_3x
+  - conditions: '{{ ''paddle_up_4x'' in trigger.id }}'
+    sequence: !input paddle_up_4x
+  - conditions: '{{ ''paddle_up_5x'' in trigger.id }}'
+    sequence: !input paddle_up_5x
+  - conditions: '{{ ''paddle_down_1x'' in trigger.id }}'
+    sequence: !input paddle_down_1x
+  - conditions: '{{ ''paddle_down_2x'' in trigger.id }}'
+    sequence: !input paddle_down_2x
+  - conditions: '{{ ''paddle_down_3x'' in trigger.id }}'
+    sequence: !input paddle_down_3x
+  - conditions: '{{ ''paddle_down_4x'' in trigger.id }}'
+    sequence: !input paddle_down_4x
+  - conditions: '{{ ''paddle_down_5x'' in trigger.id }}'
+    sequence: !input paddle_down_5x
+  default: []
+mode: restart

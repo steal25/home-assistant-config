@@ -1,0 +1,59 @@
+esphome:
+  name: glade-air-freshner
+  friendly_name: Glade Air Freshner
+
+esp32:
+  board: esp32-c3-devkitm-1
+  framework:
+    type: arduino
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+  encryption:
+    key: "Hl3Gky6RTv8zMp2+Btg+Pnhs5sBKHBRC0YnvZQ+cVto="
+
+ota:
+  - platform: esphome
+    password: "230bcdb8f960518c2fad1766b16587ff"
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Glade-Air-Freshner"
+    password: "MAIm7u7whHC7"
+
+captive_portal:
+
+switch:
+  - platform: gpio
+    id: fwd
+    name: Motor Forward
+    pin: 10
+
+  - platform: gpio
+    id: rvs
+    name: Motor Reverse
+    pin: 9
+
+button:
+  - platform: template
+    id: btn_spray
+    name: "Spray"
+    on_press:
+      - switch.turn_on: fwd
+      - delay: 300ms
+      - switch.turn_on: rvs
+      - delay: 500ms
+      - switch.turn_off: fwd
+      - delay: 300ms
+      - switch.turn_on: fwd
+      - delay: 500ms
+      - switch.turn_off: fwd
+      - switch.turn_off: rvs  
+    

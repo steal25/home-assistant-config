@@ -1,0 +1,42 @@
+blueprint:
+  name: Door Sensor - actions (for zigbee2mqtt)
+  description: Execute any action when a door is opened or closed.
+  domain: automation
+  input:
+    source_selector:
+      name: Door Sensor
+      default:
+      selector:
+        entity:
+          domain:
+          - binary_sensor
+          multiple: false
+    target_opening_action:
+      name: Opening action
+      description: When sensor contacts are distant.
+      default:
+      selector:
+        action: {}
+    target_closing_action:
+      name: Closing action
+      description: When sensor contacts are very close.
+      default:
+      selector:
+        action: {}
+  source_url: https://github.com/paulo-graca/ha-blueprints/blob/main/door-sensor-actions-zigbee2mqtt.yaml
+mode: single
+max_exceeded: silent
+trigger:
+  platform: state
+  entity_id: !input source_selector
+action:
+- choose:
+  - conditions:
+    - condition: template
+      value_template: '{{ trigger.to_state.state == ''off'' }}'
+    sequence: !input target_closing_action
+  - conditions:
+    - condition: template
+      value_template: '{{ trigger.to_state.state == ''on'' }}'
+    sequence: !input target_opening_action
+  default: []
