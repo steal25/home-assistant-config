@@ -3236,3 +3236,150 @@
 09-27 20:53:50  big_eddies_iphone_16 > Near Devices > My IPhone(icloud3), Janet(icloud3), Timmys (icloud3)
 09-27 20:53:50  janets_iphone_14 > Near Devices > My IPhone(icloud3), Janet(icloud3), Timmys (icloud3)
 09-27 20:53:50  timmy_iphone_13_icloudv3 > Near Devices > My IPhone(icloud3), Janet(icloud3), Timmys (icloud3)
+09-27 20:56:40 
+⠀⠀⠀🔻 BIG_EDDIES_IPHONE_16, MOBAPP DATA, BKGND FETCH, RESPONSE, 
+⠀⠀⠀❗ {'device_tracker': 'home', 'source_type': 'GPS', 'battery_level': 75, 'latitude': 33.84652305457142, 'longitude': -118.16990535624298, 'gps_accuracy': 4, 'altitude': 18, 'vertical_accuracy': 9, 'friendly_name': 'iPhone', 'last_changed_secs': 1759031800, 'last_changed_time': '8:56:40p', 'last_updated_secs': 1759031800, 'last_updated_time': '8:56:40p', 'last_reported_secs': 1759031800, 'last_reported_time': '8:56:40p', 'state': 'home', 'ic3_devicename': 'big_eddies_iphone_16', 'state_timestamp_secs': 1759031800, 'state_timestamp_time': '8:56:40p', 'trigger': 'Bkgnd Fetch', 'trigger_timestamp_secs': 1759022348, 'trigger_timestamp_time': '6:19:08p', 'timestamp_secs': 1759031800, 'timestamp_time': '8:56:40p'}
+09-27 20:56:40  big_eddies_iphone_16 > UPDATED MobApp > big_eddies_iphone_16, Bkgnd Fetch, 
+.                 • Loc-8:56:40p, Home-3m, (33.84652, -118.16991/±4m)
+09-27 20:56:40  big_eddies_iphone_16 > MobApp Monitor > State-home@8:56:40p (0 secs ago), Trigger-Bkgnd Fetch@6:19:08p (2.6 hrs ago), LastTrigger-iCloud@8:53:50p, MobAppData-8:56:40p, WillUpdate-True-Bkgnd Fetch@8:56:40p, Located-8:53:50p (iCloud), GPS-(33.84652, -118.16991/±4m),
+09-27 20:56:40  big_eddies_iphone_16 > MobApp Trigger > Bkgnd Fetch@8:56:40p
+09-27 20:56:40  big_eddies_iphone_16 > Located > MobApp-8:56:40p (0 secs ago)
+09-27 20:56:40  ⡇——————————————————————————————————————————————————
+.               ⡇   BIG_EDDIES_IPHONE_16, MOBAPP, BKGND FETCH@8:56:40P 
+.               ⡇⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂
+09-27 20:56:40  ⡇ big_eddies_iphone_16 > Zone Distance > Margie zone-0.45mi, Walmart-1.3mi, Lakewood Mall-1.9mi, Visiting Jean -2.6mi, Cabrillo High School-4.5mi, Local 13 dispatch hall-6.2mi, LBCT-6.4mi, Carnival H4-6.6mi, LBCT-6.8mi, LB212 Metro-6.9mi, ITS-7.1mi, LB 212 Metro-7.1mi, The Island-7.5mi, LB205-7.6mi, Cosco 266-7.9mi, PST 176-8.0mi, Local 94 Meeting-9.3mi, Maersk-9.6mi
+09-27 20:56:40  ⡇ big_eddies_iphone_16 > Zone > Home(3)-9.3ft > GPS-(33.84652, -118.16991/±4m) (GPS)
+09-27 20:56:40  ⡇ big_eddies_iphone_16 > Nearby Devices (<82ft) > @8:57p, ⌘Janet(icloud3)-10.0ft (8:54p), ⌘Timmys (icloud3)-16.8ft (8:54p)
+09-27 20:56:40  ⡇ big_eddies_iphone_16 > DirHist-H48
+09-27 20:56:40  ⡇ big_eddies_iphone_16 > Results > NextUpdate-9:01:40p, Moved-1.7ft , Battery-74%, ×Went3km
+09-27 20:56:40  ⡇ big_eddies_iphone_16 > RESULTS: From-Home > MobApp-home, iC3-home, Intrvl-5 mins, TravTime-0 secs, Dist-0.0km, Arrival-@5:56p, MaxDist-0.0km, Moved-0.0km, Calc/WazeDist=0.00175226/0.0, Dir-inHomeZone, Batt-74%, NextUpdt-9:01:40p, LastUpdt-8:56:40p, GPSAccur-4m, LocAge-0 secs ago, OldThresh-2 mins, LastEvLogMsg-8:56:40p, Method-3.AtHome
+09-27 20:56:40  ⡇ big_eddies_iphone_16 > Home,Home,5 mins,0 secs,
+09-27 20:56:40  ⡇ big_eddies_iphone_16 > MobApp Results > Home Since 5:56p, Update at 9:02p
+09-27 20:56:40  ⡇⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂
+.               ⡇   BIG_EDDIES_IPHONE_16, MOBAPP, CURRZONE-HOME 
+.               ⡇——————————————————————————————————————————————————
+09-27 20:56:40  big_eddies_iphone_16 > Device Monitor > MobApp, AttrsZone-home, LocDataZone-home, Located-8:56:40p (0 secs ago), MobAppGPS-(33.84652, -118.16991/±4m), MobAppState-home), GPS-(33.84652, -118.16991/±4m) (GPS)
+09-27 20:56:40  big_eddies_iphone_16 > Near Devices > My IPhone(icloud3), Janet(icloud3), Timmys (icloud3)
+09-27 20:56:40  janets_iphone_14 > Near Devices > My IPhone(icloud3), Janet(icloud3), Timmys (icloud3)
+09-27 20:56:40  timmy_iphone_13_icloudv3 > Near Devices > My IPhone(icloud3), Janet(icloud3), Timmys (icloud3)
+09-27 20:58:50  big_eddies_iphone_16 > Located > iCloud-8:53:50p → 8:53:54p, Old, 5 mins ago
+09-27 20:58:50  timmy_iphone_13_icloudv3 > Located > iCloud-8:53:47p → 8:53:54p, Old, 5 mins ago
+09-27 20:58:50  janets_iphone_14 > Located > iCloud-8:53:50p → 8:53:55p, Old, 5 mins ago
+09-27 20:58:56  big_eddies_iphone_16 > Located > iCloud-8:53:54p, Old, 5 mins ago
+09-27 20:58:56  timmy_iphone_13_icloudv3 > Located > iCloud-8:53:54p → 8:58:55p, 29% → 34%
+09-27 20:58:56  janets_iphone_14 > Located > iCloud-8:53:55p → 8:58:54p, 42% → 41%
+09-27 20:58:56  janets_iphone_14 > Located > iCloud-8:58:54p (2 secs ago), MobApp-3.1 hrs ago
+09-27 20:58:56  timmy_iphone_13_icloudv3 > Located > iCloud-8:58:55p (1 secs ago), MobApp-6:16:46p
+09-27 20:58:56  janets_iphone_14 > Trigger > Next Update Time Reached
+09-27 20:58:56  timmy_iphone_13_icloudv3 > Trigger > Next Update Time Reached
+09-27 20:58:56  ⡇——————————————————————————————————————————————————
+.               ⡇   JANETS_IPHONE_14⟢EDWARDSTEELE, ICLOUD, NEXT UPDATE TIME REACHED 
+.               ⡇⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂
+09-27 20:58:56  ⡇ janets_iphone_14 > Zone Distance > Margie zone-0.45mi, Walmart-1.3mi, Lakewood Mall-1.9mi, Visiting Jean -2.6mi, Cabrillo High School-4.5mi, Local 13 dispatch hall-6.3mi, LBCT-6.4mi, Carnival H4-6.6mi, LBCT-6.8mi, LB212 Metro-6.9mi, ITS-7.1mi, LB 212 Metro-7.2mi, The Island-7.5mi, LB205-7.6mi, Cosco 266-7.9mi, PST 176-8.0mi, Local 94 Meeting-9.3mi, Maersk-9.7mi
+09-27 20:58:56  ⡇ janets_iphone_14 > Zone > Home(3)-18.2ft > GPS-(33.84659, -118.16991/±5m) (Unknown)
+09-27 20:58:56  ⡇ janets_iphone_14 > Nearby Devices (<82ft) > @8:59p, ✓My IPhone(icloud3)-22.6ft (8:57p), ✓Timmys (icloud3)-9.4ft
+09-27 20:58:56  ⡇ janets_iphone_14 > DirHist-H38
+09-27 20:58:56  ⡇ janets_iphone_14 > Results > NextUpdate-9:03:55p, Moved-31.7ft , Battery-41%, ×Went3km, MobAppLocated-3.1 hrs ago
+09-27 20:58:56  ⡇ janets_iphone_14 > RESULTS: From-Home > MobApp-home, iC3-home, Intrvl-5 mins, TravTime-0 secs, Dist-0.0km, Arrival-@5:56p, MaxDist-0.0km, Moved-0.0km, Calc/WazeDist=0.00344239/0.0, Dir-inHomeZone, Batt-41%, NextUpdt-9:03:55p, LastUpdt-8:58:56p, GPSAccur-5m, LocAge-2 secs ago, OldThresh-2 mins, LastEvLogMsg-8:58:56p, Method-3.AtHome
+09-27 20:58:56  ⡇ janets_iphone_14 > Home,Home,5 mins,0 secs,
+09-27 20:58:56  ⡇ janets_iphone_14 > iCloud Results > Home Since 5:56p, Update at 9:04p
+09-27 20:58:56  ⡇⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂
+.               ⡇   JANETS_IPHONE_14⟢EDWARDSTEELE, ICLOUD, CURRZONE-HOME 
+.               ⡇——————————————————————————————————————————————————
+09-27 20:58:56  janets_iphone_14 > Device Monitor > iCloud, Next Update Time Reached, AttrsZone-home, LocDataZone-home, Located-8:58:54p (2 secs ago), MobAppGPS-(33.84651, -118.16988/±7m), MobAppState-home), GPS-(33.84659, -118.16991/±5m) (Unknown)
+09-27 20:58:56  big_eddies_iphone_16 > Near Devices > My IPhone(icloud3), Janet(icloud3), Timmys (icloud3)
+09-27 20:58:56  janets_iphone_14 > Near Devices > My IPhone(icloud3), Janet(icloud3), Timmys (icloud3)
+09-27 20:58:56  timmy_iphone_13_icloudv3 > Near Devices > My IPhone(icloud3), Janet(icloud3), Timmys (icloud3)
+09-27 20:58:56  ⡇——————————————————————————————————————————————————
+.               ⡇   TIMMY_IPHONE_13_ICLOUDV3⟢EDWARDSTEELE, ICLOUD, NEXT UPDATE TIME REACHED 
+.               ⡇⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂
+09-27 20:58:56  ⡇ timmy_iphone_13_icloudv3 > Zone Distance > Margie zone-0.45mi, Walmart-1.3mi, Lakewood Mall-1.9mi, Visiting Jean -2.6mi, Cabrillo High School-4.5mi, Local 13 dispatch hall-6.3mi, LBCT-6.4mi, Carnival H4-6.6mi, LBCT-6.8mi, LB212 Metro-6.9mi, ITS-7.1mi, LB 212 Metro-7.1mi, The Island-7.5mi, LB205-7.6mi, Cosco 266-7.9mi, PST 176-8.0mi, Local 94 Meeting-9.3mi, Maersk-9.7mi
+09-27 20:58:56  ⡇ timmy_iphone_13_icloudv3 > Zone > Home(3)-16.5ft > GPS-(33.84657, -118.16989/±5m) (Unknown)
+09-27 20:58:56  ⡇ timmy_iphone_13_icloudv3 > Nearby Devices (<82ft) > @8:59p, ✓My IPhone(icloud3)-16.8ft (8:57p), ⌘Janet(icloud3)-9.4ft
+09-27 20:58:56  ⡇ timmy_iphone_13_icloudv3 > DirHist-H39
+09-27 20:58:56  ⡇ timmy_iphone_13_icloudv3 > Results > NextUpdate-9:03:55p, Moved-0.0mi , Battery-34%, ×Went3km, MobAppLocated-2.7 hrs ago
+09-27 20:58:56  ⡇ timmy_iphone_13_icloudv3 > RESULTS: From-Home > MobApp-home, iC3-home, Intrvl-5 mins, TravTime-0 secs, Dist-0.0km, Arrival-@5:56p, MaxDist-0.0km, Moved-0.0km, Calc/WazeDist=0.00313233/0.0, Dir-inHomeZone, Batt-34%, NextUpdt-9:03:55p, LastUpdt-8:58:56p, GPSAccur-5m, LocAge-1 secs ago, OldThresh-2 mins, LastEvLogMsg-8:58:56p, Method-3.AtHome
+09-27 20:58:56  ⡇ timmy_iphone_13_icloudv3 > Home,Home,5 mins,0 secs,
+09-27 20:58:56  ⡇ timmy_iphone_13_icloudv3 > iCloud Results > Home Since 5:56p, Update at 9:04p
+09-27 20:58:56  ⡇⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂
+.               ⡇   TIMMY_IPHONE_13_ICLOUDV3⟢EDWARDSTEELE, ICLOUD, CURRZONE-HOME 
+.               ⡇——————————————————————————————————————————————————
+09-27 20:58:56  big_eddies_iphone_16 > Near Devices > My IPhone(icloud3), Janet(icloud3), Timmys (icloud3)
+09-27 20:58:56  janets_iphone_14 > Near Devices > My IPhone(icloud3), Janet(icloud3), Timmys (icloud3)
+09-27 20:58:56  timmy_iphone_13_icloudv3 > Near Devices > My IPhone(icloud3), Janet(icloud3), Timmys (icloud3)
+09-27 20:58:56  timmy_iphone_13_icloudv3 > Battery Info > Level-34%, NotCharging (iCloud)
+09-27 21:00:00  big_eddies_iphone_16 > MobApp Monitor > State-home@8:56:40p (3 mins ago), Trigger-Bkgnd Fetch@6:19:08p (2.7 hrs ago), LastTrigger-Bkgnd Fetch@8:56:40p, MobAppData-8:56:40p, WillUpdate-False-Before Last Update (8:56:40p <= 8:56:40p), Located-8:56:40p (MobApp), GPS-(33.84652, -118.16991/±4m),
+09-27 21:00:00  janets_iphone_14 > MobApp Monitor > State-home@5:55:51p (3.1 hrs ago), Trigger-Sig Loc Change@5:55:51p (3.1 hrs ago), LastTrigger-iCloud@8:58:54p, MobAppData-5:55:51p, WillUpdate-False-Before Last Update (5:55:51p <= 8:58:54p), Located-8:58:54p (iCloud), GPS-(33.84651, -118.16988/±7m),
+09-27 21:00:00  timmy_iphone_13_icloudv3 > MobApp Monitor > State-home@5:55:51p (3.1 hrs ago), Trigger-siri@6:16:46p (2.7 hrs ago), LastTrigger-iCloud@8:58:55p, MobAppData-6:16:46p, WillUpdate-False-Before Last Update (6:16:46p <= 8:58:55p), Located-8:58:55p (iCloud), GPS-(33.84658, -118.16989/±14m),
+09-27 21:01:40  big_eddies_iphone_16 > Located > iCloud-8:53:54p → 8:59:04p, Old, 3 mins ago
+09-27 21:01:40  timmy_iphone_13_icloudv3 > Located > iCloud-8:58:55p → 8:58:59p, Old, 3 mins ago
+09-27 21:01:40  janets_iphone_14 > Located > iCloud-8:58:54p → 8:58:59p, Old, 3 mins ago
+09-27 21:01:45  big_eddies_iphone_16 > Located > iCloud-8:59:04p → 9:01:44p, 74% → 73%
+09-27 21:01:45  timmy_iphone_13_icloudv3 > Located > iCloud-8:58:59p → 9:01:42p, 34%
+09-27 21:01:45  janets_iphone_14 > Located > iCloud-8:58:59p, Old, 3 mins ago
+09-27 21:01:45  big_eddies_iphone_16 > Located > iCloud-9:01:44p (1 secs ago), MobApp-8:56:40p
+09-27 21:01:45  timmy_iphone_13_icloudv3 > Located > iCloud-9:01:42p (3 secs ago), MobApp-6:16:46p
+09-27 21:01:45  big_eddies_iphone_16 > Trigger > Next Update Time Reached
+09-27 21:01:45  ⡇——————————————————————————————————————————————————
+.               ⡇   BIG_EDDIES_IPHONE_16⟢EDWARDSTEELE, ICLOUD, NEXT UPDATE TIME REACHED 
+.               ⡇⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂
+09-27 21:01:45  ⡇ big_eddies_iphone_16 > Zone Distance > Margie zone-0.45mi, Walmart-1.3mi, Lakewood Mall-1.9mi, Visiting Jean -2.6mi, Cabrillo High School-4.5mi, Local 13 dispatch hall-6.2mi, LBCT-6.4mi, Carnival H4-6.6mi, LBCT-6.8mi, LB212 Metro-6.9mi, ITS-7.1mi, LB 212 Metro-7.1mi, The Island-7.5mi, LB205-7.6mi, Cosco 266-7.9mi, PST 176-8.0mi, Local 94 Meeting-9.3mi, Maersk-9.6mi
+09-27 21:01:45  ⡇ big_eddies_iphone_16 > Zone > Home(3)-14.7ft > GPS-(33.84650, -118.16990/±8m) (WiFi)
+09-27 21:01:45  ⡇ big_eddies_iphone_16 > Nearby Devices (<82ft) > @9:02p, ⌘Janet(icloud3)-4.7ft (8:59p), ⌘Timmys (icloud3)-23.4ft
+09-27 21:01:45  ⡇ big_eddies_iphone_16 > DirHist-H49
+09-27 21:01:45  ⡇ big_eddies_iphone_16 > Results > NextUpdate-9:06:45p, Moved-6.9ft , Battery-73%, ×Went3km
+09-27 21:01:45  ⡇ big_eddies_iphone_16 > RESULTS: From-Home > MobApp-home, iC3-home, Intrvl-5 mins, TravTime-0 secs, Dist-0.0km, Arrival-@5:56p, MaxDist-0.0km, Moved-0.0km, Calc/WazeDist=0.00278498/0.0, Dir-inHomeZone, Batt-73%, NextUpdt-9:06:45p, LastUpdt-9:01:45p, GPSAccur-8m, LocAge-1 secs ago, OldThresh-2 mins, LastEvLogMsg-9:01:45p, Method-3.AtHome
+09-27 21:01:45  ⡇ big_eddies_iphone_16 > Home,Home,5 mins,0 secs,
+09-27 21:01:45  ⡇ big_eddies_iphone_16 > iCloud Results > Home Since 5:56p, Update at 9:07p
+09-27 21:01:45  ⡇⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂
+.               ⡇   BIG_EDDIES_IPHONE_16⟢EDWARDSTEELE, ICLOUD, CURRZONE-HOME 
+.               ⡇——————————————————————————————————————————————————
+09-27 21:01:45  big_eddies_iphone_16 > Device Monitor > iCloud, Next Update Time Reached, AttrsZone-home, LocDataZone-home, Located-9:01:44p (1 secs ago), MobAppGPS-(33.84652, -118.16991/±4m), MobAppState-home), GPS-(33.84650, -118.16990/±8m) (WiFi)
+09-27 21:01:45  big_eddies_iphone_16 > Near Devices > My IPhone(icloud3), Janet(icloud3), Timmys (icloud3)
+09-27 21:01:45  janets_iphone_14 > Near Devices > My IPhone(icloud3), Janet(icloud3), Timmys (icloud3)
+09-27 21:01:45  timmy_iphone_13_icloudv3 > Near Devices > My IPhone(icloud3), Janet(icloud3), Timmys (icloud3)
+09-27 21:03:55  big_eddies_iphone_16 > Located > iCloud-9:01:44p → 9:01:49p, Old, 2 mins ago
+09-27 21:03:55  timmy_iphone_13_icloudv3 > Located > iCloud-9:01:42p → 9:01:49p, Old, 2 mins ago
+09-27 21:03:55  janets_iphone_14 > Located > iCloud-8:58:59p → 9:01:58p, 41% → 40%
+09-27 21:03:55  janets_iphone_14 > Located > iCloud-9:01:58p (2 mins ago), MobApp-3.1 hrs ago
+09-27 21:03:55  janets_iphone_14 > Trigger > Next Update Time Reached
+09-27 21:03:55  ⡇——————————————————————————————————————————————————
+.               ⡇   JANETS_IPHONE_14⟢EDWARDSTEELE, ICLOUD, NEXT UPDATE TIME REACHED 
+.               ⡇⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂
+09-27 21:03:55  ⡇ janets_iphone_14 > Zone Distance > Margie zone-0.45mi, Walmart-1.3mi, Lakewood Mall-1.9mi, Visiting Jean -2.6mi, Cabrillo High School-4.5mi, Local 13 dispatch hall-6.3mi, LBCT-6.4mi, Carnival H4-6.6mi, LBCT-6.8mi, LB212 Metro-6.9mi, ITS-7.1mi, LB 212 Metro-7.2mi, The Island-7.5mi, LB205-7.6mi, Cosco 266-7.9mi, PST 176-8.0mi, Local 94 Meeting-9.3mi, Maersk-9.7mi
+09-27 21:03:55  ⡇ janets_iphone_14 > Zone > Home(3)-18.2ft > GPS-(33.84659, -118.16991/±5m) (Unknown)
+09-27 21:03:55  ⡇ janets_iphone_14 > Nearby Devices (<82ft) > @9:02p, ✓My IPhone(icloud3)-31.7ft, ✓Timmys (icloud3)-9.4ft
+09-27 21:03:55  ⡇ janets_iphone_14 > DirHist-H39
+09-27 21:03:55  ⡇ janets_iphone_14 > Results > NextUpdate-9:08:55p, Moved-0.0mi , Battery-40%, ×Went3km, MobAppLocated-3.1 hrs ago
+09-27 21:03:55  ⡇ janets_iphone_14 > RESULTS: From-Home > MobApp-home, iC3-home, Intrvl-5 mins, TravTime-0 secs, Dist-0.0km, Arrival-@5:56p, MaxDist-0.0km, Moved-0.0km, Calc/WazeDist=0.00344239/0.0, Dir-inHomeZone, Batt-40%, NextUpdt-9:08:55p, LastUpdt-9:03:55p, GPSAccur-5m, LocAge-2 mins ago, OldThresh-2 mins, LastEvLogMsg-9:03:55p, Method-3.AtHome
+09-27 21:03:55  ⡇ janets_iphone_14 > Home,Home,5 mins,0 secs,
+09-27 21:03:55  ⡇ janets_iphone_14 > iCloud Results > Home Since 5:56p, Update at 9:09p
+09-27 21:03:55  ⡇⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂
+.               ⡇   JANETS_IPHONE_14⟢EDWARDSTEELE, ICLOUD, CURRZONE-HOME 
+.               ⡇——————————————————————————————————————————————————
+09-27 21:03:55  big_eddies_iphone_16 > Near Devices > My IPhone(icloud3), Janet(icloud3), Timmys (icloud3)
+09-27 21:03:55  janets_iphone_14 > Near Devices > My IPhone(icloud3), Janet(icloud3), Timmys (icloud3)
+09-27 21:03:55  timmy_iphone_13_icloudv3 > Near Devices > My IPhone(icloud3), Janet(icloud3), Timmys (icloud3)
+09-27 21:03:55  janets_iphone_14 > Battery Info > Level-40%, NotCharging (iCloud)
+09-27 21:04:00  big_eddies_iphone_16 > Located > iCloud-9:01:49p → 9:04:00p, 73%
+09-27 21:04:00  timmy_iphone_13_icloudv3 > Located > iCloud-9:01:49p → 9:04:00p, 34% → 32%
+09-27 21:04:00  janets_iphone_14 > Located > iCloud-9:01:58p → 9:04:00p, 40% → 39%
+09-27 21:04:00  timmy_iphone_13_icloudv3 > Located > iCloud-9:04:00p (0 secs ago), MobApp-6:16:46p
+09-27 21:04:00  timmy_iphone_13_icloudv3 > Trigger > Next Update Time Reached
+09-27 21:04:00  ⡇——————————————————————————————————————————————————
+.               ⡇   TIMMY_IPHONE_13_ICLOUDV3⟢EDWARDSTEELE, ICLOUD, NEXT UPDATE TIME REACHED 
+.               ⡇⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂
+09-27 21:04:00  ⡇ timmy_iphone_13_icloudv3 > Zone Distance > Margie zone-0.45mi, Walmart-1.3mi, Lakewood Mall-1.9mi, Visiting Jean -2.6mi, Cabrillo High School-4.5mi, Local 13 dispatch hall-6.3mi, LBCT-6.4mi, Carnival H4-6.6mi, LBCT-6.8mi, LB212 Metro-6.9mi, ITS-7.1mi, LB 212 Metro-7.1mi, The Island-7.5mi, LB205-7.6mi, Cosco 266-7.9mi, PST 176-8.0mi, Local 94 Meeting-9.3mi, Maersk-9.7mi
+09-27 21:04:00  ⡇ timmy_iphone_13_icloudv3 > Zone > Home(3)-16.5ft > GPS-(33.84657, -118.16989/±5m) (Unknown)
+09-27 21:04:00  ⡇ timmy_iphone_13_icloudv3 > Nearby Devices (<82ft) > @9:04p, ✓My IPhone(icloud3)-24.2ft, ✓Janet(icloud3)-9.4ft
+09-27 21:04:00  ⡇ timmy_iphone_13_icloudv3 > DirHist-H40
+09-27 21:04:00  ⡇ timmy_iphone_13_icloudv3 > Results > NextUpdate-9:09:00p, Moved-0.0mi , Battery-32%, ×Went3km, MobAppLocated-2.8 hrs ago
+09-27 21:04:00  ⡇ timmy_iphone_13_icloudv3 > RESULTS: From-Home > MobApp-home, iC3-home, Intrvl-5 mins, TravTime-0 secs, Dist-0.0km, Arrival-@5:56p, MaxDist-0.0km, Moved-0.0km, Calc/WazeDist=0.00313233/0.0, Dir-inHomeZone, Batt-32%, NextUpdt-9:09:00p, LastUpdt-9:04:00p, GPSAccur-5m, LocAge-0 secs ago, OldThresh-2 mins, LastEvLogMsg-9:04:00p, Method-3.AtHome
+09-27 21:04:00  ⡇ timmy_iphone_13_icloudv3 > Home,Home,5 mins,0 secs,
+09-27 21:04:00  ⡇ timmy_iphone_13_icloudv3 > iCloud Results > Home Since 5:56p, Update at 9:09p
+09-27 21:04:00  ⡇⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂⠂
+.               ⡇   TIMMY_IPHONE_13_ICLOUDV3⟢EDWARDSTEELE, ICLOUD, CURRZONE-HOME 
+.               ⡇——————————————————————————————————————————————————
+09-27 21:04:00  big_eddies_iphone_16 > Near Devices > My IPhone(icloud3), Janet(icloud3), Timmys (icloud3)
+09-27 21:04:00  janets_iphone_14 > Near Devices > My IPhone(icloud3), Janet(icloud3), Timmys (icloud3)
+09-27 21:04:00  timmy_iphone_13_icloudv3 > Near Devices > My IPhone(icloud3), Janet(icloud3), Timmys (icloud3)
