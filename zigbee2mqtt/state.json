@@ -119,7 +119,7 @@
     },
     "0x282c02bfffea7bf4": {
         "battery": 74,
-        "occupancy": false,
+        "occupancy": true,
         "tamper": false,
         "battery_low": false,
         "linkquality": 84,
@@ -456,7 +456,7 @@
         "detection_interval": 30,
         "motion_sensitivity": "medium",
         "trigger_indicator": false,
-        "occupancy": false,
+        "occupancy": true,
         "illuminance": 16,
         "linkquality": 100,
         "device_temperature": 32,
@@ -559,7 +559,7 @@
     },
     "0x0ceff6fffe400692": {
         "battery": 65,
-        "temperature": 28.4,
+        "temperature": 28.6,
         "humidity": 47.3,
         "comfort_temperature_min": 19,
         "comfort_temperature_max": 27,
@@ -956,7 +956,7 @@
         "current": 0,
         "energy": 0.45,
         "ac_frequency": 60,
-        "voltage": 118.6,
+        "voltage": 120.6,
         "update": {
             "state": "idle",
             "installed_version": 268513381,
