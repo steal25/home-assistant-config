@@ -1,0 +1,17 @@
+substitutions:
+  name: everything-presence-lite-922dfc
+  friendly_name: Office Presence (epl)
+packages:
+  EverythingSmartTechnology.Everything Presence Lite: github://everythingsmarthome/everything-presence-lite/everything-presence-lite-ha.yaml@main
+esphome:
+  name: ${name}
+  name_add_mac_suffix: false
+  friendly_name: ${friendly_name}
+api:
+  encryption:
+    key: /uJU+jAq8hzqaOWN47Dj+HE8Xv+HrWa2DS8IkQqo+Io=
+
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password

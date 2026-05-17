@@ -1,0 +1,17 @@
+substitutions:
+  name: apollo-msr-2-f8b320
+  friendly_name: Apollo Motion Sensor
+packages:
+  ApolloAutomation.MSR-2_Factory: github://ApolloAutomation/MSR-2/Integrations/ESPHome/MSR-2_Factory.yaml
+esphome:
+  name: ${name}
+  name_add_mac_suffix: false
+  friendly_name: ${friendly_name}
+api:
+  encryption:
+    key: BlRXJh2972o4clRfQqwulOVbqTwjPoYuAX/k/RA2GOI=
+
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password

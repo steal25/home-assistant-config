@@ -25,13 +25,11 @@ api:
   encryption:
     key: "{your-encrption-key}"
 
-ota:
-  password: "{your-password-here}"
 
 wifi:
   power_save_mode: NONE
   ap:
-    ssid: "MOTION-SENSOR-HALLWAY"
+    ssid: "MOTION-SENSOR_HALLWAY"
 
 captive_portal:
 

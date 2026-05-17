@@ -25,6 +25,17 @@ wifi:
   # Set up a wifi access point
   ap: {}
 
+  # --- BLE Proxy Add-on ---
+esp32_ble_tracker:
+  scan_parameters:
+    active: true
+    interval: 600ms
+    window: 600ms
+
+bluetooth_proxy:
+  active: true
+# --- End BLE Proxy Add-on ---
+
 # In combination with the `ap` this allows the user
 # to provision wifi credentials to the device via WiFi AP.
 captive_portal:

@@ -22,11 +22,24 @@ ota:
 wifi:
   ssid: !secret wifi_ssid
   password: !secret wifi_password
+  power_save_mode: none  # keeps scans reliable
 
   # Enable fallback hotspot (captive portal) in case wifi connection fails
   ap:
     ssid: "Glade-Air-Freshner-Master"
     password: "o3FB0M7VJZX3"
+
+# --- BLE Proxy add-on START ---
+
+esp32_ble_tracker:
+  scan_parameters:
+    active: true
+    interval: 600ms
+    window: 600ms
+
+bluetooth_proxy:
+  active: true
+# --- BLE Proxy add-on END ---
 
 captive_portal:
 

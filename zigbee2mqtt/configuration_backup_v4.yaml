@@ -35,7 +35,7 @@ advanced:
 mqtt:
   server: mqtt://core-mosquitto:1883
   user: mqtt-user2
-  password: 25Local94
+  password: mqttuser2
   port: 8099
 device_options: {}
 devices:
@@ -111,6 +111,12 @@ devices:
   '0x00158d000af2ca9d':
     friendly_name: Garage Door opener(garage)
     icon: device_icons/8a6e32e6447964fb879458a4c207d6f6.png
+  '0x001788010e2f121a':
+    friendly_name: 'Bathroom Under Cabinet '
+    icon: device_icons/cc70af6438ff313d1bafd671e7bd2921.png
+  '0x001788010e2f1299':
+    friendly_name: Under TV Cabinet
+    icon: device_icons/cc70af6438ff313d1bafd671e7bd2921.png
   '0x282c02bfffec2e16':
     friendly_name: 'PLUG: Christmas Window Lights '
     icon: device_icons/071eda40e14d3ba37057472c0c9786d4.png
@@ -127,7 +133,7 @@ devices:
     friendly_name: 'Office Power Strip '
     icon: device_icons/9ee50e26d4106bfff39e75e8ab172c76.png
   '0x282c02bfffea87eb':
-    friendly_name: Motion Sensor Garage TR
+    friendly_name: Garage Motion Sensor TR
     icon: device_icons/10db0204819b54c4922afb7ea11aa833.png
   '0x00158d000ad629ce':
     friendly_name: FlashForge Aqara Button
@@ -143,6 +149,12 @@ devices:
     icon: device_icons/8da97afa2d57d9d2e86756a4aa2a6072.png
   '0x54ef441000c64199':
     friendly_name: Aqara Motion (office)
+    icon: device_icons/e3cf8f26cf8676dbe6b7cafc07a77acf.png
+  '0x54ef441000a443af':
+    friendly_name: Aqara Motion (hallway)
+    icon: device_icons/e3cf8f26cf8676dbe6b7cafc07a77acf.png
+  '0x54ef441000a42bdf':
+    friendly_name: Aqara Motion (bathroom)
     icon: device_icons/e3cf8f26cf8676dbe6b7cafc07a77acf.png
   '0x54ef441000c7c7e8':
     friendly_name: Aqara Motion (closet)
@@ -182,44 +194,6 @@ devices:
     friendly_name: Janets Light Left
   '0x001788010eb76084':
     friendly_name: Janets Light Right
-  '0x001788010ebdb851':
-    friendly_name: Dining Hue 1
-  '0x001788010ebdb89c':
-    friendly_name: Dining Hue 2
-  '0x001788010ebdb8a1':
-    friendly_name: Dining Hue 3
-  '0x001788010ebdb963':
-    friendly_name: Dining Hue 4
-  '0x001788010ebdba3a':
-    friendly_name: Living Room Hue 1
-  '0x001788010ebdba19':
-    friendly_name: Living Room Hue 2
-  '0x001788010ec00123':
-    friendly_name: Living Room Hue 3
-  '0x001788010ebffcad':
-    friendly_name: Living Room Hue 4
-  '0x001788010ebffccb':
-    friendly_name: Living Room Hue 5
-  '0x001788010ebff971':
-    friendly_name: Living Room Hue 6
-  '0x001788010efd1b08':
-    friendly_name: Janets Light 1
-  '0x001788010efd1713':
-    friendly_name: Janets Light 2
-  '0xffffb40e06078021':
-    friendly_name: 'PLUG: Master Bedroom Subwoofer'
-  '0x001788010e2f1299':
-    friendly_name: Under TV Cabinet
-  '0x001788010ef8f7be':
-    friendly_name: Under TV Light Master
-  '0x3c2ef5fffe31a817':
-    friendly_name: Master Bedroom Door Blind (right)
-  '0x3c2ef5fffe318297':
-    friendly_name: Master Bedroom Door Blind (left)
-  '0x54ef441000a42bdf':
-    friendly_name: '0x54ef441000a42bdf'
-  '0x001788010fd3780c':
-    friendly_name: Festavia Pergola Lights
 blocklist:
   - '0x282c02bfffe3e034'
 serial:
@@ -230,7 +204,7 @@ adapter: ember
 frontend:
   enabled: true
   port: 8099
-version: 5
+version: 4
 groups:
   '1':
     friendly_name: dining_room_lights_z2m_group
@@ -242,10 +216,3 @@ groups:
     filtered_attributes: []
   '4':
     friendly_name: hue_closet_lights_group
-  '5':
-    friendly_name: Living room Hue Lights Group
-  '6':
-    friendly_name: Office Shelh Lights Hue Group
-    filtered_attributes: []
-  '7':
-    friendly_name: Master Bedroom Door Blinds (group)

@@ -1,0 +1,32 @@
+esphome:
+  name: bidet-presence-sensor
+  friendly_name: Bidet Presence Sensor
+
+esp32:
+  board: esp32-c3-devkitm-1
+  framework:
+    type: esp-idf
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+  encryption:
+    key: "PDToMmP2ZKpJyW8bsXXzs/z+sCJh0f7HQPhjyGl80M4="
+
+ota:
+  - platform: esphome
+    password: "1a3e9d2c97d4a92949112b822ff09b66"
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Bidet-Presence-Sensor"
+    password: "CBKGkxPgxszQ"
+
+captive_portal:
+    

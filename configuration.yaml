@@ -1,4 +1,3 @@
-
 # Loads default set of integrations. Do not remove.
 default_config:
 
@@ -15,20 +14,22 @@ input_text: !include input_text.yaml
 input_datetime: !include input_datetime.yaml
 input_boolean: !include input_boolean.yaml
 input_number: !include input_number.yaml
-      
-      
-      
+binary_sensor: !include binary_sensors.yaml
+
 # Zigbee Configuration
 
-zha:  
+zha:
   device_config:
     a4:c1:38:86:43:bd:28:92-1:
       type: "switch"
-      
-# Ring test      
+
+# Ring test
 homeassistant:
   allowlist_external_dirs:
     - "/config/tmp"
+
+  # …your other HA settings (name, latitude, unit_system, etc.)
+  packages: !include_dir_named packages
 
 # Enable WOL
 wake_on_lan:
@@ -39,10 +40,29 @@ notify:
   - name: ALL_NOTI_DEVICES
     platform: group
     services:
-      - service: mobile_app_iphone
-      - service: mobile_app_janets_iphone
-      
-      
+      - service: mobile_app_eddies_iphone_17_pm
+      - service: mobile_app_janets_iphone_17_pm
+
+  - name: EDDIES_PHONE
+    platform: group
+    services:
+      - service: mobile_app_eddies_iphone_17_pm
+
+  - name: JANETS_PHONE
+    platform: group
+    services:
+      - service: mobile_app_janets_iphone_17_pm
+
+  - platform: file
+    name: audit_file
+    filename: /config/www/logs/light_on_audit.txt
+    timestamp: true
+
+  - platform: file
+    name: entity_list_notify
+    filename: /config/entities_list.txt # Adjust path as needed
+    timestamp: false
+
 #ENABLE STREAM
 
 #ffmpeg:
@@ -53,7 +73,6 @@ stream:
 
 recorder:
   db_url: mysql://homeassistant:Shipgang25131664!@core-mariadb/homeassistant?charset=utf8mb4
-  
 
 # Family Group
 
@@ -65,270 +84,90 @@ group:
       - person.edward_steele
       - person.janet_steele
       - person.timmy_steele
-      
-# Supervisor      
-      
-panel_custom: 
+
+# Supervisor
+
+panel_custom:
   - name: Supervisor
     url_path: hassio/system
     sidebar_title: Supervisor
-    sidebar_icon: mdi:home-assistant 
-    module_url: /local/panel-redirect.js 
-    
+    sidebar_icon: mdi:home-assistant
+    module_url: /local/panel-redirect.js
+
 #Media Players
 
 ###EMBY###
 
 media_player:
   - platform: emby
-    host: 172.25.13.154
+    host: 172.25.13.235
     port: 8096
     ssl: False
-    api_key: c0600f8bc413428085b615164a9b0b76      
+    api_key: c0600f8bc413428085b615164a9b0b76
     
-    
-#Zooz Garage Door Opener
 
-# cover:
-#   - platform: template
-#     covers:
-#       garage_door:
-#         unique_id: test_cover_zooz
-#         device_class: garage
-#         friendly_name: "Garage Door"
-#         value_template: >-
-#           {% if is_state('binary_sensor.garage_door_open_close_sensor', 'on') %}
-#             open
-#           {% else %}
-#             closed
-#           {% endif %}
-#         open_cover:
-#           sequence:
-#             - condition: template
-#               value_template: >
-#                 {{ not is_state('binary_sensor.garage_door_open_close_sensor', 'on') }}
-#             - service: switch.turn_on
-#               target:
-#                 entity_id: switch.garage_door_zooz
-#             - condition: template
-#               value_template: >
-#                 {{ is_state('binary_sensor.garage_door_open_close_sensor', 'on') }}
-#             - service: media_player.play_media
-#               target:
-#                 entity_id: media_player.all_echos
-#               data:
-#                 media_content_type: tts
-#                 media_content_id: "The garage door is already closed."
-#         close_cover:
-#           sequence:
-#             - condition: template
-#               value_template: >
-#                 {{ is_state('binary_sensor.garage_door_open_close_sensor', 'on') }}
-#             - service: switch.turn_on
-#               target:
-#                 entity_id: switch.garage_door_zooz
-#             - condition: template
-#               value_template: >
-#                 {{ not is_state('binary_sensor.garage_door_open_close_sensor', 'on') }}
-#             - service: media_player.play_media
-#               target:
-#                 entity_id: media_player.echo_dot_office
-#               data:
-#                 media_content_type: tts
-#                 media_content_id: "The garage door is already open."
-#         stop_cover:
-#           service: switch.turn_on
-#           target:
-#             entity_id: switch.garage_door_zooz
-#         icon_template: >-
-#           {% if is_state('binary_sensor.garage_door_open_close_sensor', 'on') %}
-#             mdi:garage-open-variant
-#           {% else %}
-#             mdi:garage-variant
-#           {% endif %}
-
-
-cover:
-  - platform: template
-    covers:
-      garage_door:
-        unique_id: test_cover_zooz
-        device_class: garage
-        friendly_name: "Garage Door"
-
-        # Contact sensor: ON = open, OFF = closed
-        value_template: >-
-          {% if is_state('binary_sensor.garage_door_open_close_sensor', 'on') %}
-            open
-          {% else %}
-            closed
-          {% endif %}
-
-        # ----- OPEN -----
-        open_cover:
-          sequence:
-            # If it's closed, we can open it
-            - if:
-                - condition: state
-                  entity_id: binary_sensor.garage_door_open_close_sensor
-                  state: "off"
-              then:
-                - service: switch.turn_on
-                  target: { entity_id: switch.garage_door_zooz }
-
-                # Wait up to 20s for the sensor to report OPEN
-                - wait_template: "{{ is_state('binary_sensor.garage_door_open_close_sensor','on') }}"
-                  timeout: "00:00:20"
-                  continue_on_timeout: true
-
-                # Announce result
-                - choose:
-                    - conditions:
-                        - condition: template
-                          value_template: "{{ is_state('binary_sensor.garage_door_open_close_sensor','on') }}"
-                      sequence:
-                        - service: notify.alexa_media
-                          target: { entity_id: media_player.all_echos }   # <-- adjust if needed
-                          data:
-                            media_content_type: tts
-                            media_content_id: "The garage door is now open."
-                  default:
-                    - service: notify.alexa_media
-                      target: { entity_id: media_player.all_echos }
-                      data:
-                        media_content_type: tts
-                        media_content_id: "Opening the garage door."
-              else:
-                # Already open → announce
-                - service: notify.alexa_media
-                  target: { entity_id: media_player.all_echos }
-                  data:
-                    media_content_type: tts
-                    media_content_id: "The garage door is already open."
-
-        # ----- CLOSE -----
-        close_cover:
-          sequence:
-            # If it's open, we can close it
-            - if:
-                - condition: state
-                  entity_id: binary_sensor.garage_door_open_close_sensor
-                  state: "on"
-              then:
-                - service: switch.turn_on
-                  target: { entity_id: switch.garage_door_zooz }
-
-                # Wait up to 20s for the sensor to report CLOSED
-                - wait_template: "{{ is_state('binary_sensor.garage_door_open_close_sensor','off') }}"
-                  timeout: "00:00:20"
-                  continue_on_timeout: true
-
-                # Announce result
-                - choose:
-                    - conditions:
-                        - condition: template
-                          value_template: "{{ is_state('binary_sensor.garage_door_open_close_sensor','off') }}"
-                      sequence:
-                        - service: notify.alexa_media
-                          target: { entity_id: media_player.all_echos }
-                          data:
-                            media_content_type: tts
-                            media_content_id: "The garage door is now closed."
-                  default:
-                    - service: notify.alexa_media
-                      target: { entity_id: media_player.all_echos }
-                      data:
-                        media_content_type: tts
-                        media_content_id: "Closing the garage door."
-              else:
-                # Already closed → announce
-                - service: notify.alexa_media
-                  target: { entity_id: media_player.all_echos }
-                  data:
-                    media_content_type: tts
-                    media_content_id: "The garage door is already closed."
-
-        # Pulse the relay to stop (if your opener supports it)
-        stop_cover:
-          service: switch.turn_on
-          target:
-            entity_id: switch.garage_door_zooz
-
-        icon_template: >-
-          {% if is_state('binary_sensor.garage_door_open_close_sensor', 'on') %}
-            mdi:garage-open-variant
-          {% else %}
-            mdi:garage-variant
-          {% endif %}
-
-
+#   - platform: denon
+#     host: 172.25.13.55
 
 ####JBL Shell CMDS
 
 shell_command:
-  # Step 1: Handshake - Always send this first after Home Assistant restarts 
+  # Step 1: Handshake - Always send this first after Home Assistant restarts
 
-  ma510_init: 'printf "\x23\x50\x01\xF0\x0D" | nc 172.25.14.91 50000'
+  ma510_init: 'printf "\x23\x50\x01\xF0\x0D" | nc 172.25.13.168 50000'
 
-  # Power On / Off 
+  # Power On / Off
 
-  ma510_power_on: 'printf "\x23\x00\x01\x01\x0D" | nc 172.25.14.91 50000'
-  ma510_power_off: 'printf "\x23\x00\x01\x00\x0D" | nc 172.25.14.91 50000'
+  ma510_power_on: 'printf "\x23\x00\x01\x01\x0D" | nc 172.25.13.168 50000'
+  ma510_power_off: 'printf "\x23\x00\x01\x00\x0D" | nc 172.25.13.168 50000'
 
   # Volume Set to 40 (you can adjust this — 0x00 to 0x63 = volume 0–99)
 
-  ma510_volume_40: 'printf "\x23\x06\x01\x28\x0D" | nc 172.25.14.91 50000'
-  ma510_volume_25: 'printf "\x23\x06\x01\x19\x0D" | nc 172.25.14.91 50000'
-  ma510_volume_20: 'printf "\x23\x06\x01\x14\x0D" | nc 172.25.14.91 50000'
-  ma510_volume_35: 'printf "\x23\x06\x01\x26\x0D" | nc 172.25.14.91 50000'
-  ma510_volume_30: 'printf "\x23\x06\x01\x22\x0D" | nc 172.25.14.91 50000'
+  ma510_volume_40: 'printf "\x23\x06\x01\x28\x0D" | nc 172.25.13.168 50000'
+  ma510_volume_25: 'printf "\x23\x06\x01\x19\x0D" | nc 172.25.13.168 50000'
+  ma510_volume_20: 'printf "\x23\x06\x01\x14\x0D" | nc 172.25.13.168 50000'
+  ma510_volume_35: 'printf "\x23\x06\x01\x26\x0D" | nc 172.25.13.168 50000'
+  ma510_volume_30: 'printf "\x23\x06\x01\x22\x0D" | nc 172.25.13.168 50000'
+  ma510_volume_46: 'printf "\x23\x06\x01\x2E\x0D" | nc 172.25.13.168 50000'
+  ma510_volume_41: 'printf "\x23\x06\x01\x29\x0D" | nc 172.25.13.168 50000'
 
   # Mute On / Off
 
-  ma510_mute_on: 'printf "\x23\x07\x01\x01\x0D" | nc 172.25.14.91 50000'
-  ma510_mute_off: 'printf "\x23\x07\x01\x00\x0D" | nc 172.25.14.91 50000'
+  ma510_mute_on: 'printf "\x23\x07\x01\x01\x0D" | nc 172.25.13.168 50000'
+  ma510_mute_off: 'printf "\x23\x07\x01\x00\x0D" | nc 172.25.13.168 50000'
 
   # Input Selection
 
-  ma510_input_tv: 'printf "\x23\x05\x01\x01\x0D" | nc 172.25.14.91 50000'
-  ma510_input_media: 'printf "\x23\x05\x01\x09\x0D" | nc 172.25.14.91 50000'
-  
-  
-  ################### CAMERAS #####################
-  
-  
-# camera:
-#     name: GarageCam
-#     stream_source: rtsp://steal2525:Shipgang10131664!@172.25.14.113:554?channel=1&subtype=0
-#     still_image_url: http://172.25.13.113/jpg/image.jpg  
-    
-    
-    
-# onvif:
-#   - host: 172.25.13.133
-#     username: !secret dvr_user
-#     password: !secret dvr_pass  
-  
-  
-# binary_sensor:
-#   - platform: ffmpeg_motion
-#     name: Driveway Motion
-#     input: rtsp://steal2525:Shipgang10131664@172.25.13.113:554?channel=1&subtype=1
-#     changes: 12         # sensitivity: higher = less sensitive (defaults to 10)
-#     reset: 5            # seconds to stay 'on' without new motion  
- 
-    
-    
-    
-             
-  
- 
-                
-        
-        
+  ma510_input_tv: 'printf "\x23\x05\x01\x01\x0D" | nc 172.25.13.168 50000'
+  ma510_input_media: 'printf "\x23\x05\x01\x09\x0D" | nc 172.25.13.168 50000'
 
-        
-        
-        
-        
-        
+  # Find Roku Remotes
+
+  roku_find_remote_living_room: 'curl -d "" http://172.25.13.201:8060/keypress/FindRemote'
+  roku_find_remote_master: 'curl -d "" http://172.25.13.99:8060/keypress/FindRemote'
+  
+  # Run Roomba script
+  ##update_roomba_pmapv: /root/update_roomba_pmapv.sh
+  update_roomba_pmapv: "ssh -i /config/id_rsa -o StrictHostKeyChecking=no -o ConnectTimeout=10 root@172.25.14.50 'pct exec 100 -- nohup /root/update_roomba_pmapv.sh > /root/roomba_pmapv.log 2>&1 &'"
+  
+rest_command:
+  reolink_front_push_off:
+    url: "http://172.25.16.175/cgi-bin/api.cgi"
+    method: POST
+    username: !secret reolink_front_user
+    password: !secret reolink_front_password
+    headers:
+      Content-Type: application/json
+    payload: >
+      [{"cmd":"SetPush","action":1,"param":{"Push":{"enable":0}}}]
+
+  reolink_front_push_on:
+    url: "http://172.25.16.175/cgi-bin/api.cgi"
+    method: POST
+    username: !secret reolink_front_user
+    password: !secret reolink_front_password
+    headers:
+      Content-Type: application/json
+    payload: >
+      [{"cmd":"SetPush","action":1,"param":{"Push":{"enable":1}}}]
+      

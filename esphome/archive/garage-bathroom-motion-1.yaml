@@ -1,30 +1,29 @@
 esphome:
-  name: garage-presence-esp32-2
-  friendly_name: Garage Presence esp32 2
+  name: garage-bathroom-motion-1
+  friendly_name: Garage Bathroom Motion 1
 
 esp32:
   board: esp32-c3-devkitm-1
   framework:
-    type: esp-idf   # stable BLE on C3
+    type: esp-idf
 
-# ── Core services ──────────────────────────────────────────────────────────────
 logger:
 
 api:
   encryption:
-    key: "/pnMGXlO2H/7uhhecd4uqed7BYrQs3coCU2hSupczn8="
+    key: "krhvY/bTOGrnzibflRowvjlNFDIa2IdVdFG7Wp/ulUc="  # from core.config_entries (noise_psk)
 
 ota:
   - platform: esphome
-    password: "e81a409af659a1a048b3d75016f4209a"
+    password: "e81a409af659a1a048b3d75016f4209a"           # sets a new OTA pwd going forward
 
 wifi:
   ssid: !secret wifi_ssid
   password: !secret wifi_password
   power_save_mode: none
   ap:
-    ssid: "Garage-Presence-Esp32-2"   # unique fallback SSID for this unit
-    password: "wvQSRFQknJza"
+    ssid: "Garage-Bathroom-Motion-1"
+    password: "EWia2OgfnXtQ"
 
 captive_portal:
 
@@ -32,23 +31,23 @@ web_server:
   port: 80
   include_internal: true
 
-# ── Bluetooth Proxy (IRK-friendly) ────────────────────────────────────────────
+# Bluetooth Proxy (for IRK presence)
 esp32_ble_tracker:
   scan_parameters:
     active: true
-    interval: 600ms
-    window: 600ms
+    interval: 1100ms
+    window: 1100ms
 
 bluetooth_proxy:
   active: true
 
-# ── Status LED (optional) ─────────────────────────────────────────────────────
+# Optional status LED
 status_led:
   pin:
     number: GPIO2
     inverted: false
 
-# ── LD2410 wiring (UART) ──────────────────────────────────────────────────────
+# LD2410 wiring (UART)
 uart:
   id: ld2410_uart
   tx_pin: GPIO10      # ESP TX -> LD2410 RX
@@ -60,9 +59,9 @@ uart:
 ld2410:
   id: ld2410_comp
   uart_id: ld2410_uart
-  # NOTE: 'throttle' removed in ESPHome; see per-sensor filters below.
+  # 'throttle' removed; see per-sensor filters below
 
-# ── UI controls (kept identical across nodes) ─────────────────────────────────
+# UI controls
 number:
   - platform: ld2410
     timeout:
@@ -127,17 +126,8 @@ select:
       name: "LD2410 OUT Pin Level"
       id: ld_out_level
 
-# ── Text sensors (informational) ──────────────────────────────────────────────
-text_sensor:
-  - platform: ld2410
-    version:
-      name: "Presence Sensor Version"
-    mac_address:
-      name: "Presence Sensor MAC"
-
-# ── Presence sensors (single block) ───────────────────────────────────────────
+# Presence sensors (raw + smart)
 binary_sensor:
-  # Raw LD2410
   - platform: ld2410
     has_target:
       name: "Presence"
@@ -155,7 +145,6 @@ binary_sensor:
       name: "OUT Pin Presence"
       id: ld_out_pin
 
-  # Smart Presence (debounced + optional distance limit)
   - platform: template
     name: "Smart Presence"
     id: smart_presence
@@ -172,7 +161,7 @@ binary_sensor:
       - delayed_on: 200ms
       - delayed_off: 8s
 
-# ── Diagnostics (with per-sensor throttle filters) ────────────────────────────
+# Diagnostics (with per-sensor throttles)
 sensor:
   - platform: internal_temperature
     name: "Internal Temperature"
@@ -190,35 +179,28 @@ sensor:
     moving_distance:
       name: "Moving Distance (cm)"
       id: ld_move_dist
-      filters:
-        - throttle: 1.5s
+      filters: [ { throttle: 1.5s } ]
     still_distance:
       name: "Still Distance (cm)"
       id: ld_still_dist
-      filters:
-        - throttle: 1.5s
+      filters: [ { throttle: 1.5s } ]
     detection_distance:
       name: "Distance Detection (cm)"
       id: ld_detect_dist
-      filters:
-        - throttle: 1.5s
+      filters: [ { throttle: 1.5s } ]
     moving_energy:
       name: "Move Energy (%)"
       id: ld_move_energy
-      filters:
-        - throttle: 1.5s
+      filters: [ { throttle: 1.5s } ]
     still_energy:
       name: "Still Energy (%)"
       id: ld_still_energy
-      filters:
-        - throttle: 1.5s
+      filters: [ { throttle: 1.5s } ]
     light:
       name: "Light"
       id: ld_light
-      filters:
-        - throttle: 1.5s
+      filters: [ { throttle: 1.5s } ]
 
-# ── Optional preset ───────────────────────────────────────────────────────────
 script:
   - id: preset_small_bathroom
     mode: queued

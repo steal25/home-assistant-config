@@ -8,3 +8,22 @@
     max: 255
     icon: mdi:note-text
     
+  sprinklers_back_last_reason:
+    name: Sprinklers Backyard Last Reason
+    max: 255
+    icon: mdi:note-text    
+    
+##############ROOMBA################
+
+  roomba_living_pmapv_id:
+    name: Roomba Living pmapv ID
+    max: 50
+  roomba_master_pmapv_id:
+    name: Roomba Master pmapv ID
+    max: 50
+  roomba_living_pmap_id:
+    name: Roomba Living pmap ID
+    max: 50
+  roomba_master_pmap_id:
+    name: Roomba Master pmap ID
+    max: 50

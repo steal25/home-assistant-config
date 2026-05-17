@@ -1,0 +1,81 @@
+##########BINARY SENSORS############
+
+
+- platform: bayesian
+  name: "Eddie Sleeping"
+  unique_id: eddie_sleeping_bayesian
+  prior: 0.05
+  probability_threshold: 0.80
+  observations:
+    - platform: state
+      entity_id: binary_sensor.bed_occupancy_sensor_2_bed_occupied_left
+      to_state: "on"
+      prob_given_true: 0.97
+      prob_given_false: 0.10
+
+    - platform: state
+      entity_id: binary_sensor.sleep_window
+      to_state: "on"
+      prob_given_true: 0.75
+      prob_given_false: 0.50
+
+    - platform: state
+      entity_id: binary_sensor.master_light_occupancy
+      to_state: "off"
+      prob_given_true: 0.75
+      prob_given_false: 0.45
+
+    - platform: state
+      entity_id: light.master_bedroom_light_z2m_group
+      to_state: "off"
+      prob_given_true: 0.70
+      prob_given_false: 0.45
+      
+    - platform: state
+      entity_id: light.janest_light_z2m_group
+      to_state: "off"
+      prob_given_true: 0.70
+      prob_given_false: 0.45      
+
+    - platform: state
+      entity_id: media_player.lg_web_os_master
+      to_state: "off"
+      prob_given_true: 0.65
+      prob_given_false: 0.45
+
+
+- platform: bayesian
+  name: "Janet Sleeping"
+  unique_id: janet_sleeping_bayesian
+  prior: 0.05
+  probability_threshold: 0.80
+  observations:
+    - platform: state
+      entity_id: binary_sensor.bed_occupancy_sensor_2_bed_occupied_right
+      to_state: "on"
+      prob_given_true: 0.97
+      prob_given_false: 0.10
+
+    - platform: state
+      entity_id: binary_sensor.sleep_window
+      to_state: "on"
+      prob_given_true: 0.75
+      prob_given_false: 0.50
+
+    - platform: state
+      entity_id: binary_sensor.master_light_occupancy
+      to_state: "off"
+      prob_given_true: 0.75
+      prob_given_false: 0.45
+
+    - platform: state
+      entity_id: light.master_bedroom_light_z2m_group
+      to_state: "off"
+      prob_given_true: 0.70
+      prob_given_false: 0.45
+
+    - platform: state
+      entity_id: media_player.lg_web_os_master
+      to_state: "off"
+      prob_given_true: 0.65
+      prob_given_false: 0.45

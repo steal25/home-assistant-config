@@ -11,23 +11,6 @@ esp32:
 logger:
   level: DEBUG
 
-# Passive BLE scanner
-esp32_ble_tracker:
-  on_ble_advertise:
-    then:
-      - lambda: |-
-          // Only log strong signals (nearby), and prefer devices that broadcast a name
-          const int rssi = x.get_rssi();
-          const char* name = x.get_name().c_str();
-          if (rssi > -65) {  // adjust to -60/-70 as needed
-            ESP_LOGD("ble_adv", "MAC: %s  RSSI: %d  Name: %s",
-                     x.address_str().c_str(), (int) rssi, (name[0] ? name : "<no name>"));
-          }
-
-# Optional: turn this node into a Bluetooth Proxy for HA (nice to have, can add later)
-# bluetooth_proxy:
-#   active: true  
-
 # Enable Home Assistant API
 api:
   encryption:
@@ -40,11 +23,22 @@ ota:
 wifi:
   ssid: !secret wifi_ssid
   password: !secret wifi_password
+  power_save_mode: none  # keeps scans reliable
 
   # Enable fallback hotspot (captive portal) in case wifi connection fails
   ap:
     ssid: "Glade-Air-Freshener-Office"
     password: "7SogJ66Ke36Z"
+
+esp32_ble_tracker:
+  scan_parameters:
+    active: true
+    interval: 600ms
+    window: 600ms
+
+bluetooth_proxy:
+  active: true
+# --- BLE Proxy add-on END ---
 
 captive_portal:
 

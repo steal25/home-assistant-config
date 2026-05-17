@@ -1,30 +1,33 @@
 esphome:
-  name: garage-presence-esp32-2
-  friendly_name: Garage Presence esp32 2
+  name: hallway-presence
+  friendly_name: Hallway Presence
 
 esp32:
   board: esp32-c3-devkitm-1
   framework:
-    type: esp-idf   # stable BLE on C3
+    type: esp-idf
 
-# ── Core services ──────────────────────────────────────────────────────────────
+# Enable logging
 logger:
 
+# Enable Home Assistant API
 api:
   encryption:
-    key: "/pnMGXlO2H/7uhhecd4uqed7BYrQs3coCU2hSupczn8="
+    key: "PuAZKvC30Uts6i0Ga4/o1vXXUdKPOtBtQPaQ5ck2uJo="
 
 ota:
   - platform: esphome
-    password: "e81a409af659a1a048b3d75016f4209a"
+    password: "c58970b148f90d1355fadd9b8e6022fa"
 
 wifi:
   ssid: !secret wifi_ssid
   password: !secret wifi_password
   power_save_mode: none
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
   ap:
-    ssid: "Garage-Presence-Esp32-2"   # unique fallback SSID for this unit
-    password: "wvQSRFQknJza"
+    ssid: "Hallway-Presence"
+    password: "s8GoKO6kuMzH"
 
 captive_portal:
 
@@ -51,8 +54,8 @@ status_led:
 # ── LD2410 wiring (UART) ──────────────────────────────────────────────────────
 uart:
   id: ld2410_uart
-  tx_pin: GPIO10      # ESP TX -> LD2410 RX
-  rx_pin: GPIO9       # ESP RX -> LD2410 TX
+  tx_pin: GPIO10
+  rx_pin: GPIO9
   baud_rate: 256000
   parity: NONE
   stop_bits: 1
@@ -60,7 +63,7 @@ uart:
 ld2410:
   id: ld2410_comp
   uart_id: ld2410_uart
-  # NOTE: 'throttle' removed in ESPHome; see per-sensor filters below.
+  # NOTE: 'throttle' removed per ESPHome change. Use per-sensor filters below.
 
 # ── UI controls (kept identical across nodes) ─────────────────────────────────
 number:

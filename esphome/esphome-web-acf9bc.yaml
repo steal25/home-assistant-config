@@ -1,0 +1,83 @@
+esphome:
+  name: bathroom-humidity-sht45
+  friendly_name: Bathroom Humidity (SHT45)
+  min_version: 2025.11.0
+  name_add_mac_suffix: false
+
+esp32:
+  variant: esp32c3
+  framework:
+    type: esp-idf
+
+logger:
+
+api:
+  encryption:
+    key: "aP2GAiEM8AE2MmbiIYv2ylMDd2nYgvSUHa75lD7H+do="
+
+ota:
+  - platform: esphome
+    password: "3e6cbb01a5ecbbb4dbfe07ac5b129a18"
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+
+  ap:
+    ssid: "Bathroom-Humidity-SHT45"
+    password: "someFallbackPass"
+
+captive_portal:
+
+web_server:
+  port: 80
+  include_internal: true
+
+# I²C for SHT45
+i2c:
+  sda: GPIO6
+  scl: GPIO7
+  scan: true
+  frequency: 400kHz
+
+sensor:
+  # Raw SHT45
+  - platform: sht4x
+    temperature:
+      name: "Bathroom Temperature SHT45"
+      id: bath_temp_sht45
+    humidity:
+      name: "Bathroom Humidity SHT45 Raw"
+      id: bath_hum_sht45_raw
+    update_interval: 20s
+
+  # Calibrated humidity (what you'll actually use in HA)
+  - platform: template
+    name: "Bathroom Humidity SHT45"
+    id: bath_hum_sht45
+    unit_of_measurement: "%"
+    device_class: humidity
+    state_class: measurement
+    accuracy_decimals: 1
+    lambda: |-
+      return id(bath_hum_sht45_raw).state + id(bath_hum_offset).state;
+    update_interval: 20s
+
+  # Diagnostics
+  - platform: wifi_signal
+    name: "Bathroom Humidity SHT45 WiFi RSSI"
+    update_interval: 60s
+
+  - platform: uptime
+    name: "Bathroom Humidity SHT45 Uptime"
+
+number:
+  - platform: template
+    name: "Bathroom Humidity SHT45 Offset"
+    id: bath_hum_offset
+    min_value: -20
+    max_value: 20
+    step: 0.5
+    restore_value: true
+    initial_value: 0
+    optimistic: true

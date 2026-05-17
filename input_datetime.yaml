@@ -13,7 +13,32 @@
     has_date: true
     has_time: true    
     
+  sprinklers_back_last_action_at:
+    name: Sprinklers Backyard Last Action At
+    has_date: true
+    has_time: true        
+    
   master_or_janet_last_manual_on:
     name: Master/Janet last manual/voice ON
     has_date: true
     has_time: true    
+    
+  chime_mute_until:
+    name: Chime Mute Until
+    has_date: true
+    has_time: true
+    
+  roomba_last_mop_date:
+   name: Roomba Last Mop Date
+   has_date: true
+   has_time: false
+   
+  roomba_living_last_mop_date:
+   name: Roomba Living Last Mop Date
+   has_date: true
+   has_time: false
+   
+  litter_box_last_run:
+   name: Roomba Litter Last Run
+   has_date: true
+   has_time: true   

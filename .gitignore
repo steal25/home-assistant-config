@@ -14,3 +14,76 @@ custom_components/*/__pycache__/
 .ezvizcache/
 *.pyc
 *.swp
+
+# ---- Home Assistant core ----
+secrets.yaml
+home-assistant_v2.db
+home-assistant_v2.db-*
+home-assistant.log
+.storage/
+.cloud/
+deps/
+tts/
+custom_components/*/__pycache__/
+__pycache__/
+*.pyc
+*.swp
+
+# Recorder/History (older names kept just in case)
+*.db
+*.db-shm
+*.db-wal
+.OZW_Log.txt
+
+# Backups & exports
+backup/
+*.tar
+*.zip
+
+# Add-ons (common noisy dirs)
+www/.DS_Store
+.esphome/
+.node-red/
+.zigbee2mqtt/
+zwave_js_ui/
+share/**/cache/
+share/**/tmp/
+
+# ---- ESPHome (if you keep configs here) ----
+esphome/.esphome/
+esphome/.pioenvs/
+esphome/build/
+esphome/.cache/
+esphome/*firmware*.bin
+
+# ---- VS Code add-on / editor ----
+.vscode/
+*.code-workspace
+
+# OS cruft
+.DS_Store
+Thumbs.db
+id_rsa
+id_rsa.pub
+*.log
+*.log-*
+*.zip
+watchman_report.txt
+zigbee2mqtt/log/
+image/
+icloud3.log*
+*.log.*
+www/logs/
+www/audio/
+everything-presence-zone-configurator/
+packages/
+custom_components/
+zigbee2mqtt/state.json
+zigbee2mqtt/coordinator_backup.json
+alexa_media*.html
+.cache/
+.ha_run.lock
+.shopping_list.json
+IRKS
+www/community/
+zigbee2mqtt/device_icons/

@@ -1,0 +1,32 @@
+esphome:
+  name: living-room-couch-presence
+  friendly_name: Living Room Couch Presence
+
+esp32:
+  board: esp32dev
+  framework:
+    type: esp-idf
+
+# Enable logging
+logger:
+
+# Enable Home Assistant API
+api:
+  encryption:
+    key: "mX1ZjsgEeDlO2den278V3B07drni25+4C0UTJ6PDE+g="
+
+ota:
+  - platform: esphome
+    password: "75c7e2be548accb6a5e91db19056cafc"
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  ap:
+    ssid: "Living-Room-Couch-Presence"
+    password: "00Kojz5V67lc"
+
+captive_portal:
+    

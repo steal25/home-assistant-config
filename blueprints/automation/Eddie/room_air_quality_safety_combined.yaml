@@ -1,0 +1,398 @@
+blueprint:
+  name: Room Air Quality Safety (CO₂ + optional VOC/NOx, fan + announcements)
+  description: >
+    Monitor CO₂ (and optional VOC / NOx) in a single room, automatically turn on one or
+    more exhaust/ventilation fans, and optionally announce / notify when levels are unsafe.
+    Supports optional VOC (e.g. SGP41 index), optional NOx index, and an optional door sensor
+    so in-room announcements only happen when the door is closed.
+
+  domain: automation
+  input:
+    room_name:
+      name: Room name
+      description: Friendly room name used in messages.
+      selector:
+        text: {}
+
+    co2_sensor:
+      name: CO₂ sensor
+      description: Numeric CO₂ entity for this room (ppm).
+      selector:
+        entity:
+          domain: sensor
+
+    co2_threshold:
+      name: CO₂ high threshold (ppm)
+      description: Above this value the air is considered unsafe.
+      default: 1200
+      selector:
+        number:
+          min: 400
+          max: 5000
+          step: 50
+          unit_of_measurement: ppm
+          mode: slider
+
+    include_voc:
+      name: Include VOC / air-quality sensor
+      description: >
+        Enable if you also want to monitor a VOC / air-quality sensor (e.g. SGP41 VOC index).
+        If disabled, VOC is ignored in the logic.
+      default: false
+      selector:
+        boolean: {}
+
+    voc_sensor:
+      name: VOC / air-quality sensor
+      description: Sensor providing VOC index or TVOC for this room.
+      default: []
+      selector:
+        entity:
+          domain: sensor
+
+    voc_threshold:
+      name: VOC high threshold
+      description: Above this value the VOC is considered unsafe (only used if enabled).
+      default: 200
+      selector:
+        number:
+          min: 0
+          max: 1000
+          step: 5
+          mode: slider
+
+    include_nox:
+      name: Include NOx sensor
+      description: >
+        Enable if you also want to monitor a NOx index (e.g. from SGP41).
+        If disabled, NOx is ignored in the logic.
+      default: false
+      selector:
+        boolean: {}
+
+    nox_sensor:
+      name: NOx sensor
+      description: Sensor providing NOx index for this room.
+      default: []
+      selector:
+        entity:
+          domain: sensor
+
+    nox_threshold:
+      name: NOx high threshold
+      description: Above this value the NOx is considered unsafe (only used if enabled).
+      default: 200
+      selector:
+        number:
+          min: 0
+          max: 1000
+          step: 5
+          mode: slider
+
+    presence_sensor:
+      name: Room presence sensor (mmWave / PIR)
+      description: Binary sensor that is ON when the room is occupied.
+      selector:
+        entity:
+          domain: binary_sensor
+
+    tracked_persons:
+      name: People to consider "home"
+      description: >
+        One or more person entities; if at least one is home, announcements /
+        notifications are allowed.
+      selector:
+        entity:
+          domain: person
+          multiple: true
+
+    fan_switch:
+      name: Fan switch(es)
+      description: One or more switch/fan entities that provide ventilation for this room.
+      selector:
+        entity:
+          domain:
+            - switch
+            - fan
+          multiple: true
+
+    speaker:
+      name: Speaker / announcement target
+      description: Media player used for in-room announcements (e.g. Echo, Nest speaker).
+      selector:
+        target:
+          entity:
+            domain: media_player
+
+    notify_service:
+      name: Notify service name
+      description: >
+        The notify service to call, e.g. `notify.mobile_app_big_eddie_iphone17`
+        or `notify.alexa_media`. Enter the *full* service name as text.
+      selector:
+        text: {}
+
+    fan_off_delay:
+      name: Fan off delay (minutes after air is normal)
+      default: 5
+      selector:
+        number:
+          min: 1
+          max: 60
+          step: 1
+          unit_of_measurement: min
+          mode: slider
+
+    announce_volume:
+      name: Announcement volume (0.0–1.0)
+      description: Target volume for the speaker when making announcements.
+      default: 0.6
+      selector:
+        number:
+          min: 0.0
+          max: 1.0
+          step: 0.05
+          mode: slider
+
+    include_door_sensor:
+      name: Use door sensor
+      description: >
+        If enabled, in-room announcements only happen when this door is closed.
+        Fans still turn on regardless.
+      default: false
+      selector:
+        boolean: {}
+
+    door_sensor:
+      name: Door sensor (optional)
+      description: >
+        Door / contact sensor for this room. If used together with "Use door sensor",
+        in-room announcements only happen when this door is closed.
+      default: []
+      selector:
+        entity:
+          domain: binary_sensor
+
+mode: restart
+max_exceeded: silent
+
+variables:
+  room_name_str: !input room_name
+
+  co2_ent: !input co2_sensor
+  co2_th: !input co2_threshold
+
+  include_voc_opt: !input include_voc
+  voc_ent: !input voc_sensor
+  voc_th: !input voc_threshold
+
+  include_nox_opt: !input include_nox
+  nox_ent: !input nox_sensor
+  nox_th: !input nox_threshold
+
+  presence_ent: !input presence_sensor
+  tracked_people: !input tracked_persons
+
+  fan_ents: !input fan_switch
+  speaker_target: !input speaker
+  notify_service_name: !input notify_service
+
+  fan_off_delay_min: !input fan_off_delay
+  announce_vol: !input announce_volume
+
+  include_door_opt: !input include_door_sensor
+  door_ent: !input door_sensor
+
+trigger:
+  # CO₂ crosses above threshold
+  - id: co2_high
+    platform: numeric_state
+    entity_id: !input co2_sensor
+    above: !input co2_threshold
+
+  # VOC or NOx crosses above threshold (if enabled)
+  - id: voc_nox_high
+    platform: template
+    value_template: >-
+      {% set voc_ok = include_voc_opt and voc_ent not in [None, ''] %}
+      {% set nox_ok = include_nox_opt and nox_ent not in [None, ''] %}
+
+      {% set voc_val = (states(voc_ent) | float(0)) if voc_ok else 0 %}
+      {% set nox_val = (states(nox_ent) | float(0)) if nox_ok else 0 %}
+
+      {{ (voc_ok and voc_val >= voc_th) or (nox_ok and nox_val >= nox_th) }}
+
+  # Presence enters the room: if air already bad, announce
+  - id: presence_enter
+    platform: state
+    entity_id: !input presence_sensor
+    from: "off"
+    to: "on"
+
+  # Air back to normal for N minutes: all pollutants below thresholds
+  - id: air_back_normal
+    platform: template
+    value_template: >-
+      {% set co2_val = states(co2_ent) | float(0) %}
+      {% set voc_ok = include_voc_opt and voc_ent not in [None, ''] %}
+      {% set nox_ok = include_nox_opt and nox_ent not in [None, ''] %}
+      {% set voc_val = (states(voc_ent) | float(0)) if voc_ok else 0 %}
+      {% set nox_val = (states(nox_ent) | float(0)) if nox_ok else 0 %}
+
+      {{ (co2_val < co2_th)
+         and (not voc_ok or voc_val < voc_th)
+         and (not nox_ok or nox_val < nox_th) }}
+    for:
+      minutes: !input fan_off_delay
+
+condition: []
+
+action:
+  - choose:
+
+      # ───────────────────────────────────────────────────────────────
+      # 1) Air just became bad (CO₂ or VOC/NOx)
+      # ───────────────────────────────────────────────────────────────
+      - conditions:
+          - condition: template
+            value_template: "{{ trigger.id in ['co2_high', 'voc_nox_high'] }}"
+          # Double-check that *right now* at least one pollutant is above threshold
+          - condition: template
+            value_template: >-
+              {% set co2_val = states(co2_ent) | float(0) %}
+              {% set voc_ok = include_voc_opt and voc_ent not in [None, ''] %}
+              {% set nox_ok = include_nox_opt and nox_ent not in [None, ''] %}
+              {% set voc_val = (states(voc_ent) | float(0)) if voc_ok else 0 %}
+              {% set nox_val = (states(nox_ent) | float(0)) if nox_ok else 0 %}
+
+              {{ (co2_val >= co2_th)
+                 or (voc_ok and voc_val >= voc_th)
+                 or (nox_ok and nox_val >= nox_th) }}
+        sequence:
+          # Always turn on the fan(s)
+          - service: homeassistant.turn_on
+            target:
+              entity_id: !input fan_switch
+
+          # Decide if we should announce in-room or only notify phones
+          - choose:
+              # In-room announce path
+              - conditions:
+                  # Room is occupied
+                  - condition: template
+                    value_template: >-
+                      {{ presence_ent is not none and is_state(presence_ent, 'on') }}
+                  # At least one tracked person is home
+                  - condition: template
+                    value_template: >-
+                      {{ expand(tracked_people)
+                           | selectattr('state','eq','home')
+                           | list | count > 0 }}
+                  # Door logic: if door option disabled → ignore; if enabled → door must be closed
+                  - condition: template
+                    value_template: >-
+                      {% if not include_door_opt or door_ent in ['', None] %}
+                        true
+                      {% else %}
+                        {{ is_state(door_ent, 'off') }}
+                      {% endif %}
+                sequence:
+                  - service: media_player.volume_set
+                    target: !input speaker
+                    data:
+                      volume_level: !input announce_volume
+
+                  - service: !input notify_service
+                    data:
+                      title: "Air quality warning in {{ room_name_str }}"
+                      message: >-
+                        {% set co2_val = states(co2_ent) | float(0) %}
+                        {% set voc_ok = include_voc_opt and voc_ent not in [None, ''] %}
+                        {% set nox_ok = include_nox_opt and nox_ent not in [None, ''] %}
+                        {% set voc_val = (states(voc_ent) | float(0)) if voc_ok else 0 %}
+                        {% set nox_val = (states(nox_ent) | float(0)) if nox_ok else 0 %}
+                        CO₂ is {{ co2_val | round(0) }} ppm (threshold: {{ co2_th }} ppm)
+                        {% if voc_ok %}, VOC index is {{ voc_val | round(0) }} (threshold: {{ voc_th }}){% endif %}
+                        {% if nox_ok %}, NOx index is {{ nox_val | round(0) }} (threshold: {{ nox_th }}){% endif %}.
+                        Please open a window or door.
+                      data:
+                        type: announce
+
+              # Phone notification only
+              - conditions: []
+                sequence:
+                  - service: !input notify_service
+                    data:
+                      title: "High air pollution in {{ room_name_str }}"
+                      message: >-
+                        {% set co2_val = states(co2_ent) | float(0) %}
+                        {% set voc_ok = include_voc_opt and voc_ent not in [None, ''] %}
+                        {% set nox_ok = include_nox_opt and nox_ent not in [None, ''] %}
+                        {% set voc_val = (states(voc_ent) | float(0)) if voc_ok else 0 %}
+                        {% set nox_val = (states(nox_ent) | float(0)) if nox_ok else 0 %}
+                        CO₂ is {{ co2_val | round(0) }} ppm (threshold: {{ co2_th }} ppm)
+                        {% if voc_ok %}, VOC index is {{ voc_val | round(0) }} (threshold: {{ voc_th }}){% endif %}
+                        {% if nox_ok %}, NOx index is {{ nox_val | round(0) }} (threshold: {{ nox_th }}){% endif %}.
+                        Fan has been turned on automatically.
+
+      # ───────────────────────────────────────────────────────────────
+      # 2) Someone enters the room while air is already bad
+      # ───────────────────────────────────────────────────────────────
+      - conditions:
+          - condition: template
+            value_template: "{{ trigger.id == 'presence_enter' }}"
+          - condition: template
+            value_template: >-
+              {% set co2_val = states(co2_ent) | float(0) %}
+              {% set voc_ok = include_voc_opt and voc_ent not in [None, ''] %}
+              {% set nox_ok = include_nox_opt and nox_ent not in [None, ''] %}
+              {% set voc_val = (states(voc_ent) | float(0)) if voc_ok else 0 %}
+              {% set nox_val = (states(nox_ent) | float(0)) if nox_ok else 0 %}
+
+              {{ (co2_val >= co2_th)
+                 or (voc_ok and voc_val >= voc_th)
+                 or (nox_ok and nox_val >= nox_th) }}
+          - condition: template
+            value_template: >-
+              {{ expand(tracked_people)
+                   | selectattr('state','eq','home')
+                   | list | count > 0 }}
+          - condition: template
+            value_template: >-
+              {% if not include_door_opt or door_ent in ['', None] %}
+                true
+              {% else %}
+                {{ is_state(door_ent, 'off') }}
+              {% endif %}
+        sequence:
+          - service: media_player.volume_set
+            target: !input speaker
+            data:
+              volume_level: !input announce_volume
+
+          - service: !input notify_service
+            data:
+              title: "Air quality warning in {{ room_name_str }}"
+              message: >-
+                {% set co2_val = states(co2_ent) | float(0) %}
+                {% set voc_ok = include_voc_opt and voc_ent not in [None, ''] %}
+                {% set nox_ok = include_nox_opt and nox_ent not in [None, ''] %}
+                {% set voc_val = (states(voc_ent) | float(0)) if voc_ok else 0 %}
+                {% set nox_val = (states(nox_ent) | float(0)) if nox_ok else 0 %}
+                CO₂ is {{ co2_val | round(0) }} ppm (threshold: {{ co2_th }} ppm)
+                {% if voc_ok %}, VOC index is {{ voc_val | round(0) }} (threshold: {{ voc_th }}){% endif %}
+                {% if nox_ok %}, NOx index is {{ nox_val | round(0) }} (threshold: {{ nox_th }}){% endif %}.
+                Please open a window or door.
+              data:
+                type: announce
+
+      # ───────────────────────────────────────────────────────────────
+      # 3) Air back to normal → turn off fan(s)
+      # ───────────────────────────────────────────────────────────────
+      - conditions:
+          - condition: template
+            value_template: "{{ trigger.id == 'air_back_normal' }}"
+        sequence:
+          - service: homeassistant.turn_off
+            target:
+              entity_id: !input fan_switch

@@ -38,6 +38,13 @@
     initial: off
     icon: mdi:radio-off      
     
+    
+## Turn Off Master Bedroom Stereo ##
+  turn_off_master_bedroom_bedroon_stereo:
+    name: Turn Off Master Bedroom Stereo
+    initial: off
+    icon: mdi:radio-off         
+    
   water_anyway:
     name: Water Anyway (override)
     icon: mdi:water-plus    
@@ -45,4 +52,67 @@
   sprinklers_skipped_last:
     name: Sprinklers Skipped (last)
     icon: mdi:cancel    
+
+  sprinklers_back_skipped_last:
+    name: Sprinklers Backyard Skipped (last)
+    icon: mdi:cancel      
+
+  door_chime_muted:
+    name: Door Chime Muted (auto-unmutes)
+    icon: mdi:bell-off    
         
+  tuya_fan_keepalive_enabled:
+    name: Tuya Fan Keep-Alive Enabled
+    icon: mdi:heart-pulse
+    initial: true        
+    
+  emby_recently_dimmed:
+    name: Emby Recently Dimmed
+    icon: mdi:timer
+    
+## Roomba vacuume Done Today ##
+  roomba_vacuum_done_today:
+    name: Roomba Vacuum Done Today
+    icon: mdi:vacuum      
+    
+  roomba_living_done_today:
+    name: Roomba Living Done Today
+    icon: mdi:vacuum    
+    
+## Roomba Mop Done  ##
+  roomba_mop_done_this_slot:
+    name: Roomba Mop Done This Slot
+    icon: mdi:vacuum   
+    
+    
+## Master Bedroom Subwoofer  ##
+  master_bedroom_subwoofer_switch_boolean:
+    name: Master Bedroom Subwoofer Switch
+    initial: off
+    icon: mdi:speaker         
+    
+    
+## Master Bedroom Subwoofer Off ##
+  master_bedroom_subwoofer_switch_off_boolean:
+    name: Master Bedroom Subwoofer Switch Off
+    initial: off
+    icon: mdi:speaker   
+    
+## Litter Box 9am ##
+  litter_box_queued_9am:
+    name: Litter Box Queued For 9am
+    initial: off
+    icon: mdi:kitty         
+    
+## Litter Box 9am ##
+  litter_box_queued_4pm:
+    name: Litter Box Queued For 4pm
+    initial: off
+    icon: mdi:kitty       
+    
+## Garage Radio Auto ##
+  garage_radio_auto_started:
+    name: Garage Radio Auto Started
+    initial: off
+    icon: mdi:radio       
+    

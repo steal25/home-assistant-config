@@ -1,0 +1,46 @@
+esphome:
+  name: bidet-presence-sensor
+  friendly_name: Bidet Presence Sensor
+
+esp32:
+  board: esp32-c3-devkitm-1
+  framework:
+    type: esp-idf
+
+logger:
+
+api:
+  encryption:
+    key: "CGlxhgz0jRJxze9X3W7lVMo4IxhIKFQPiUXQpn7Wwrs="
+
+ota:
+  - platform: esphome
+    password: "045746a1f4ef857e101eb6948fae8399"
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+  fast_connect: true
+
+  ap:
+    ssid: "Bidet-Presence-Sensor"
+    password: "d2OMeWGKs6FJ"
+
+captive_portal:
+
+# --- Seat Occupancy (via GPIO4) ---
+binary_sensor:
+  - platform: gpio
+    name: "Bidet Seat Occupied"
+    id: bidet_seat_occupied
+    device_class: occupancy
+    pin:
+      number: GPIO4
+      mode:
+        input: true
+        pullup: true
+      inverted: true
+    filters:
+      # helps prevent flicker from bounce/noise when someone shifts
+      - delayed_on: 150ms
+      - delayed_off: 2s

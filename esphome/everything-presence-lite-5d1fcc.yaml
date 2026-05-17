@@ -1,0 +1,23 @@
+substitutions:
+  name: everything-presence-lite-5d1fcc
+  friendly_name: Everything Presence Lite (living)
+packages:
+  EverythingSmartTechnology.Everything_Presence_Lite: github://everythingsmarthome/everything-presence-lite/everything-presence-lite-ha.yaml@main
+esphome:
+  name: ${name}
+  name_add_mac_suffix: false
+  friendly_name: ${friendly_name}
+api:
+  encryption:
+    key: KP0cED32i1mA4XsZUHJro5cxrgNsHnvz5mQvCxFK0F8=
+
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+
+esp32_ble_tracker:
+  scan_parameters:
+    active: true
+    interval: 800ms
+    window: 800ms

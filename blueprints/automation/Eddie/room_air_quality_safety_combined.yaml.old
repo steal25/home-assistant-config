@@ -1,0 +1,318 @@
+blueprint:
+  name: Room Air Quality Safety (CO₂ + optional VOC, fan + announcements)
+  description: >
+    Per-room air quality safety automation. Turns on the fan when CO₂ and/or VOC
+    is high, announces danger when someone is present, and sends notifications if
+    the room is empty. Fan turns off when air is normal. VOC support is optional.
+  domain: automation
+
+  input:
+    room_name:
+      name: Room name
+      description: Friendly room name used in messages.
+      selector:
+        text: {}
+
+    co2_sensor:
+      name: CO₂ sensor
+      description: CO₂ level sensor for this room (ppm).
+      selector:
+        entity:
+          domain: sensor
+
+    co2_threshold:
+      name: CO₂ unsafe threshold (ppm)
+      description: Above this, air is considered unsafe.
+      default: 1200
+      selector:
+        number:
+          min: 400
+          max: 2500
+          step: 25
+          unit_of_measurement: ppm
+          mode: slider
+
+    include_voc:
+      name: Use VOC sensor? (optional)
+      description: >
+        Enable this if you have a VOC (e.g. SGP41) sensor in this room and
+        want VOC to also trigger the fan/alerts.
+      default: voc_disabled
+      selector:
+        select:
+          options:
+            - label: Enable VOC
+              value: voc_enabled
+            - label: Disable VOC
+              value: voc_disabled
+          multiple: false
+          custom_value: false
+
+    voc_sensor:
+      name: VOC sensor (optional)
+      description: >
+        VOC index sensor for this room. Only used if "Use VOC sensor?" is set
+        to Enable VOC. You may leave this empty for CO₂-only rooms.
+      default: []
+      selector:
+        entity:
+          multiple: true
+          filter:
+            - domain:
+                - sensor
+
+    voc_threshold:
+      name: VOC unsafe threshold (index)
+      description: >
+        Above this VOC index, air is considered degraded. SGP41 typically uses
+        0–500, with >100 indicating degraded air. Ignored if VOC is disabled.
+      default: 150
+      selector:
+        number:
+          min: 0
+          max: 500
+          step: 5
+          mode: slider
+
+    presence_sensor:
+      name: Room presence sensor
+      description: Binary sensor that is ON when someone is in the room.
+      selector:
+        entity:
+          domain: binary_sensor
+
+    fan_switch:
+      name: Fan switch
+      description: Fan or ventilation switch for this room.
+      selector:
+        entity:
+          domain:
+            - switch
+            - fan
+
+    speaker:
+      name: Room speaker (for announcements)
+      description: Media player in this room (e.g. Echo, Nest).
+      selector:
+        entity:
+          domain: media_player
+
+    announce_volume:
+      name: Announcement volume
+      description: Volume for spoken announcements (0.0–1.0).
+      default: 0.6
+      selector:
+        number:
+          min: 0
+          max: 1
+          step: 0.05
+          mode: slider
+
+    notify_service:
+      name: Phone notification service
+      description: >
+        Notify service id, e.g. notify.mobile_app_big_eddie_iphone17.
+        This will be called when air is bad and the room is empty.
+      selector:
+        text: {}
+
+    tracked_persons:
+      name: Tracked persons
+      description: People who count as "someone is home".
+      selector:
+        entity:
+          domain: person
+          multiple: true
+
+    fan_off_delay:
+      name: Fan off delay (minutes)
+      description: >
+        How long air must be back under the thresholds before turning the fan off.
+      default: 3
+      selector:
+        number:
+          min: 0
+          max: 30
+          step: 1
+          mode: slider
+
+mode: restart
+max_exceeded: silent
+
+variables:
+  room_name: !input room_name
+  co2_sensor: !input co2_sensor
+  co2_threshold: !input co2_threshold
+
+  include_voc: !input include_voc
+  voc_sensor_list: !input voc_sensor
+  voc_threshold: !input voc_threshold
+
+  presence_sensor: !input presence_sensor
+  fan_switch: !input fan_switch
+  speaker: !input speaker
+  notify_service: !input notify_service
+  tracked_persons: !input tracked_persons
+  fan_off_delay: !input fan_off_delay
+  announce_volume: !input announce_volume
+
+  # Pick the first VOC sensor, if any was selected
+  voc_sensor_entity: >
+    {% if voc_sensor_list is iterable and (voc_sensor_list | count > 0) %}
+      {{ voc_sensor_list[0] }}
+    {% else %}
+      ''
+    {% endif %}
+
+  voc_enabled: >
+    {{ include_voc == 'voc_enabled' and voc_sensor_list is iterable and (voc_sensor_list | count > 0) }}
+
+  # True if at least one tracked person is home
+  someone_home: >
+    {{ expand(tracked_persons)
+       | selectattr('state','eq','home')
+       | list
+       | count > 0 }}
+
+  co2_high: >
+    {{ states(co2_sensor) | int(0) > co2_threshold }}
+
+  voc_high: >
+    {% if voc_enabled and voc_sensor_entity != '' %}
+      {{ states(voc_sensor_entity) | int(0) > voc_threshold }}
+    {% else %}
+      false
+    {% endif %}
+
+  air_high_now: >
+    {{ co2_high or voc_high }}
+
+  air_normal_now: >
+    {{ not air_high_now }}
+
+trigger:
+  # 1) Air just became bad -> turn fan ON
+  - id: air_high_rising
+    platform: template
+    value_template: "{{ air_high_now }}"
+
+  # 2) Air has been bad for 5 minutes
+  - id: air_high_5min
+    platform: template
+    value_template: "{{ air_high_now }}"
+    for:
+      minutes: 5
+
+  # 3) Presence enters the room
+  - id: presence_enter
+    platform: state
+    entity_id: !input presence_sensor
+    to: "on"
+
+  # 4) Air back to normal for delay -> fan OFF
+  - id: air_back_normal
+    platform: template
+    value_template: "{{ air_normal_now }}"
+    for:
+      minutes: !input fan_off_delay
+
+condition: []
+
+action:
+  - choose:
+
+      ###################################################################
+      # 1) AIR JUST BECAME BAD → TURN FAN ON
+      ###################################################################
+      - conditions:
+          - condition: template
+            value_template: "{{ trigger.id == 'air_high_rising' }}"
+        sequence:
+          - service: homeassistant.turn_on
+            target:
+              entity_id: "{{ fan_switch }}"
+
+      ###################################################################
+      # 2) AIR BAD FOR 5 MIN → NOTIFICATION OR ANNOUNCEMENT
+      ###################################################################
+      - conditions:
+          - condition: template
+            value_template: "{{ trigger.id == 'air_high_5min' }}"
+        sequence:
+          - choose:
+              # Presence + someone home → ANNOUNCEMENT
+              - conditions:
+                  - condition: template
+                    value_template: "{{ is_state(presence_sensor, 'on') }}"
+                  - condition: template
+                    value_template: "{{ someone_home }}"
+                sequence:
+                  - service: media_player.volume_set
+                    target:
+                      entity_id: "{{ speaker }}"
+                    data:
+                      volume_level: "{{ announce_volume | float }}"
+
+                  - service: notify.alexa_media
+                    data:
+                      target: "{{ speaker }}"
+                      message: >
+                        Warning. Air quality in {{ room_name }} is elevated.
+                        Please open a window to improve ventilation.
+                        CO₂ is {{ states(co2_sensor) }} ppm{% if voc_enabled and voc_sensor_entity != '' %},
+                        VOC index is {{ states(voc_sensor_entity) }}{% endif %}.
+                      data:
+                        type: announce
+
+            # ELSE: no presence → PHONE NOTIFICATION
+            default:
+              - service: "{{ notify_service }}"
+                data:
+                  title: "High air pollution in {{ room_name }}"
+                  message: >
+                    Air quality in {{ room_name }} has been elevated for at least
+                    5 minutes. The fan is running, but no presence is detected.
+                    CO₂: {{ states(co2_sensor) }} ppm.{% if voc_enabled and voc_sensor_entity != '' %}
+                    VOC index: {{ states(voc_sensor_entity) }}.{% endif %}
+
+      ###################################################################
+      # 3) PRESENCE ENTERS WHILE AIR BAD → IMMEDIATE ANNOUNCEMENT
+      ###################################################################
+      - conditions:
+          - condition: template
+            value_template: "{{ trigger.id == 'presence_enter' }}"
+        sequence:
+          # Only speak if air is currently bad
+          - condition: template
+            value_template: "{{ air_high_now }}"
+          # And at least one person is home
+          - condition: template
+            value_template: "{{ someone_home }}"
+
+          - service: media_player.volume_set
+            target:
+              entity_id: "{{ speaker }}"
+            data:
+              volume_level: "{{ announce_volume | float }}"
+
+          - service: notify.alexa_media
+            data:
+              target: "{{ speaker }}"
+              message: >
+                Heads up. Air quality in {{ room_name }} is elevated.
+                Please open a window.
+                CO₂ is {{ states(co2_sensor) }} ppm{% if voc_enabled and voc_sensor_entity != '' %},
+                VOC index is {{ states(voc_sensor_entity) }}{% endif %}.
+              data:
+                type: announce
+
+      ###################################################################
+      # 4) AIR BACK TO NORMAL → TURN FAN OFF
+      ###################################################################
+      - conditions:
+          - condition: template
+            value_template: "{{ trigger.id == 'air_back_normal' }}"
+        sequence:
+          - service: homeassistant.turn_off
+            target:
+              entity_id: "{{ fan_switch }}"

@@ -5,12 +5,11 @@ esphome:
 esp32:
   board: esp32-c3-devkitm-1
   framework:
-    type: arduino
+    type: esp-idf   # stable BLE on C3
 
-# Enable logging
+# ── Core services ──────────────────────────────────────────────────────────────
 logger:
 
-# Enable Home Assistant API
 api:
   encryption:
     key: "/pnMGXlO2H/7uhhecd4uqed7BYrQs3coCU2hSupczn8="
@@ -22,8 +21,7 @@ ota:
 wifi:
   ssid: !secret wifi_ssid
   password: !secret wifi_password
-
-  # Enable fallback hotspot (captive portal) in case wifi connection fails
+  power_save_mode: none
   ap:
     ssid: "Garage-Presence-Esp32"
     password: "wvQSRFQknJza"
@@ -33,21 +31,24 @@ captive_portal:
 web_server:
   port: 80
   include_internal: true
- 
-# ---------------------------------------------------------------------------------
- 
-light:
-  - platform: binary
-    name: "Blue Status Light"
-    output: light_output
-    id: led_light
-    restore_mode: ALWAYS_OFF
- 
-output:
-  - platform: gpio
-    pin: GPIO2
-    id: light_output
- 
+
+# ── Bluetooth Proxy (IRK-friendly) ────────────────────────────────────────────
+esp32_ble_tracker:
+  scan_parameters:
+    active: true
+    interval: 600ms
+    window: 600ms
+
+bluetooth_proxy:
+  active: true
+
+# ── Status LED (optional) ─────────────────────────────────────────────────────
+status_led:
+  pin:
+    number: GPIO2
+    inverted: false
+
+# ── LD2410 wiring (UART) ──────────────────────────────────────────────────────
 uart:
   id: ld2410_uart
   tx_pin: GPIO10
@@ -55,174 +56,174 @@ uart:
   baud_rate: 256000
   parity: NONE
   stop_bits: 1
- 
+
 ld2410:
-  uart_id: ld2410_uart
-  throttle: 1500ms
   id: ld2410_comp
- 
-select:
-  - platform: ld2410
-    distance_resolution:
-      name: distance resolution
-    baud_rate:
-      name: baud rate
-    light_function:
-      name: light function
-    out_pin_level:
-      name: out pin level
- 
-button:
-  - platform: ld2410
-    factory_reset:
-      name: "factory reset"
-    restart:
-      name: "restart"
-    query_params:
-      name: query params
- 
+  uart_id: ld2410_uart
+  # NOTE: 'throttle' removed per ESPHome change. Use per-sensor filters below.
+
+# ── UI controls (kept identical across nodes) ─────────────────────────────────
 number:
   - platform: ld2410
     timeout:
-      name: timeout
+      name: "LD2410 Timeout (s)"
+      id: ld_timeout
     max_move_distance_gate:
-      name: max move distance gate
+      name: "LD2410 Max Move Gate"
+      id: ld_max_move_gate
     max_still_distance_gate:
-      name: max still distance gate
-    g0:
-      move_threshold:
-        name: g0 move threshold
-      still_threshold:
-        name: g0 still threshold
-    g1:
-      move_threshold:
-        name: g1 move threshold
-      still_threshold:
-        name: g1 still threshold
-    g2:
-      move_threshold:
-        name: g2 move threshold
-      still_threshold:
-        name: g2 still threshold
-    g3:
-      move_threshold:
-        name: g3 move threshold
-      still_threshold:
-        name: g3 still threshold
-    g4:
-      move_threshold:
-        name: g4 move threshold
-      still_threshold:
-        name: g4 still threshold
-    g5:
-      move_threshold:
-        name: g5 move threshold
-      still_threshold:
-        name: g5 still threshold
-    g6:
-      move_threshold:
-        name: g6 move threshold
-      still_threshold:
-        name: g6 still threshold
-    g7:
-      move_threshold:
-        name: g7 move threshold
-      still_threshold:
-        name: g7 still threshold
-    g8:
-      move_threshold:
-        name: g8 move threshold
-      still_threshold:
-        name: g8 still threshold
+      name: "LD2410 Max Still Gate"
+      id: ld_max_still_gate
     light_threshold:
-      name: light threshold
- 
-text_sensor:
-  - platform: ld2410
-    version:
-      name: "presenece sensor version"
-    mac_address:
-      name: "presenece sensor mac address"
- 
+      name: "LD2410 Light Threshold"
+      id: ld_light_thr
+
+  # Smart Presence distance limit (0 = disabled)
+  - platform: template
+    name: "Smart Presence Max Distance (cm)"
+    id: smart_max_distance_cm
+    optimistic: true
+    min_value: 0
+    max_value: 600
+    step: 10
+    restore_value: true
+    initial_value: 0
+
 switch:
   - platform: ld2410
     engineering_mode:
-      name: "engineering mode"
+      name: "LD2410 Engineering Mode"
+      id: ld_eng
     bluetooth:
-      name: control Bluetooth
- 
+      name: "LD2410 Control Bluetooth"
+      id: ld_bt
+
+button:
+  - platform: ld2410
+    query_params:
+      name: "LD2410 Query Params"
+      id: ld_query
+  - platform: ld2410
+    restart:
+      name: "LD2410 Restart"
+      id: ld_restart
+  - platform: ld2410
+    factory_reset:
+      name: "LD2410 Factory Reset"
+      id: ld_factory
+
+select:
+  - platform: ld2410
+    distance_resolution:
+      name: "LD2410 Distance Resolution"
+      id: ld_dist_res
+    baud_rate:
+      name: "LD2410 Baud Rate"
+      id: ld_baud
+    light_function:
+      name: "LD2410 Light Function"
+      id: ld_light_fn
+    out_pin_level:
+      name: "LD2410 OUT Pin Level"
+      id: ld_out_level
+
+# ── Text sensors (informational) ──────────────────────────────────────────────
+text_sensor:
+  - platform: ld2410
+    version:
+      name: "Presence Sensor Version"
+    mac_address:
+      name: "Presence Sensor MAC"
+
+# ── Presence sensors (single block) ───────────────────────────────────────────
+binary_sensor:
+  # Raw LD2410
+  - platform: ld2410
+    has_target:
+      name: "Presence"
+      id: ld_has_target
+  - platform: ld2410
+    has_moving_target:
+      name: "Moving Target"
+      id: ld_moving
+  - platform: ld2410
+    has_still_target:
+      name: "Still Target"
+      id: ld_still
+  - platform: ld2410
+    out_pin_presence_status:
+      name: "OUT Pin Presence"
+      id: ld_out_pin
+
+  # Smart Presence (debounced + optional distance limit)
+  - platform: template
+    name: "Smart Presence"
+    id: smart_presence
+    device_class: presence
+    lambda: |-
+      bool present = id(ld_has_target).state;
+      float max_cm = id(smart_max_distance_cm).state;  // 0 = disabled
+      if (max_cm > 0.0f) {
+        float d = isnan(id(ld_detect_dist).state) ? 0.0f : id(ld_detect_dist).state;
+        if (d <= 0.0f || d > max_cm) present = false;
+      }
+      return present;
+    filters:
+      - delayed_on: 200ms
+      - delayed_off: 8s
+
+# ── Diagnostics (with per-sensor throttle filters) ────────────────────────────
 sensor:
   - platform: internal_temperature
     name: "Internal Temperature"
- 
+
+  - platform: wifi_signal
+    name: "WiFi RSSI"
+    update_interval: 60s
+    id: wifi_rssi
+
+  - platform: uptime
+    name: "Uptime"
+    id: dev_uptime
+
   - platform: ld2410
     moving_distance:
-      name: "Moving distance (cm)"
+      name: "Moving Distance (cm)"
+      id: ld_move_dist
+      filters:
+        - throttle: 1.5s
     still_distance:
       name: "Still Distance (cm)"
-    moving_energy:
-      name: "Move Energy (%)"
-    still_energy:
-      name: "Still Energy (%)"
+      id: ld_still_dist
+      filters:
+        - throttle: 1.5s
     detection_distance:
       name: "Distance Detection (cm)"
-    g0:
-      move_energy:
-        name: g0 move energy
-      still_energy:
-        name: g0 still energy
-    g1:
-      move_energy:
-        name: g1 move energy
-      still_energy:
-        name: g1 still energy
-    g2:
-      move_energy:
-        name: g2 move energy
-      still_energy:
-        name: g2 still energy
-    g3:
-      move_energy:
-        name: g3 move energy
-      still_energy:
-        name: g3 still energy
-    g4:
-      move_energy:
-        name: g4 move energy
-      still_energy:
-        name: g4 still energy
-    g5:
-      move_energy:
-        name: g5 move energy
-      still_energy:
-        name: g5 still energy
-    g6:
-      move_energy:
-        name: g6 move energy
-      still_energy:
-        name: g6 still energy
-    g7:
-      move_energy:
-        name: g7 move energy
-      still_energy:
-        name: g7 still energy
-    g8:
-      move_energy:
-        name: g8 move energy
-      still_energy:
-        name: g8 still energy
+      id: ld_detect_dist
+      filters:
+        - throttle: 1.5s
+    moving_energy:
+      name: "Move Energy (%)"
+      id: ld_move_energy
+      filters:
+        - throttle: 1.5s
+    still_energy:
+      name: "Still Energy (%)"
+      id: ld_still_energy
+      filters:
+        - throttle: 1.5s
     light:
-      name: light
- 
-binary_sensor:
- 
-  - platform: ld2410
-    has_target:
-      name: Presence
-    has_moving_target:
-      name: Moving Target
-    has_still_target:
-      name: Still Target
-    
+      name: "Light"
+      id: ld_light
+      filters:
+        - throttle: 1.5s
 
-    
+# ── Optional preset ───────────────────────────────────────────────────────────
+script:
+  - id: preset_small_bathroom
+    mode: queued
+    then:
+      - logger.log: "Applying 'Small Bathroom' LD2410 preset"
+      - number.set: { id: ld_max_move_gate,  value: 5 }
+      - number.set: { id: ld_max_still_gate, value: 4 }
+      - button.press: ld_query

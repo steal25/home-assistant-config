@@ -1,0 +1,30 @@
+esphome:
+  name: test-c3-wifi-1
+  friendly_name: Test C3 WiFi 1
+
+esp32:
+  board: esp32-c3-devkitm-1
+  framework:
+    type: esp-idf
+
+logger:
+
+api:
+  encryption:
+    key: "j6p88qs5lsKeyK+Sl5pfcbl5bqVuiPBho8SH6lOVmGQ="
+
+ota:
+  - platform: esphome
+    password: "CHANGE_ME_OTA"
+
+wifi:
+  ssid: steelehouse    # same SSID you use for your other ESPs
+  password: shipgang77
+  power_save_mode: none
+  fast_connect: false         # leave this false unless your SSID is hidden
+
+  ap:
+    ssid: "Test-C3-Fallback"
+    password: "12345678"
+
+captive_portal:

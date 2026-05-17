@@ -1,0 +1,590 @@
+esphome:
+  name: esp32-light-switch-1
+  friendly_name: ESP32 Light Switch 1
+  on_boot:
+    priority: 600
+    then:
+      - light.turn_on:
+          id: backlight
+          brightness: 100%
+      - script.execute: dim_later
+
+esp32:
+  board: esp32-s3-devkitc-1
+  flash_size: 16MB
+  framework:
+    type: esp-idf
+
+logger:
+
+api:
+  encryption:
+    key: "jceC5d5/GuIEwrqq4xmRd/jzf3RHkFnlMitpEZVJYDc="
+
+ota:
+  - platform: esphome
+    password: "0f8892a9daf9e13db964675cddef76f8"
+
+wifi:
+  ssid: !secret wifi_ssid
+  password: !secret wifi_password
+  ap:
+    ssid: "Esp32-Light-Switch-1"
+    password: "tsnpW8rAxicn"
+
+captive_portal:
+
+psram:
+  mode: octal
+  speed: 80MHz
+
+spi:
+  - id: display_qspi
+    type: quad
+    clk_pin: GPIO47
+    data_pins: [GPIO21, GPIO48, GPIO40, GPIO39]
+
+i2c:
+  - id: touchscreen_bus
+    sda: GPIO4
+    scl: GPIO8
+
+output:
+  - platform: ledc
+    pin: GPIO1
+    id: backlight_pwm
+
+light:
+  - platform: monochromatic
+    id: backlight
+    output: backlight_pwm
+    restore_mode: ALWAYS_ON
+
+font:
+  - file: "gfonts://Roboto"
+    id: font_title
+    size: 26
+
+  - file: "gfonts://Roboto"
+    id: font_big
+    size: 36
+
+display:
+  - platform: mipi_spi
+    id: main_display
+    model: JC3248W535
+    spi_id: display_qspi
+    cs_pin: GPIO45
+    reset_pin: GPIO16
+    data_rate: 40MHz
+    dimensions:
+      width: 320
+      height: 480
+    rotation: 0
+    auto_clear_enabled: false
+    update_interval: never
+
+globals:
+  - id: screen_dimmed
+    type: bool
+    initial_value: 'false'
+
+  - id: just_woke
+    type: bool
+    initial_value: 'false'
+
+  - id: lr_dragging
+    type: bool
+    initial_value: 'false'
+
+  - id: dr_dragging
+    type: bool
+    initial_value: 'false'
+
+  - id: lr_pending_brightness
+    type: int
+    initial_value: '0'
+
+  - id: dr_pending_brightness
+    type: int
+    initial_value: '0'
+
+touchscreen:
+  - platform: axs15231
+    id: main_touchscreen
+    i2c_id: touchscreen_bus
+    display: main_display
+    on_touch:
+      then:
+        - if:
+            condition:
+              lambda: 'return id(screen_dimmed);'
+            then:
+              - script.execute: wake_screen
+            else:
+              - script.execute: dim_later
+
+time:
+  - platform: homeassistant
+    id: ha_time
+
+script:
+  - id: wake_screen
+    mode: restart
+    then:
+      - lambda: |-
+          id(screen_dimmed) = false;
+          id(just_woke) = true;
+      - light.turn_on:
+          id: backlight
+          brightness: 100%
+      - delay: 400ms
+      - lambda: |-
+          id(just_woke) = false;
+      - script.execute: dim_later
+
+  - id: dim_later
+    mode: restart
+    then:
+      - delay: 45s
+      - lambda: |-
+          id(screen_dimmed) = true;
+      - light.turn_on:
+          id: backlight
+          brightness: 8%
+
+  - id: lr_send_brightness
+    mode: restart
+    then:
+      - delay: 120ms
+      - if:
+          condition:
+            lambda: 'return id(lr_pending_brightness) <= 0;'
+          then:
+            - homeassistant.action:
+                action: light.turn_off
+                data:
+                  entity_id: light.living_room_hue_lights_group
+            - lvgl.slider.update:
+                id: slider_lr
+                value: 0
+            - lvgl.label.update:
+                id: lbl_pct_lr
+                text: "0%"
+          else:
+            - homeassistant.action:
+                action: light.turn_on
+                data:
+                  entity_id: light.living_room_hue_lights_group
+                  brightness: !lambda return id(lr_pending_brightness);
+      - delay: 250ms
+      - lambda: |-
+          id(lr_dragging) = false;
+
+  - id: dr_send_brightness
+    mode: restart
+    then:
+      - delay: 120ms
+      - if:
+          condition:
+            lambda: 'return id(dr_pending_brightness) <= 0;'
+          then:
+            - homeassistant.action:
+                action: light.turn_off
+                data:
+                  entity_id: light.dining_room_lights_z2m_group
+            - lvgl.slider.update:
+                id: slider_dr
+                value: 0
+            - lvgl.label.update:
+                id: lbl_pct_dr
+                text: "0%"
+          else:
+            - homeassistant.action:
+                action: light.turn_on
+                data:
+                  entity_id: light.dining_room_lights_z2m_group
+                  brightness: !lambda return id(dr_pending_brightness);
+      - delay: 250ms
+      - lambda: |-
+          id(dr_dragging) = false;
+
+sensor:
+  - platform: homeassistant
+    id: lr_brightness
+    entity_id: light.living_room_hue_lights_group
+    attribute: brightness
+    on_value:
+      then:
+        - if:
+            condition:
+              lambda: 'return !id(lr_dragging);'
+            then:
+              - lvgl.label.update:
+                  id: lbl_pct_lr
+                  text: !lambda |-
+                    char buf[10];
+                    int pct = int((x / 255.0f) * 100.0f);
+                    snprintf(buf, sizeof(buf), "%d%%", pct);
+                    return std::string(buf);
+              - lvgl.slider.update:
+                  id: slider_lr
+                  value: !lambda return int(x);
+
+  - platform: homeassistant
+    id: dr_brightness
+    entity_id: light.dining_room_lights_z2m_group
+    attribute: brightness
+    on_value:
+      then:
+        - if:
+            condition:
+              lambda: 'return !id(dr_dragging);'
+            then:
+              - lvgl.label.update:
+                  id: lbl_pct_dr
+                  text: !lambda |-
+                    char buf[10];
+                    int pct = int((x / 255.0f) * 100.0f);
+                    snprintf(buf, sizeof(buf), "%d%%", pct);
+                    return std::string(buf);
+              - lvgl.slider.update:
+                  id: slider_dr
+                  value: !lambda return int(x);
+
+binary_sensor:
+  - platform: homeassistant
+    id: lr_is_on
+    entity_id: light.living_room_hue_lights_group
+    trigger_on_initial_state: true
+    on_state:
+      then:
+        - if:
+            condition:
+              lambda: 'return !x;'
+            then:
+              - lvgl.slider.update:
+                  id: slider_lr
+                  value: 0
+              - lvgl.label.update:
+                  id: lbl_pct_lr
+                  text: "0%"
+
+  - platform: homeassistant
+    id: dr_is_on
+    entity_id: light.dining_room_lights_z2m_group
+    trigger_on_initial_state: true
+    on_state:
+      then:
+        - if:
+            condition:
+              lambda: 'return !x;'
+            then:
+              - lvgl.slider.update:
+                  id: slider_dr
+                  value: 0
+              - lvgl.label.update:
+                  id: lbl_pct_dr
+                  text: "0%"
+
+  - platform: touchscreen
+    name: "Prev Page Zone"
+    x_min: 0
+    x_max: 85
+    y_min: 80
+    y_max: 365
+    on_double_click:
+      min_length: 20ms
+      max_length: 500ms
+      then:
+        - if:
+            condition:
+              lambda: 'return !id(just_woke) && !id(screen_dimmed);'
+            then:
+              - lvgl.page.previous:
+                  animation: MOVE_RIGHT
+                  time: 220ms
+
+  - platform: touchscreen
+    name: "Next Page Zone"
+    x_min: 235
+    x_max: 320
+    y_min: 80
+    y_max: 365
+    on_double_click:
+      min_length: 20ms
+      max_length: 500ms
+      then:
+        - if:
+            condition:
+              lambda: 'return !id(just_woke) && !id(screen_dimmed);'
+            then:
+              - lvgl.page.next:
+                  animation: MOVE_LEFT
+                  time: 220ms
+
+lvgl:
+  displays:
+    - main_display
+  touchscreens:
+    - main_touchscreen
+
+  theme:
+    label:
+      text_color: 0xFFFFFF
+
+    button:
+      bg_color: 0x4A4A4A
+      radius: 28
+      text_color: 0x000000
+      pressed:
+        bg_color: 0x8A8A8A
+
+    slider:
+      bg_color: 0x2A2A2A
+      indicator:
+        bg_color: 0x666666
+      knob:
+        bg_color: 0xCCCCCC
+        radius: 5
+
+  pages:
+    - id: page_lr
+      bg_color: 0x000000
+      widgets:
+        - label:
+            id: lbl_title_lr
+            x: 0
+            y: 20
+            width: 320
+            text_align: center
+            text_font: font_title
+            text: "Living Room Lights"
+
+        - label:
+            id: lbl_pct_lr
+            x: 110
+            y: 60
+            text_font: font_big
+            text: "0%"
+
+        - slider:
+            id: slider_lr
+            x: 110
+            y: 150
+            width: 100
+            height: 180
+            min_value: 0
+            max_value: 255
+            on_value:
+              - lambda: |-
+                  id(lr_dragging) = true;
+                  id(lr_pending_brightness) = int(x);
+              - lvgl.label.update:
+                  id: lbl_pct_lr
+                  text: !lambda |-
+                    char buf[10];
+                    int pct = int((x / 255.0f) * 100.0f);
+                    snprintf(buf, sizeof(buf), "%d%%", pct);
+                    return std::string(buf);
+              - script.execute: lr_send_brightness
+
+        - button:
+            x: 20
+            y: 400
+            width: 65
+            height: 50
+            on_click:
+              - if:
+                  condition:
+                    lambda: 'return !id(just_woke) && !id(screen_dimmed);'
+                  then:
+                    - homeassistant.action:
+                        action: light.turn_on
+                        data:
+                          entity_id: light.living_room_hue_lights_group
+                          color_temp_kelvin: "2700"
+            widgets:
+              - label:
+                  align: center
+                  text: "Warm"
+
+        - button:
+            x: 95
+            y: 400
+            width: 65
+            height: 50
+            on_click:
+              - if:
+                  condition:
+                    lambda: 'return !id(just_woke) && !id(screen_dimmed);'
+                  then:
+                    - homeassistant.action:
+                        action: light.turn_on
+                        data:
+                          entity_id: light.living_room_hue_lights_group
+                          color_temp_kelvin: "4000"
+            widgets:
+              - label:
+                  align: center
+                  text: "Neutral"
+
+        - button:
+            x: 170
+            y: 400
+            width: 65
+            height: 50
+            on_click:
+              - if:
+                  condition:
+                    lambda: 'return !id(just_woke) && !id(screen_dimmed);'
+                  then:
+                    - homeassistant.action:
+                        action: light.turn_on
+                        data:
+                          entity_id: light.living_room_hue_lights_group
+                          color_temp_kelvin: "6500"
+            widgets:
+              - label:
+                  align: center
+                  text: "Cool"
+
+        - button:
+            x: 245
+            y: 400
+            width: 65
+            height: 50
+            on_click:
+              - if:
+                  condition:
+                    lambda: 'return !id(just_woke) && !id(screen_dimmed);'
+                  then:
+                    - homeassistant.action:
+                        action: light.turn_on
+                        data:
+                          entity_id: light.living_room_hue_lights_group
+                          brightness: "255"
+            widgets:
+              - label:
+                  align: center
+                  text: "Max"
+
+    - id: page_dr
+      bg_color: 0x000000
+      widgets:
+        - label:
+            id: lbl_title_dr
+            x: 0
+            y: 20
+            width: 320
+            text_align: center
+            text_font: font_title
+            text: "Dining Room Lights"
+
+        - label:
+            id: lbl_pct_dr
+            x: 110
+            y: 60
+            text_font: font_big
+            text: "0%"
+
+        - slider:
+            id: slider_dr
+            x: 110
+            y: 150
+            width: 100
+            height: 180
+            min_value: 0
+            max_value: 255
+            on_value:
+              - lambda: |-
+                  id(dr_dragging) = true;
+                  id(dr_pending_brightness) = int(x);
+              - lvgl.label.update:
+                  id: lbl_pct_dr
+                  text: !lambda |-
+                    char buf[10];
+                    int pct = int((x / 255.0f) * 100.0f);
+                    snprintf(buf, sizeof(buf), "%d%%", pct);
+                    return std::string(buf);
+              - script.execute: dr_send_brightness
+
+        - button:
+            x: 20
+            y: 400
+            width: 65
+            height: 50
+            on_click:
+              - if:
+                  condition:
+                    lambda: 'return !id(just_woke) && !id(screen_dimmed);'
+                  then:
+                    - homeassistant.action:
+                        action: light.turn_on
+                        data:
+                          entity_id: light.dining_room_lights_z2m_group
+                          color_temp_kelvin: "2700"
+            widgets:
+              - label:
+                  align: center
+                  text: "Warm"
+
+        - button:
+            x: 95
+            y: 400
+            width: 65
+            height: 50
+            on_click:
+              - if:
+                  condition:
+                    lambda: 'return !id(just_woke) && !id(screen_dimmed);'
+                  then:
+                    - homeassistant.action:
+                        action: light.turn_on
+                        data:
+                          entity_id: light.dining_room_lights_z2m_group
+                          color_temp_kelvin: "4000"
+            widgets:
+              - label:
+                  align: center
+                  text: "Neutral"
+
+        - button:
+            x: 170
+            y: 400
+            width: 65
+            height: 50
+            on_click:
+              - if:
+                  condition:
+                    lambda: 'return !id(just_woke) && !id(screen_dimmed);'
+                  then:
+                    - homeassistant.action:
+                        action: light.turn_on
+                        data:
+                          entity_id: light.dining_room_lights_z2m_group
+                          color_temp_kelvin: "6500"
+            widgets:
+              - label:
+                  align: center
+                  text: "Cool"
+
+        - button:
+            x: 245
+            y: 400
+            width: 65
+            height: 50
+            on_click:
+              - if:
+                  condition:
+                    lambda: 'return !id(just_woke) && !id(screen_dimmed);'
+                  then:
+                    - homeassistant.action:
+                        action: light.turn_on
+                        data:
+                          entity_id: light.dining_room_lights_z2m_group
+                          brightness: "255"
+            widgets:
+              - label:
+                  align: center
+                  text: "Max"

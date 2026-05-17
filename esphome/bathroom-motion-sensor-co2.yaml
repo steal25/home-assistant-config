@@ -1,30 +1,30 @@
 esphome:
-  name: garage-presence-esp32-2
-  friendly_name: Garage Presence esp32 2
+  name: "bathroom-motion-sensor-co2"
+  friendly_name: Bathroom Motion Sensor/CO2
 
 esp32:
   board: esp32-c3-devkitm-1
   framework:
-    type: esp-idf   # stable BLE on C3
+    type: esp-idf
 
-# ── Core services ──────────────────────────────────────────────────────────────
 logger:
 
 api:
   encryption:
-    key: "/pnMGXlO2H/7uhhecd4uqed7BYrQs3coCU2hSupczn8="
+    key: "X3xHNURR/HKJsc7uYo/48CFvCHKfxbeWpTUAY4b1jXA="
 
 ota:
   - platform: esphome
-    password: "e81a409af659a1a048b3d75016f4209a"
+    password: "25e8eeb6f69c4f69c3b090c06479a38e"
 
 wifi:
   ssid: !secret wifi_ssid
   password: !secret wifi_password
   power_save_mode: none
+
   ap:
-    ssid: "Garage-Presence-Esp32-2"   # unique fallback SSID for this unit
-    password: "wvQSRFQknJza"
+    ssid: "Bathroom-Motion-Sensor"
+    password: "rqgtsyB6GzES"
 
 captive_portal:
 
@@ -51,8 +51,8 @@ status_led:
 # ── LD2410 wiring (UART) ──────────────────────────────────────────────────────
 uart:
   id: ld2410_uart
-  tx_pin: GPIO10      # ESP TX -> LD2410 RX
-  rx_pin: GPIO9       # ESP RX -> LD2410 TX
+  tx_pin: GPIO10
+  rx_pin: GPIO9
   baud_rate: 256000
   parity: NONE
   stop_bits: 1
@@ -60,7 +60,13 @@ uart:
 ld2410:
   id: ld2410_comp
   uart_id: ld2410_uart
-  # NOTE: 'throttle' removed in ESPHome; see per-sensor filters below.
+  # NOTE: 'throttle' removed per ESPHome change. Use per-sensor filters below.
+
+# ── I2C bus for SCD41 CO₂ sensor ──────────────────────────────────────────────
+i2c:
+  sda: GPIO6
+  scl: GPIO7
+  scan: true
 
 # ── UI controls (kept identical across nodes) ─────────────────────────────────
 number:
@@ -87,7 +93,7 @@ number:
     max_value: 600
     step: 10
     restore_value: true
-    initial_value: 0
+    initial_value: 240   # ✅ Better default for bathroom (tune in HA)
 
 switch:
   - platform: ld2410
@@ -135,7 +141,7 @@ text_sensor:
     mac_address:
       name: "Presence Sensor MAC"
 
-# ── Presence sensors (single block) ───────────────────────────────────────────
+# ── Presence sensors ──────────────────────────────────────────────────────────
 binary_sensor:
   # Raw LD2410
   - platform: ld2410
@@ -170,7 +176,17 @@ binary_sensor:
       return present;
     filters:
       - delayed_on: 200ms
-      - delayed_off: 8s
+      - delayed_off: 25s     # ✅ more forgiving when seated / still
+
+  # Smart Presence Held (best to use for lights)
+  - platform: template
+    name: "Smart Presence Held"
+    id: smart_presence_held
+    device_class: presence
+    lambda: |-
+      return id(smart_presence).state;
+    filters:
+      - delayed_off: 60s     # ✅ holds ON through dropouts
 
 # ── Diagnostics (with per-sensor throttle filters) ────────────────────────────
 sensor:
@@ -218,12 +234,25 @@ sensor:
       filters:
         - throttle: 1.5s
 
+  # ── SCD41 CO₂ sensor ────────────────────────────────────────────────────────
+  - platform: scd4x
+    co2:
+      name: "Bathroom CO2"
+      id: bathroom_co2
+    temperature:
+      name: "Bathroom CO2 Temperature"
+      id: bathroom_co2_temp
+    humidity:
+      name: "Bathroom CO2 Humidity"
+      id: bathroom_co2_humidity
+    update_interval: 60s
+
 # ── Optional preset ───────────────────────────────────────────────────────────
 script:
-  - id: preset_small_bathroom
+  - id: preset_bathroom
     mode: queued
     then:
-      - logger.log: "Applying 'Small Bathroom' LD2410 preset"
+      - logger.log: "Applying 'Bathroom' LD2410 preset"
       - number.set: { id: ld_max_move_gate,  value: 5 }
       - number.set: { id: ld_max_still_gate, value: 4 }
       - button.press: ld_query

@@ -1,10 +1,3 @@
-toggle_night_light:
-  alias: toggle night light
-  use_blueprint:
-    path: datebo/toggle-scene-on-off-script.yaml
-    input:
-      the_scene: scene.night_light
-  description: ''
 send_message_to_my_phone:
   alias: Send Message to My Phone
   sequence:
@@ -603,135 +596,240 @@ new_script:
       brightness_pct: 100
     target:
       entity_id:
-      - light.master_bedroom_main_switch_bottom
+      - light.janest_light_z2m_group
       - light.hue_closet_lights_group
-      - light.master_bedroom_main_switch_top
+    enabled: true
+  - action: light.toggle
+    metadata: {}
+    data:
+      rgb_color:
+      - 255
+      - 0
+      - 0
+      brightness_pct: 100
+    target:
+      entity_id: light.master_bedroom_light_z2m_group
   - delay:
       hours: 0
       minutes: 0
-      seconds: 0
-      milliseconds: 500
+      seconds: 1
+      milliseconds: 0
   - action: light.toggle
     metadata: {}
     data:
       brightness_pct: 100
     target:
       entity_id:
-      - light.master_bedroom_main_switch_bottom
+      - light.janest_light_z2m_group
       - light.hue_closet_lights_group
-      - light.master_bedroom_main_switch_top
+    enabled: true
+  - action: light.toggle
+    metadata: {}
+    data:
+      rgb_color:
+      - 255
+      - 0
+      - 0
+      brightness_pct: 100
+    target:
+      entity_id: light.master_bedroom_light_z2m_group
   - delay:
       hours: 0
       minutes: 0
-      seconds: 0
-      milliseconds: 500
+      seconds: 1
+      milliseconds: 0
   - action: light.toggle
     metadata: {}
     data:
       brightness_pct: 100
     target:
       entity_id:
-      - light.master_bedroom_main_switch_bottom
+      - light.janest_light_z2m_group
       - light.hue_closet_lights_group
-      - light.master_bedroom_main_switch_top
+    enabled: true
+  - action: light.toggle
+    metadata: {}
+    data:
+      rgb_color:
+      - 255
+      - 0
+      - 0
+      brightness_pct: 100
+    target:
+      entity_id: light.master_bedroom_light_z2m_group
   - delay:
       hours: 0
       minutes: 0
-      seconds: 0
-      milliseconds: 500
+      seconds: 1
+      milliseconds: 0
   - action: light.toggle
     metadata: {}
     data:
       brightness_pct: 100
     target:
       entity_id:
-      - light.master_bedroom_main_switch_bottom
+      - light.janest_light_z2m_group
       - light.hue_closet_lights_group
-      - light.master_bedroom_main_switch_top
+    enabled: true
+  - action: light.toggle
+    metadata: {}
+    data:
+      rgb_color:
+      - 255
+      - 0
+      - 0
+      brightness_pct: 100
+    target:
+      entity_id: light.master_bedroom_light_z2m_group
   - delay:
       hours: 0
       minutes: 0
-      seconds: 0
-      milliseconds: 500
+      seconds: 1
+      milliseconds: 0
   - action: light.toggle
     metadata: {}
     data:
       brightness_pct: 100
     target:
       entity_id:
-      - light.master_bedroom_main_switch_bottom
+      - light.janest_light_z2m_group
       - light.hue_closet_lights_group
-      - light.master_bedroom_main_switch_top
+    enabled: true
+  - action: light.toggle
+    metadata: {}
+    data:
+      rgb_color:
+      - 255
+      - 0
+      - 0
+      brightness_pct: 100
+    target:
+      entity_id: light.master_bedroom_light_z2m_group
   - delay:
       hours: 0
       minutes: 0
-      seconds: 0
-      milliseconds: 500
+      seconds: 1
+      milliseconds: 0
   - action: light.toggle
     metadata: {}
     data:
       brightness_pct: 100
     target:
       entity_id:
-      - light.master_bedroom_main_switch_bottom
+      - light.janest_light_z2m_group
       - light.hue_closet_lights_group
-      - light.master_bedroom_main_switch_top
+    enabled: true
+  - action: light.toggle
+    metadata: {}
+    data:
+      rgb_color:
+      - 255
+      - 0
+      - 0
+      brightness_pct: 100
+    target:
+      entity_id: light.master_bedroom_light_z2m_group
   - delay:
       hours: 0
       minutes: 0
-      seconds: 0
-      milliseconds: 500
+      seconds: 1
+      milliseconds: 0
   - action: light.toggle
     metadata: {}
     data:
       brightness_pct: 100
     target:
       entity_id:
-      - light.master_bedroom_main_switch_bottom
+      - light.janest_light_z2m_group
       - light.hue_closet_lights_group
-      - light.master_bedroom_main_switch_top
+    enabled: true
+  - action: light.toggle
+    metadata: {}
+    data:
+      rgb_color:
+      - 255
+      - 0
+      - 0
+      brightness_pct: 100
+    target:
+      entity_id: light.master_bedroom_light_z2m_group
   - delay:
       hours: 0
       minutes: 0
-      seconds: 0
-      milliseconds: 500
+      seconds: 1
+      milliseconds: 0
   - action: light.toggle
     metadata: {}
     data:
       brightness_pct: 100
     target:
       entity_id:
-      - light.master_bedroom_main_switch_bottom
+      - light.janest_light_z2m_group
       - light.hue_closet_lights_group
-      - light.master_bedroom_main_switch_top
+    enabled: true
+  - action: light.toggle
+    metadata: {}
+    data:
+      rgb_color:
+      - 255
+      - 0
+      - 0
+      brightness_pct: 100
+    target:
+      entity_id: light.master_bedroom_light_z2m_group
   - delay:
       hours: 0
       minutes: 0
-      seconds: 0
-      milliseconds: 500
+      seconds: 1
+      milliseconds: 0
   - action: light.toggle
     metadata: {}
     data:
       brightness_pct: 100
     target:
       entity_id:
-      - light.master_bedroom_main_switch_bottom
+      - light.janest_light_z2m_group
       - light.hue_closet_lights_group
-      - light.master_bedroom_main_switch_top
+    enabled: true
+  - action: light.toggle
+    metadata: {}
+    data:
+      rgb_color:
+      - 255
+      - 0
+      - 0
+      brightness_pct: 100
+    target:
+      entity_id: light.master_bedroom_light_z2m_group
   - delay:
       hours: 0
       minutes: 0
-      seconds: 0
-      milliseconds: 500
+      seconds: 1
+      milliseconds: 0
   - action: light.toggle
     metadata: {}
     data:
       brightness_pct: 100
     target:
       entity_id:
-      - light.master_bedroom_main_switch_bottom
+      - light.janest_light_z2m_group
       - light.hue_closet_lights_group
-      - light.master_bedroom_main_switch_top
+    enabled: true
+  - action: light.toggle
+    metadata: {}
+    data:
+      rgb_color:
+      - 255
+      - 0
+      - 0
+      brightness_pct: 100
+    target:
+      entity_id: light.master_bedroom_light_z2m_group
+  - action: light.turn_on
+    metadata: {}
+    target:
+      entity_id: light.master_bedroom_light_z2m_group
+    data: {}
   alias: Toggle Master Lights
   description: ''
 toggle_hallway:
@@ -741,120 +839,170 @@ toggle_hallway:
     input:
       the_scene: scene.hallway_light_30
   description: ''
-alias: Play KROQ on Master Bedroom Stereo
-sequence:
-- service: shell_command.ma510_init
-- delay: 00:00:01
-- service: shell_command.ma510_power_on
-- delay: 00:00:01
-- service: shell_command.ma510_input_media
-- delay: 00:00:01
-- service: shell_command.ma510_volume_40
-- delay: 00:00:02
-- service: media_player.play_media
-  data:
-    entity_id: media_player.wiim_pro
-    media_content_type: music
-    media_content_id: https://go.audacy.com/kroq/listen
-mode: single
 play_kroq_on_master_bedroom_stereo:
-  sequence:
-  - action: shell_command.ma510_init
-    data: {}
-  - action: shell_command.ma510_power_on
-    data: {}
-  - delay:
-      hours: 0
-      minutes: 0
-      seconds: 5
-      milliseconds: 0
-  - action: linkplay.play_preset
-    target:
-      entity_id: media_player.wiim_pro_master
-    data:
-      preset_number: 1
-  - action: shell_command.ma510_input_media
-    data: {}
-  - delay:
-      hours: 0
-      minutes: 0
-      seconds: 0
-      milliseconds: 500
-  - action: shell_command.ma510_volume_40
-    data: {}
   alias: Play KROQ on Master Bedroom Stereo
   description: ''
-play_the_wave_on_master_bedroom_stereo:
+  mode: single
   sequence:
-  - action: shell_command.ma510_init
-    data: {}
-  - action: shell_command.ma510_power_on
-    data: {}
-  - delay:
-      hours: 0
-      minutes: 0
-      seconds: 5
-      milliseconds: 0
-  - action: linkplay.play_preset
+  - target:
+      entity_id: media_player.denon_avr_master_bedroom
+    data:
+      source: WiiM Ultra
+    action: media_player.select_source
+  - delay: 00:00:01
+  - action: media_player.select_sound_mode
+    target:
+      entity_id: media_player.denon_avr_master_bedroom
+    data:
+      sound_mode: MCH STEREO
+  - delay: 00:00:01
+  - target:
+      entity_id: media_player.denon_avr_master_bedroom
+    data:
+      volume_level: 0.63
+    action: media_player.volume_set
+  - delay: 00:00:01
+  - action: media_player.play_media
+    metadata: {}
     target:
       entity_id: media_player.wiim_pro_master
     data:
-      preset_number: 2
-  - action: shell_command.ma510_input_media
-    data: {}
-  - action: shell_command.ma510_volume_40
-    data: {}
+      media:
+        media_content_id: '1'
+        media_content_type: music
+        metadata:
+          title: KROQ
+          thumbnail: http://cdn-profiles.tunein.com/s35088/images/logog.jpg?t=638288249650000000
+          media_class: playlist
+          children_media_class:
+          navigateIds:
+          - {}
+          - media_content_type: playlist
+            media_content_id: wiim_library/library_root/favorites
+          browse_entity_id: media_player.wiim_pro_master
+play_the_wave_on_master_bedroom_stereo:
   alias: Play THE WAVE on Master Bedroom Stereo
   description: ''
-play_kroq_on_master_bedroom_stereo_after_10:
+  mode: single
   sequence:
-  - action: shell_command.ma510_init
-    data: {}
-  - action: shell_command.ma510_power_on
-    data: {}
-  - delay:
-      hours: 0
-      minutes: 0
-      seconds: 5
-      milliseconds: 0
-  - action: linkplay.play_preset
+  - target:
+      entity_id: media_player.denon_avr_master_bedroom
+    data:
+      source: WiiM Ultra
+    action: media_player.select_source
+  - delay: 00:00:01
+  - action: media_player.select_sound_mode
+    target:
+      entity_id: media_player.denon_avr_master_bedroom
+    data:
+      sound_mode: MCH STEREO
+  - delay: 00:00:01
+  - target:
+      entity_id: media_player.denon_avr_master_bedroom
+    data:
+      volume_level: 0.63
+    action: media_player.volume_set
+  - delay: 00:00:01
+  - action: media_player.play_media
+    metadata: {}
     target:
       entity_id: media_player.wiim_pro_master
     data:
-      preset_number: 1
-  - action: shell_command.ma510_input_media
-    data: {}
-  - delay:
-      hours: 0
-      minutes: 0
-      seconds: 0
-      milliseconds: 500
-  - action: shell_command.ma510_volume_35
-    data: {}
+      media:
+        media_content_id: '2'
+        media_content_type: music
+        metadata:
+          title: 94.7 The WAVE
+          thumbnail: http://cdn-profiles.tunein.com/s35812/images/logog.jpg?t=638288249660000000
+          media_class: playlist
+          children_media_class:
+          navigateIds:
+          - {}
+          - media_content_type: playlist
+            media_content_id: wiim_library/library_root/favorites
+          browse_entity_id: media_player.wiim_pro_master
+play_kroq_on_master_bedroom_stereo_after_10:
   alias: Play KROQ on Master Bedroom Stereo After 10
   description: ''
-play_the_wave_on_master_bedroom_stereo_after_9:
+  mode: single
   sequence:
-  - action: shell_command.ma510_init
-    data: {}
-  - action: shell_command.ma510_power_on
-    data: {}
-  - delay:
-      hours: 0
-      minutes: 0
-      seconds: 5
-      milliseconds: 0
-  - action: linkplay.play_preset
+  - target:
+      entity_id: media_player.denon_avr_master_bedroom
+    data:
+      source: WiiM Ultra
+    action: media_player.select_source
+  - delay: 00:00:01
+  - action: media_player.select_sound_mode
+    target:
+      entity_id: media_player.denon_avr_master_bedroom
+    data:
+      sound_mode: MCH STEREO
+  - delay: 00:00:01
+  - target:
+      entity_id: media_player.denon_avr_master_bedroom
+    data:
+      volume_level: 0.56
+    action: media_player.volume_set
+  - delay: 00:00:01
+  - action: media_player.play_media
+    metadata: {}
+    data:
+      media:
+        media_content_id: '1'
+        media_content_type: music
+        metadata:
+          title: KROQ
+          thumbnail: http://cdn-profiles.tunein.com/s35088/images/logog.jpg?t=638288249650000000
+          media_class: playlist
+          children_media_class:
+          navigateIds:
+          - {}
+          - media_content_type: playlist
+            media_content_id: wiim_library/library_root/favorites
+          browse_entity_id: media_player.wiim_pro_master
+    target:
+      entity_id: media_player.wiim_pro_master
+play_the_wave_on_master_bedroom_stereo_after_9:
+  alias: Play THE WAVE on Master Bedroom Stereo After 10
+  description: ''
+  mode: single
+  sequence:
+  - target:
+      entity_id: media_player.denon_avr_master_bedroom
+    data:
+      source: WiiM Ultra
+    action: media_player.select_source
+  - delay: 00:00:01
+  - action: media_player.select_sound_mode
+    target:
+      entity_id: media_player.denon_avr_master_bedroom
+    data:
+      sound_mode: MCH STEREO
+  - delay: 00:00:01
+  - target:
+      entity_id: media_player.denon_avr_master_bedroom
+    data:
+      volume_level: 0.57
+    action: media_player.volume_set
+  - delay: 00:00:01
+  - action: media_player.play_media
+    metadata: {}
     target:
       entity_id: media_player.wiim_pro_master
     data:
-      preset_number: 2
-  - action: shell_command.ma510_input_media
-    data: {}
-  - action: shell_command.ma510_volume_35
-    data: {}
-  alias: Play THE WAVE on Master Bedroom Stereo After 10
-  description: ''
+      media:
+        media_content_id: '2'
+        media_content_type: music
+        metadata:
+          title: 94.7 The WAVE
+          thumbnail: http://cdn-profiles.tunein.com/s35812/images/logog.jpg?t=638288249660000000
+          media_class: playlist
+          children_media_class:
+          navigateIds:
+          - {}
+          - media_content_type: playlist
+            media_content_id: wiim_library/library_root/favorites
+          browse_entity_id: media_player.wiim_pro_master
 media_players_70:
   sequence:
   - action: media_player.volume_set
@@ -863,13 +1011,13 @@ media_players_70:
       volume_level: 0.7
     target:
       entity_id:
-      - media_player.echo_dot_master_bedroom
       - media_player.echo_dot_kitchen
-      - media_player.echo_dot_living_room
-      - media_player.echo_dot_living_room_2
       - media_player.echo_dot_office
       - media_player.office_home_pod
       - media_player.living_room_home_pod
+      - media_player.echo_dot_max_master_bedroom
+      - media_player.echo_dot_max_living_room_right
+      - media_player.echo_dot_max_living_room_left
       - media_player.echo_dot_adu
   alias: Media Players 70
   description: ''
@@ -881,14 +1029,14 @@ media_players_60:
       volume_level: 0.6
     target:
       entity_id:
-      - media_player.echo_dot_master_bedroom
       - media_player.echo_dot_kitchen
-      - media_player.echo_dot_living_room
-      - media_player.echo_dot_living_room_2
       - media_player.echo_dot_office
       - media_player.office_home_pod
       - media_player.living_room_home_pod
       - media_player.echo_dot_adu
+      - media_player.echo_dot_max_master_bedroom
+      - media_player.echo_dot_max_living_room_right
+      - media_player.echo_dot_max_living_room_left
   alias: Media Players 60
   description: ''
 media_players_50:
@@ -899,14 +1047,14 @@ media_players_50:
       volume_level: 0.5
     target:
       entity_id:
-      - media_player.echo_dot_master_bedroom
       - media_player.echo_dot_kitchen
-      - media_player.echo_dot_living_room
-      - media_player.echo_dot_living_room_2
       - media_player.echo_dot_office
       - media_player.office_home_pod
       - media_player.living_room_home_pod
       - media_player.echo_dot_adu
+      - media_player.echo_dot_max_master_bedroom
+      - media_player.echo_dot_max_living_room_left
+      - media_player.echo_dot_max_living_room_right
   alias: Media Players 50
   description: ''
 media_players_40:
@@ -917,14 +1065,14 @@ media_players_40:
       volume_level: 0.4
     target:
       entity_id:
-      - media_player.echo_dot_master_bedroom
       - media_player.echo_dot_kitchen
-      - media_player.echo_dot_living_room
-      - media_player.echo_dot_living_room_2
       - media_player.echo_dot_office
       - media_player.office_home_pod
       - media_player.living_room_home_pod
       - media_player.echo_dot_adu
+      - media_player.echo_dot_max_master_bedroom
+      - media_player.echo_dot_max_living_room_right
+      - media_player.echo_dot_max_living_room_left
   alias: Media Players 40
   description: ''
 media_players_30:
@@ -935,14 +1083,14 @@ media_players_30:
       volume_level: 0.3
     target:
       entity_id:
-      - media_player.echo_dot_master_bedroom
       - media_player.echo_dot_kitchen
-      - media_player.echo_dot_living_room
-      - media_player.echo_dot_living_room_2
       - media_player.echo_dot_office
       - media_player.office_home_pod
       - media_player.living_room_home_pod
       - media_player.echo_dot_adu
+      - media_player.echo_dot_max_master_bedroom
+      - media_player.echo_dot_max_living_room_right
+      - media_player.echo_dot_max_living_room_left
   alias: Media Players 30
   description: ''
 media_players_20:
@@ -953,14 +1101,14 @@ media_players_20:
       volume_level: 0.2
     target:
       entity_id:
-      - media_player.echo_dot_master_bedroom
       - media_player.echo_dot_kitchen
-      - media_player.echo_dot_living_room
-      - media_player.echo_dot_living_room_2
       - media_player.echo_dot_office
       - media_player.office_home_pod
       - media_player.living_room_home_pod
       - media_player.echo_dot_adu
+      - media_player.echo_dot_max_master_bedroom
+      - media_player.echo_dot_max_living_room_right
+      - media_player.echo_dot_max_living_room_left
   alias: Media Players 20
   description: ''
 media_players_50_before_11:
@@ -972,13 +1120,13 @@ media_players_50_before_11:
     target:
       entity_id:
       - media_player.echo_dot_kitchen
-      - media_player.echo_dot_living_room
-      - media_player.echo_dot_living_room_2
       - media_player.living_room_home_pod
-      - media_player.echo_dot_master_bedroom
       - media_player.echo_dot_office
       - media_player.office_home_pod
       - media_player.echo_dot_adu
+      - media_player.echo_dot_max_master_bedroom
+      - media_player.echo_dot_max_living_room_left
+      - media_player.echo_dot_max_living_room_right
   alias: Media Players 50 before 11
   description: ''
 media_players_50_before_11_eddie_in_bed:
@@ -990,19 +1138,19 @@ media_players_50_before_11_eddie_in_bed:
     target:
       entity_id:
       - media_player.echo_dot_kitchen
-      - media_player.echo_dot_living_room
-      - media_player.echo_dot_living_room_2
       - media_player.living_room_home_pod
       - media_player.echo_dot_adu
+      - media_player.echo_dot_max_living_room_left
+      - media_player.echo_dot_max_living_room_right
   - action: media_player.volume_set
     metadata: {}
     data:
       volume_level: 0
     target:
       entity_id:
-      - media_player.echo_dot_master_bedroom
       - media_player.office_home_pod
       - media_player.echo_dot_office
+      - media_player.echo_dot_max_master_bedroom
   alias: Media Players 50 before 11 Eddie in Bed
   description: ''
 toggle_kitchen_lights:
@@ -1260,3 +1408,432 @@ toggle_garage_bathroom_light:
   alias: Toggle Garage Bathroom Light
   description: ''
   icon: mdi:lightbulb-alert
+play_janet_s_playlist_in_living_room:
+  alias: Play Janet's Playlist in living room
+  sequence:
+  - action: media_player.volume_set
+    metadata: {}
+    data:
+      volume_level: 0.38
+    target:
+      entity_id: media_player.l_r_living_room_echos
+  - target:
+      entity_id:
+      - media_player.echo_dot_office
+    data:
+      media:
+        media_content_id: applemusic://playlist/pl.u-e98lGdEuaYRXxM9
+        media_content_type: playlist
+        metadata: {}
+    action: media_player.play_media
+  mode: single
+  description: ''
+find_living_room_roku_remote:
+  sequence:
+  - action: remote.send_command
+    data:
+      num_repeats: 1
+      delay_secs: 0.4
+      hold_secs: 0
+      device: remote.roku_ultra_2024_living_room
+      command: find_remote
+    target:
+      entity_id: remote.roku_ultra_2024_living_room
+  alias: Find Living Room Roku Remote
+  description: ''
+find_master_roku_remote:
+  sequence:
+  - action: remote.send_command
+    target:
+      entity_id: remote.roku_ultra_master_2
+    data:
+      num_repeats: 1
+      delay_secs: 0.4
+      hold_secs: 0
+      device: remote.roku_ultra_master_2
+      command: find_remote
+  alias: Find Master Roku Remote
+  description: ''
+find_phone_eddie:
+  alias: 'Find Phone: Eddie'
+  mode: single
+  sequence:
+  - variables:
+      room: '{{ states(''sensor.big_eddie_area'') | default(''Unknown'', true) }}'
+      last_called_mp: "{% set s = states('sensor.last_alexa') %} {% if s is string
+        and s.startswith('media_player.') %}\n  {{ s }}\n{% else %}\n  {{ '' }}\n{%
+        endif %}"
+      target_player: "{% if last_called_mp != '' %}\n  {{ last_called_mp }}\n{% else
+        %}\n  media_player.all_echos\n{% endif %}"
+  - data:
+      target:
+      - '{{ target_player }}'
+      data:
+        type: announce
+      message: 'Eddie’s phone is in: {{ room }}.'
+    action: notify.alexa_media
+  description: ''
+find_phone_janet:
+  alias: 'Find Phone: Janet'
+  mode: single
+  sequence:
+  - variables:
+      room: '{{ states(''sensor.janet_area'') | default(''Unknown'', true) }}'
+      last_called_mp: "{% set s = states('sensor.last_alexa') %} {% if s is string
+        and s.startswith('media_player.') %}\n  {{ s }}\n{% else %}\n  {{ '' }}\n{%
+        endif %}"
+      target_player: "{% if last_called_mp != '' %}\n  {{ last_called_mp }}\n{% else
+        %}\n  media_player.all_echos\n{% endif %}"
+  - data:
+      target:
+      - '{{ target_player }}'
+      data:
+        type: announce
+      message: 'Janet’s phone is in: {{ room }}.'
+    action: notify.alexa_media
+  description: ''
+alexa_find_my_phone:
+  alias: Alexa – Find My Phone
+  mode: single
+  sequence:
+  - variables:
+      echos:
+      - media_player.echo_dot_adu
+      - media_player.echo_studio_bathroom
+      - media_player.echo_show_kitchen
+      - media_player.echo_dot_office
+      - media_player.echo_dot_garage_bathroom
+      - media_player.echo_dot_max_living_room_left
+      - media_player.echo_dot_max_master_bedroom
+      last: "{% set found = namespace(v='') %} {% for e in echos %}\n  {% if state_attr(e,'last_called')
+        %}\n    {% set found.v = e %}\n    {% break %}\n  {% endif %}\n{% endfor %}
+        {{ found.v }}"
+      who: "{# CHANGE THIS mapping however you want #} {% if last in ['media_player.echo_dot_office','media_player.echo_dot_adu']
+        %}\n  eddie\n{% else %}\n  janet\n{% endif %}"
+      room: "{% if who == 'eddie' %}\n  {{ states('sensor.big_eddie_area') }}\n{%
+        else %}\n  {{ states('sensor.janet_area') }}\n{% endif %}"
+  - choose:
+    - conditions:
+      - condition: template
+        value_template: '{{ last != '''' }}'
+      sequence:
+      - data:
+          target:
+          - '{{ last }}'
+          message: '{{ who|title }}’s phone is in the {{ room }}.'
+        action: notify.alexa_media
+    default:
+    - data:
+        target:
+        - media_player.echo_show_kitchen
+        message: I couldn’t tell which Echo you used. Try again.
+      action: notify.alexa_media
+  description: ''
+find_phone_announce_location:
+  alias: Find Phone - Announce Location
+  mode: queued
+  fields:
+    person:
+      description: eddie or janet
+      example: eddie
+  sequence:
+  - variables:
+      who: '{{ (person | default(''eddie'')) | lower }}'
+      room: "{% if who == 'janet' %}\n  {{ states('sensor.janet_area') }}\n{% else
+        %}\n  {{ states('sensor.big_eddie_area') }}\n{% endif %}"
+      alexas:
+      - media_player.echo_studio_bathroom
+      - media_player.echo_show_kitchen
+      - media_player.echo_dot_office
+      - media_player.echo_dot_garage_bathroom
+      - media_player.echo_dot_max_living_room_left
+      - media_player.echo_dot_max_master_bedroom
+      msg: "{% if room in ['unknown','unavailable','none',''] %}\n  {% if who == 'janet'
+        %}\n    I can't tell where Janet's phone is right now.\n  {% else %}\n    I
+        can't tell where Eddie's phone is right now.\n  {% endif %}\n{% else %}\n
+        \ {% if who == 'janet' %}\n    Janet's phone is in the {{ room }}.\n  {% else
+        %}\n    Eddie's phone is in the {{ room }}.\n  {% endif %}\n{% endif %}"
+  - choose:
+    - conditions:
+      - condition: template
+        value_template: '{{ alexas is iterable and (alexas | list | count) > 0 }}'
+      sequence:
+      - action: notify.alexa_media
+        data:
+          target: '{{ alexas }}'
+          message: '{{ msg }}'
+          data:
+            type: tts
+    default:
+    - action: notify.alexa_media
+      data:
+        message: '{{ msg }}'
+        data:
+          type: tts
+find_phone_ring_eddie:
+  alias: Find Phone - Ring Eddie
+  mode: restart
+  sequence:
+  - repeat:
+      count: 6
+      sequence:
+      - action: notify.mobile_app_eddies_iphone_17_pm
+        data:
+          title: Find my phone
+          message: Your phone is being located.
+          data:
+            push:
+              sound:
+                name: default
+                critical: 1
+                volume: 1
+            ttl: 0
+            priority: high
+      - delay: 00:00:02
+  description: ''
+find_phone_ring_janet:
+  alias: Find Phone - Ring Janet
+  mode: restart
+  sequence:
+  - repeat:
+      count: 6
+      sequence:
+      - action: notify.mobile_app_janets_iphone_17_pm
+        data:
+          title: Find my phone
+          message: Your phone is being located.
+          data:
+            push:
+              sound:
+                name: default
+                critical: 1
+                volume: 1
+            ttl: 0
+            priority: high
+      - delay: 00:00:02
+  description: ''
+living_room_hue_brighten_hold:
+  alias: Living Room Hue - Brighten Hold
+  sequence:
+  - repeat:
+      while:
+      - condition: template
+        value_template: '{{ true }}'
+      sequence:
+      - action: light.turn_on
+        target:
+          entity_id: light.living_room_hue_lights_group
+        data:
+          brightness_step: 8
+          transition: 0.12
+      - delay:
+          milliseconds: 120
+  mode: restart
+  icon: mdi:brightness-7
+  description: ''
+living_room_hue_dim_hold:
+  alias: Living Room Hue - Dim Hold
+  sequence:
+  - repeat:
+      while:
+      - condition: template
+        value_template: '{{ true }}'
+      sequence:
+      - action: light.turn_on
+        target:
+          entity_id: light.living_room_hue_lights_group
+        data:
+          brightness_step: -8
+          transition: 0.12
+      - delay:
+          milliseconds: 120
+  mode: restart
+  icon: mdi:brightness-5
+  description: ''
+test_toggle:
+  sequence:
+  - action: light.turn_on
+    metadata: {}
+    target:
+      entity_id: light.master_bedroom_light_z2m_group
+    data:
+      brightness_pct: 100
+      rgb_color:
+      - 255
+      - 0
+      - 0
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 0
+      milliseconds: 500
+  - action: light.turn_off
+    metadata: {}
+    target:
+      entity_id: light.master_bedroom_light_z2m_group
+    data: {}
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 0
+      milliseconds: 500
+  - action: light.turn_on
+    metadata: {}
+    target:
+      entity_id: light.master_bedroom_light_z2m_group
+    data:
+      brightness_pct: 100
+      rgb_color:
+      - 255
+      - 0
+      - 0
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 0
+      milliseconds: 500
+  - action: light.turn_off
+    metadata: {}
+    target:
+      entity_id: light.master_bedroom_light_z2m_group
+    data: {}
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 0
+      milliseconds: 500
+  - action: light.turn_on
+    metadata: {}
+    target:
+      entity_id: light.master_bedroom_light_z2m_group
+    data:
+      brightness_pct: 100
+      rgb_color:
+      - 255
+      - 0
+      - 0
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 0
+      milliseconds: 500
+  - action: light.turn_off
+    metadata: {}
+    target:
+      entity_id: light.master_bedroom_light_z2m_group
+    data: {}
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 0
+      milliseconds: 500
+  - action: light.turn_on
+    metadata: {}
+    target:
+      entity_id: light.master_bedroom_light_z2m_group
+    data:
+      brightness_pct: 100
+      rgb_color:
+      - 255
+      - 0
+      - 0
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 0
+      milliseconds: 500
+  - action: light.turn_off
+    metadata: {}
+    target:
+      entity_id: light.master_bedroom_light_z2m_group
+    data: {}
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 0
+      milliseconds: 500
+  - action: light.turn_on
+    metadata: {}
+    target:
+      entity_id: light.master_bedroom_light_z2m_group
+    data:
+      brightness_pct: 100
+      rgb_color:
+      - 255
+      - 0
+      - 0
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 0
+      milliseconds: 500
+  - action: light.turn_off
+    metadata: {}
+    target:
+      entity_id: light.master_bedroom_light_z2m_group
+    data: {}
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 0
+      milliseconds: 500
+  - action: light.turn_on
+    metadata: {}
+    target:
+      entity_id: light.master_bedroom_light_z2m_group
+    data:
+      brightness_pct: 100
+      rgb_color:
+      - 255
+      - 0
+      - 0
+  - delay:
+      hours: 0
+      minutes: 0
+      seconds: 0
+      milliseconds: 500
+  - action: light.turn_off
+    metadata: {}
+    target:
+      entity_id: light.master_bedroom_light_z2m_group
+    data: {}
+  alias: TEST TOGGLE
+  description: ''
+ma510_turn_on:
+  sequence:
+  - action: shell_command.ma510_init
+    metadata: {}
+    data: {}
+  - delay:
+      hours: 0
+      minutes: 5
+      seconds: 0
+      milliseconds: 0
+  - action: shell_command.ma510_power_on
+    metadata: {}
+    data: {}
+  - delay:
+      hours: 0
+      minutes: 5
+      seconds: 0
+      milliseconds: 0
+  - action: shell_command.ma510_input_media
+    metadata: {}
+    data: {}
+  - delay:
+      hours: 0
+      minutes: 5
+      seconds: 0
+      milliseconds: 0
+  - action: shell_command.ma510_volume_46
+    metadata: {}
+    data: {}
+  alias: 'MA510: Turn On'
+  description: ''
+ma510_turn_off:
+  sequence:
+  - action: shell_command.ma510_power_off
+    metadata: {}
+    data: {}
+  alias: 'MA510: Turn Off'
+  description: ''

@@ -1,30 +1,33 @@
 esphome:
-  name: garage-presence-esp32-2
-  friendly_name: Garage Presence esp32 2
+  name: "bathroom-motion-sensor-humidity"
+  friendly_name: Bathroom Motion/Humidity
 
 esp32:
   board: esp32-c3-devkitm-1
   framework:
-    type: esp-idf   # stable BLE on C3
+    type: esp-idf
 
-# ── Core services ──────────────────────────────────────────────────────────────
+# Enable logging
 logger:
 
+# Enable Home Assistant API
 api:
   encryption:
-    key: "/pnMGXlO2H/7uhhecd4uqed7BYrQs3coCU2hSupczn8="
+    key: "aP2GAiEM8AE2MmbiIYv2ylMDd2nYgvSUHa75lD7H+do="
 
 ota:
   - platform: esphome
-    password: "e81a409af659a1a048b3d75016f4209a"
+    password: "3e6cbb01a5ecbbb4dbfe07ac5b129a18"
 
 wifi:
   ssid: !secret wifi_ssid
   password: !secret wifi_password
   power_save_mode: none
+
+  # Enable fallback hotspot (captive portal) in case wifi connection fails
   ap:
-    ssid: "Garage-Presence-Esp32-2"   # unique fallback SSID for this unit
-    password: "wvQSRFQknJza"
+    ssid: "Motion-Sensor-Extra2"
+    password: "vWRJu7Uf0y2J"
 
 captive_portal:
 
@@ -51,8 +54,8 @@ status_led:
 # ── LD2410 wiring (UART) ──────────────────────────────────────────────────────
 uart:
   id: ld2410_uart
-  tx_pin: GPIO10      # ESP TX -> LD2410 RX
-  rx_pin: GPIO9       # ESP RX -> LD2410 TX
+  tx_pin: GPIO10
+  rx_pin: GPIO9
   baud_rate: 256000
   parity: NONE
   stop_bits: 1
@@ -60,7 +63,14 @@ uart:
 ld2410:
   id: ld2410_comp
   uart_id: ld2410_uart
-  # NOTE: 'throttle' removed in ESPHome; see per-sensor filters below.
+  # NOTE: 'throttle' removed per ESPHome change. Use per-sensor filters below.
+
+# ── I²C bus for SHT45 (and future SGP41 etc.) ────────────────────────────────
+i2c:
+  id: bus_a
+  sda: GPIO6    # SHT45 SDA
+  scl: GPIO7    # SHT45 SCL
+  scan: true
 
 # ── UI controls (kept identical across nodes) ─────────────────────────────────
 number:
@@ -88,6 +98,28 @@ number:
     step: 10
     restore_value: true
     initial_value: 0
+
+  # ── SHT45 calibration offsets (tweak in HA UI) ──────────────────────────────
+  - platform: template
+    name: "Bathroom Temp Offset"
+    id: bath_temp_offset
+    optimistic: true
+    min_value: -5.0
+    max_value: 5.0
+    step: 0.1
+    restore_value: true
+    initial_value: 0.0
+
+  - platform: template
+    name: "Bathroom Humidity Offset"
+    id: bath_hum_offset
+    optimistic: true
+    min_value: -20.0
+    max_value: 20.0
+    step: 0.5
+    restore_value: true
+    initial_value: 0.0
+
 
 switch:
   - platform: ld2410
@@ -172,7 +204,17 @@ binary_sensor:
       - delayed_on: 200ms
       - delayed_off: 8s
 
-# ── Diagnostics (with per-sensor throttle filters) ────────────────────────────
+  # Smart Presence Held (best to use for lights)
+  - platform: template
+    name: "Smart Presence Held"
+    id: smart_presence_held
+    device_class: presence
+    lambda: |-
+      return id(smart_presence).state;
+    filters:
+      - delayed_off: 60s     # ✅ holds ON through dropouts      
+
+# ── Diagnostics + SHT45 env sensors ───────────────────────────────────────────
 sensor:
   - platform: internal_temperature
     name: "Internal Temperature"
@@ -186,6 +228,7 @@ sensor:
     name: "Uptime"
     id: dev_uptime
 
+  # LD2410 diagnostics
   - platform: ld2410
     moving_distance:
       name: "Moving Distance (cm)"
@@ -217,6 +260,81 @@ sensor:
       id: ld_light
       filters:
         - throttle: 1.5s
+
+  # ── SHT45 raw, smoothed readings (microenv-style) ───────────────────────────
+  - platform: sht4x
+    i2c_id: bus_a
+    temperature:
+      name: "Bathroom SHT45 Temperature Raw"
+      id: bath_sht_temp_raw
+      accuracy_decimals: 2
+      filters:
+        # Median to kill spikes
+        - median:
+            window_size: 5
+            send_every: 3
+            send_first_at: 1
+        # Then EMA for smoothness
+        - exponential_moving_average:
+            alpha: 0.3
+            send_every: 1
+    humidity:
+      name: "Bathroom SHT45 Humidity Raw"
+      id: bath_sht_hum_raw
+      accuracy_decimals: 2
+      filters:
+        - median:
+            window_size: 5
+            send_every: 3
+            send_first_at: 1
+        - exponential_moving_average:
+            alpha: 0.3
+            send_every: 1
+    heater_max_duty: 0.0
+
+  # Calibrated temperature (use this for automations if needed)
+  - platform: template
+    name: "Bathroom Temperature Calibrated"
+    id: bath_temp_cal
+    unit_of_measurement: "°C"
+    device_class: temperature
+    state_class: measurement
+    accuracy_decimals: 1
+    lambda: |-
+      if (isnan(id(bath_sht_temp_raw).state)) return NAN;
+      return id(bath_sht_temp_raw).state + id(bath_temp_offset).state;
+
+  # Calibrated humidity (this is your "truth" sensor)
+  - platform: template
+    name: "Bathroom Humidity Calibrated"
+    id: bath_hum_cal
+    unit_of_measurement: "%"
+    device_class: humidity
+    state_class: measurement
+    accuracy_decimals: 1
+    lambda: |-
+      if (isnan(id(bath_sht_hum_raw).state)) return NAN;
+      return id(bath_sht_hum_raw).state + id(bath_hum_offset).state;
+
+  # Dew point (nice extra for bathroom behavior)
+  - platform: template
+    name: "Bathroom Dew Point"
+    id: bath_dewpoint
+    unit_of_measurement: "°C"
+    device_class: temperature
+    state_class: measurement
+    accuracy_decimals: 1
+    lambda: |-
+      if (isnan(id(bath_temp_cal).state) || isnan(id(bath_hum_cal).state)) {
+        return NAN;
+      }
+      const float T = id(bath_temp_cal).state;
+      const float RH = id(bath_hum_cal).state;
+      if (RH <= 0.0f) return NAN;
+      const float a = 17.62f;
+      const float b = 243.12f;
+      const float gamma = (a * T) / (b + T) + log(RH / 100.0f);
+      return (b * gamma) / (a - gamma);
 
 # ── Optional preset ───────────────────────────────────────────────────────────
 script:

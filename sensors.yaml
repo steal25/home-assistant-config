@@ -22,3 +22,14 @@
   state_topic: "espresense/devices/phone:janets-iphone14"
   timeout: 5
   away_timeout: 30    
+  
+  ###### BASELINE HUMIDITY ALGORITHM ############
+
+- platform: statistics
+  name: Bathroom Humidity Baseline Stats
+  entity_id: sensor.bathroom_humidity_bathroom_humidity_sht45
+  state_characteristic: mean     # ⬅ REQUIRED NOW
+  max_age:
+    hours: 2                     # look at the last 2 hours of data
+  sampling_size: 240             # assumes ~30s update interval
+  precision: 2
