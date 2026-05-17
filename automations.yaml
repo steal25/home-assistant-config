@@ -255,7 +255,6 @@
         data: {}
         target:
           entity_id:
-          - fan.living_room_ceiling_fan_new
           - fan.office_ceiling_fan_new
   - device_id: cb7786202895134932e77815c94231df
     domain: button
@@ -271,8 +270,8 @@
     type: press
   - if:
     - condition: sun
-      before: sunrise
-      after: sunset
+      before: sunset
+      after: sunrise
       after_offset: '- 00:30'
     then:
     - action: light.turn_on
@@ -306,10 +305,6 @@
       entity_id:
       - media_player.wiim_pro_garage
   - if:
-    - condition: state
-      entity_id: person.janet_steele
-      state: not_home
-      enabled: false
     - condition: template
       value_template: '{{ states(''person.janet_steele'') != ''home'' }}'
       alias: Janet Not Home
@@ -537,16 +532,7 @@
     data: {}
     target:
       entity_id: lock.all_the_locks
-  - delay:
-      hours: 0
-      minutes: 1
-      seconds: 0
-    enabled: false
   - if:
-    - condition: state
-      entity_id: person.edward_steele
-      state: not_home
-      enabled: false
     - condition: template
       value_template: '{{ states(''person.edward_steele'') != ''home'' }}'
     then:
@@ -566,13 +552,6 @@
       data: {}
       target:
         entity_id: light.all_the_lights
-    - action: fan.turn_off
-      metadata: {}
-      data: {}
-      target:
-        entity_id:
-        - fan.office_ceiling_fan_new
-        - fan.living_room_ceiling_fan_new
     - action: cover.close_cover
       metadata: {}
       data: {}
@@ -1675,8 +1654,8 @@
   - alias: If Master Occupied
     if:
     - condition: time
-      before: '14:00:00'
-      after: '16:00:00'
+      before: '16:00:00'
+      after: '14:00:00'
     - condition: state
       entity_id: binary_sensor.master_bedroom_occupied
       state: 'on'
@@ -2091,8 +2070,8 @@
       - choose:
         - conditions:
           - condition: time
-            after: '22:30:01'
-            before: '23:59:59'
+            after: '22:30:00'
+            before: 00:00:00
             weekday:
             - sun
             - mon
@@ -2147,7 +2126,7 @@
             data: {}
         - conditions:
           - condition: time
-            after: 05:30:01
+            after: 05:30:00
             before: 08:00:00
             weekday:
             - sun
@@ -2165,7 +2144,7 @@
             data: {}
         - conditions:
           - condition: time
-            after: 08:00:01
+            after: 08:00:00
             before: '16:00:00'
             weekday:
             - sun
@@ -2183,7 +2162,7 @@
             data: {}
         - conditions:
           - condition: time
-            after: '16:00:01'
+            after: '16:00:00'
             before: '22:30:00'
             weekday:
             - sun
@@ -2482,7 +2461,7 @@
   description: ''
   triggers:
   - trigger: time_pattern
-    seconds: /3
+    seconds: /15
   conditions:
   - condition: state
     state:
@@ -3768,7 +3747,7 @@
       target:
       - media_player.echo_dot_kitchen
       - media_player.echo_dot_max_living_room_left
-      - media_player.media_player.echo_dot_max_master_left
+      - media_player.echo_dot_max_master_left
       - media_player.echo_dot_office
       - media_player.echo_studio_bathroom
       data:

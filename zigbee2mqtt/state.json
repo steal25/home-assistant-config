@@ -14,7 +14,7 @@
         }
     },
     "2": {
-        "state": "ON",
+        "state": "OFF",
         "color_mode": "color_temp",
         "color_temp": 240,
         "brightness": 254,
@@ -69,7 +69,7 @@
         "position": 100
     },
     "0x00158d000af2af29": {
-        "linkquality": 148,
+        "linkquality": 164,
         "voltage": 3015,
         "battery": 100,
         "device_temperature": 35,
@@ -78,7 +78,7 @@
     "0x00158d000af29cc0": {
         "voltage": 2985,
         "battery": 90,
-        "device_temperature": 34,
+        "device_temperature": 35,
         "power_outage_count": 15,
         "linkquality": 76
     },
@@ -95,10 +95,10 @@
     "0x282c02bfffea87df": {
         "battery": 64,
         "voltage": 2700,
-        "occupancy": true,
+        "occupancy": false,
         "tamper": false,
         "battery_low": false,
-        "linkquality": 144,
+        "linkquality": 140,
         "update": {
             "state": "idle",
             "installed_version": 79,
@@ -112,17 +112,17 @@
         "state": "ON",
         "device_temperature": 24,
         "power_outage_count": 16,
-        "linkquality": 84,
+        "linkquality": 80,
         "flip_indicator_light": "OFF",
         "power_outage_memory": true,
         "mode_switch": "anti_flicker_mode"
     },
     "0x282c02bfffea7bf4": {
         "battery": 74,
-        "occupancy": true,
+        "occupancy": false,
         "tamper": false,
         "battery_low": false,
-        "linkquality": 140,
+        "linkquality": 84,
         "voltage": 2800,
         "update": {
             "state": "idle",
@@ -138,7 +138,7 @@
         "state": "OFF",
         "color_temp": 153,
         "brightness": 139,
-        "linkquality": 140,
+        "linkquality": 148,
         "update": {
             "state": "idle",
             "installed_version": 16787456,
@@ -152,7 +152,7 @@
         "state": "OFF",
         "brightness": 129,
         "power_on_behavior": "off",
-        "linkquality": 92,
+        "linkquality": 220,
         "update": {
             "state": "idle",
             "installed_version": 16787456,
@@ -211,7 +211,7 @@
             "x": 0.3131,
             "y": 0.3232
         },
-        "linkquality": 92,
+        "linkquality": 80,
         "update": {
             "state": "idle",
             "installed_version": 16787456,
@@ -261,8 +261,8 @@
         "power_outage_count": 6,
         "state": "ON",
         "voltage": 118,
-        "current": 0.004296610832214356,
-        "power": 0.51,
+        "current": 0.004262712001800537,
+        "power": 0.5,
         "linkquality": 84,
         "power_outage_memory": false,
         "operation_mode": "decoupled",
@@ -282,7 +282,7 @@
     "0x001788010de9bab9": {
         "state": "OFF",
         "power_on_behavior": "off",
-        "linkquality": 108,
+        "linkquality": 96,
         "brightness": 254,
         "update": {
             "state": "idle",
@@ -301,7 +301,7 @@
             "x": 0.3131,
             "y": 0.3232
         },
-        "linkquality": 140,
+        "linkquality": 128,
         "color_temp": 153,
         "update": {
             "state": "idle",
@@ -314,7 +314,7 @@
     "0xa4c138f58ed785a9": {
         "state": "OFF",
         "power_on_behavior": "off",
-        "linkquality": 108
+        "linkquality": 80
     },
     "0x881a14fffe4212dc": {
         "state": "OFF",
@@ -338,12 +338,12 @@
         "battery": 100,
         "device_temperature": 29,
         "power_outage_count": 29,
-        "linkquality": 136
+        "linkquality": 128
     },
     "0x282c02bfffec2e16": {
         "state": "OFF",
         "power_on_behavior": "off",
-        "linkquality": 100,
+        "linkquality": 136,
         "update": {
             "state": "idle",
             "installed_version": 268513381,
@@ -403,7 +403,7 @@
         "child_lock": "UNLOCK",
         "state_l4": "ON",
         "state_l3": "ON",
-        "linkquality": 140
+        "linkquality": 108
     },
     "0x282c02bfffea87eb": {
         "occupancy": false,
@@ -411,7 +411,7 @@
         "battery_low": false,
         "battery": 81,
         "voltage": 2800,
-        "linkquality": 132,
+        "linkquality": 128,
         "update": {
             "state": "idle",
             "installed_version": 79,
@@ -422,8 +422,8 @@
     },
     "0x00158d000ad629ce": {
         "linkquality": 108,
-        "voltage": 2995,
-        "battery": 97,
+        "voltage": 2985,
+        "battery": 90,
         "device_temperature": 29,
         "power_outage_count": 52
     },
@@ -456,9 +456,9 @@
         "detection_interval": 30,
         "motion_sensitivity": "medium",
         "trigger_indicator": false,
-        "occupancy": true,
-        "illuminance": 16,
-        "linkquality": 148,
+        "occupancy": false,
+        "illuminance": 15,
+        "linkquality": 100,
         "device_temperature": 29,
         "power_outage_count": 0
     },
@@ -470,7 +470,7 @@
         "trigger_indicator": false,
         "occupancy": false,
         "illuminance": 10,
-        "linkquality": 180,
+        "linkquality": 184,
         "device_temperature": 31,
         "power_outage_count": 0
     },
@@ -481,7 +481,7 @@
             "x": 0.695,
             "y": 0.297
         },
-        "linkquality": 120,
+        "linkquality": 116,
         "brightness": 102,
         "update": {
             "state": "idle",
@@ -516,7 +516,7 @@
         },
         "color_mode_rgb": "xy",
         "power_on_behaviour": "off",
-        "device_temperature": 42,
+        "device_temperature": 40,
         "power_outage_count": 18,
         "state": "OFF",
         "state_rgb": "OFF",
@@ -525,7 +525,7 @@
         "color_mode_white": "color_temp",
         "color_temp_white": 251,
         "brightness_rgb": 1,
-        "linkquality": 92
+        "linkquality": 100
     },
     "0x0ceff6fffe59fa5b": {
         "battery": 29,
@@ -559,14 +559,14 @@
     },
     "0x0ceff6fffe400692": {
         "battery": 65,
-        "temperature": 27.8,
+        "temperature": 28.2,
         "humidity": 47.3,
         "comfort_temperature_min": 19,
         "comfort_temperature_max": 27,
         "comfort_humidity_min": 40,
         "comfort_humidity_max": 60,
         "temperature_units": "celsius",
-        "linkquality": 64,
+        "linkquality": 192,
         "temperature_calibration": 0,
         "humidity_calibration": 0,
         "update": {
@@ -578,7 +578,7 @@
         }
     },
     "0x001788010f47b3f5": {
-        "state": "ON",
+        "state": "OFF",
         "brightness": 254,
         "color_mode": "color_temp",
         "color_temp": 240,
@@ -590,7 +590,7 @@
             "h": 41,
             "s": 45
         },
-        "linkquality": 152,
+        "linkquality": 164,
         "power_on_behavior": "off",
         "update": {
             "state": "idle",
@@ -601,8 +601,8 @@
         }
     },
     "0x001788010f47b3ff": {
-        "state": "ON",
-        "linkquality": 132,
+        "state": "OFF",
+        "linkquality": 104,
         "color_mode": "color_temp",
         "color": {
             "x": 0.3736,
@@ -629,7 +629,7 @@
         "device_temperature": 30,
         "power_outage_count": 15,
         "trigger_count": 0,
-        "linkquality": 140,
+        "linkquality": 144,
         "water_leak": false,
         "battery_low": false
     },
@@ -639,7 +639,7 @@
         "device_temperature": 23,
         "power_outage_count": 9,
         "trigger_count": 0,
-        "linkquality": 136
+        "linkquality": 148
     },
     "0x282c02bfffec2808": {
         "state": "ON",
@@ -649,7 +649,7 @@
     "0x282c02bfffec27ac": {
         "state": "OFF",
         "power_on_behavior": "previous",
-        "linkquality": 188,
+        "linkquality": 184,
         "update": {
             "state": "idle",
             "installed_version": 268513381,
@@ -736,10 +736,10 @@
             "h": 39,
             "s": 56
         },
-        "linkquality": 144
+        "linkquality": 112
     },
     "0x001788010ebdb89c": {
-        "linkquality": 88,
+        "linkquality": 136,
         "state": "OFF",
         "color_mode": "color_temp",
         "color": {
@@ -783,7 +783,7 @@
         "brightness": 254
     },
     "0x001788010ebdb963": {
-        "linkquality": 68,
+        "linkquality": 120,
         "state": "OFF",
         "color_mode": "color_temp",
         "color": {
@@ -812,7 +812,7 @@
             "latest_source": "https://raw.githubusercontent.com/Koenkk/zigbee-OTA/master/images/Hue/100B-0114-01002800-ConfLightBLE-Lamps-EFR32MG21.zigbee",
             "latest_release_notes": null
         },
-        "linkquality": 108,
+        "linkquality": 148,
         "state": "OFF",
         "brightness": 254,
         "color_mode": "color_temp",
@@ -830,7 +830,7 @@
             "latest_source": "https://raw.githubusercontent.com/Koenkk/zigbee-OTA/master/images/Hue/100B-0114-01002800-ConfLightBLE-Lamps-EFR32MG21.zigbee",
             "latest_release_notes": null
         },
-        "linkquality": 140,
+        "linkquality": 100,
         "state": "OFF",
         "brightness": 254,
         "color_mode": "color_temp",
@@ -849,7 +849,7 @@
             "latest_source": "https://raw.githubusercontent.com/Koenkk/zigbee-OTA/master/images/Hue/100B-0114-01002800-ConfLightBLE-Lamps-EFR32MG21.zigbee",
             "latest_release_notes": null
         },
-        "linkquality": 84,
+        "linkquality": 88,
         "state": "OFF",
         "brightness": 254,
         "color_mode": "color_temp",
@@ -867,7 +867,7 @@
             "latest_source": "https://raw.githubusercontent.com/Koenkk/zigbee-OTA/master/images/Hue/100B-0114-01002800-ConfLightBLE-Lamps-EFR32MG21.zigbee",
             "latest_release_notes": null
         },
-        "linkquality": 140,
+        "linkquality": 136,
         "state": "OFF",
         "brightness": 254,
         "color_mode": "color_temp",
@@ -885,7 +885,7 @@
             "latest_source": "https://raw.githubusercontent.com/Koenkk/zigbee-OTA/master/images/Hue/100B-0114-01002800-ConfLightBLE-Lamps-EFR32MG21.zigbee",
             "latest_release_notes": null
         },
-        "linkquality": 136,
+        "linkquality": 88,
         "state": "OFF",
         "brightness": 254,
         "color_mode": "color_temp",
@@ -903,7 +903,7 @@
             "latest_source": "https://raw.githubusercontent.com/Koenkk/zigbee-OTA/master/images/Hue/100B-0114-01002800-ConfLightBLE-Lamps-EFR32MG21.zigbee",
             "latest_release_notes": null
         },
-        "linkquality": 108,
+        "linkquality": 104,
         "state": "OFF",
         "brightness": 254,
         "color_mode": "color_temp",
@@ -921,7 +921,7 @@
             "latest_source": "https://raw.githubusercontent.com/Koenkk/zigbee-OTA/master/images/Hue/100B-011F-01002602-ConfLightBLE-ModuLumV3-EFR32MG21.zigbee",
             "latest_release_notes": null
         },
-        "linkquality": 200,
+        "linkquality": 196,
         "brightness": 254,
         "state": "OFF",
         "color_mode": "xy",
@@ -956,7 +956,7 @@
         "current": 0,
         "energy": 0.45,
         "ac_frequency": 60,
-        "voltage": 118.8,
+        "voltage": 119.5,
         "update": {
             "state": "idle",
             "installed_version": 268513381,
@@ -966,11 +966,11 @@
         },
         "power": 0,
         "power_factor": 0,
-        "linkquality": 156
+        "linkquality": 160
     },
     "0x001788010e2f1299": {
         "state": "OFF",
-        "linkquality": 116,
+        "linkquality": 112,
         "brightness": 20,
         "color_temp": 175,
         "color_mode": "xy",
@@ -1006,7 +1006,7 @@
             "latest_release_notes": null
         },
         "color_temp": 153,
-        "linkquality": 140,
+        "linkquality": 176,
         "philips_raw": "0b0000242d50e135"
     },
     "0x3c2ef5fffe31a817": {
@@ -1049,6 +1049,6 @@
             "latest_source": null,
             "latest_release_notes": null
         },
-        "linkquality": 196
+        "linkquality": 148
     }
 }
