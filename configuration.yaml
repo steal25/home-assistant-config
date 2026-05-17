@@ -106,54 +106,6 @@ media_player:
     ssl: False
     api_key: c0600f8bc413428085b615164a9b0b76
     
-
-#   - platform: denon
-#     host: 172.25.13.55
-
-# ####JBL Shell CMDS
-
-# shell_command:
-#   # Step 1: Handshake - Always send this first after Home Assistant restarts
-
-#   ma510_init: 'printf "\x23\x50\x01\xF0\x0D" | nc 172.25.13.168 50000'
-
-#   # Power On / Off
-
-#   ma510_power_on: 'printf "\x23\x00\x01\x01\x0D" | nc 172.25.13.168 50000'
-#   ma510_power_off: 'printf "\x23\x00\x01\x00\x0D" | nc 172.25.13.168 50000'
-
-#   # Volume Set to 40 (you can adjust this — 0x00 to 0x63 = volume 0–99)
-
-#   ma510_volume_40: 'printf "\x23\x06\x01\x28\x0D" | nc 172.25.13.168 50000'
-#   ma510_volume_25: 'printf "\x23\x06\x01\x19\x0D" | nc 172.25.13.168 50000'
-#   ma510_volume_20: 'printf "\x23\x06\x01\x14\x0D" | nc 172.25.13.168 50000'
-#   ma510_volume_35: 'printf "\x23\x06\x01\x26\x0D" | nc 172.25.13.168 50000'
-#   ma510_volume_30: 'printf "\x23\x06\x01\x22\x0D" | nc 172.25.13.168 50000'
-#   ma510_volume_46: 'printf "\x23\x06\x01\x2E\x0D" | nc 172.25.13.168 50000'
-#   ma510_volume_41: 'printf "\x23\x06\x01\x29\x0D" | nc 172.25.13.168 50000'
-
-#   # Mute On / Off
-
-#   ma510_mute_on: 'printf "\x23\x07\x01\x01\x0D" | nc 172.25.13.168 50000'
-#   ma510_mute_off: 'printf "\x23\x07\x01\x00\x0D" | nc 172.25.13.168 50000'
-
-#   # Input Selection
-
-#   ma510_input_tv: 'printf "\x23\x05\x01\x01\x0D" | nc 172.25.13.168 50000'
-#   ma510_input_media: 'printf "\x23\x05\x01\x09\x0D" | nc 172.25.13.168 50000'
-
-#   # Find Roku Remotes
-
-#   roku_find_remote_living_room: 'curl -d "" http://172.25.13.201:8060/keypress/FindRemote'
-#   roku_find_remote_master: 'curl -d "" http://172.25.13.99:8060/keypress/FindRemote'
-  
-#   # Run Roomba script
-#   ##update_roomba_pmapv: /root/update_roomba_pmapv.sh
-#   update_roomba_pmapv: "ssh -i /config/id_rsa -o StrictHostKeyChecking=no -o ConnectTimeout=10 root@172.25.14.50 'pct exec 100 -- nohup /root/update_roomba_pmapv.sh > /root/roomba_pmapv.log 2>&1 &'"
-#   ## GITHUB ###
-#   git_push: "cd /config && git add . && git commit -m 'HA sync' && git push origin main"
-#   git_pull: "cd /config && git pull origin main"
-  
 rest_command:
   reolink_front_push_off:
     url: "http://172.25.16.175/cgi-bin/api.cgi"
