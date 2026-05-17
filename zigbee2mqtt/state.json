@@ -110,7 +110,7 @@
     "0x54ef441000a62632": {
         "operation_mode": "decoupled",
         "state": "ON",
-        "device_temperature": 24,
+        "device_temperature": 25,
         "power_outage_count": 16,
         "linkquality": 80,
         "flip_indicator_light": "OFF",
@@ -149,8 +149,8 @@
         "philips_raw": "07000001a600"
     },
     "0x001788010de9af2f": {
-        "state": "OFF",
-        "brightness": 129,
+        "state": "ON",
+        "brightness": 127,
         "power_on_behavior": "off",
         "linkquality": 220,
         "update": {
@@ -261,8 +261,8 @@
         "power_outage_count": 6,
         "state": "ON",
         "voltage": 118,
-        "current": 0.004262712001800537,
-        "power": 0.5,
+        "current": 0.004076271533966064,
+        "power": 0.48,
         "linkquality": 84,
         "power_outage_memory": false,
         "operation_mode": "decoupled",
@@ -341,7 +341,7 @@
         "linkquality": 128
     },
     "0x282c02bfffec2e16": {
-        "state": "OFF",
+        "state": "ON",
         "power_on_behavior": "off",
         "linkquality": 136,
         "update": {
@@ -457,21 +457,21 @@
         "motion_sensitivity": "medium",
         "trigger_indicator": false,
         "occupancy": false,
-        "illuminance": 15,
+        "illuminance": 16,
         "linkquality": 100,
-        "device_temperature": 29,
+        "device_temperature": 32,
         "power_outage_count": 0
     },
     "0x54ef441000c7c7e8": {
-        "voltage": 2965,
-        "battery": 77,
+        "voltage": 2993,
+        "battery": 95,
         "detection_interval": 30,
         "motion_sensitivity": "medium",
         "trigger_indicator": false,
         "occupancy": false,
-        "illuminance": 10,
+        "illuminance": 8,
         "linkquality": 184,
-        "device_temperature": 31,
+        "device_temperature": 32,
         "power_outage_count": 0
     },
     "0x001788010cb76828": {
@@ -516,7 +516,7 @@
         },
         "color_mode_rgb": "xy",
         "power_on_behaviour": "off",
-        "device_temperature": 40,
+        "device_temperature": 41,
         "power_outage_count": 18,
         "state": "OFF",
         "state_rgb": "OFF",
@@ -559,7 +559,7 @@
     },
     "0x0ceff6fffe400692": {
         "battery": 65,
-        "temperature": 28.2,
+        "temperature": 28.4,
         "humidity": 47.3,
         "comfort_temperature_min": 19,
         "comfort_temperature_max": 27,
@@ -956,7 +956,7 @@
         "current": 0,
         "energy": 0.45,
         "ac_frequency": 60,
-        "voltage": 119.5,
+        "voltage": 118.6,
         "update": {
             "state": "idle",
             "installed_version": 268513381,
