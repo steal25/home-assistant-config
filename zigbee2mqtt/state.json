@@ -1,109 +1,135 @@
 {
+    "1": {
+        "brightness": 254,
+        "state": "OFF",
+        "color_mode": "color_temp",
+        "color_temp": 267,
+        "color": {
+            "x": 0.3926,
+            "y": 0.384,
+            "hue": 39,
+            "saturation": 56,
+            "h": 39,
+            "s": 56
+        }
+    },
+    "2": {
+        "state": "ON",
+        "color_mode": "color_temp",
+        "color_temp": 240,
+        "brightness": 254,
+        "color": {
+            "x": 0.3736,
+            "y": 0.3724,
+            "hue": 41,
+            "saturation": 45,
+            "h": 41,
+            "s": 45
+        }
+    },
+    "3": {
+        "brightness": 254,
+        "state": "OFF",
+        "color_mode": "xy",
+        "color": {
+            "x": 0.319,
+            "y": 0.326
+        },
+        "color_temp": 162
+    },
+    "4": {
+        "state": "OFF",
+        "brightness": 139,
+        "color_mode": "color_temp",
+        "color_temp": 153,
+        "effect": "none"
+    },
+    "5": {
+        "state": "OFF",
+        "brightness": 254,
+        "color_mode": "color_temp",
+        "color_temp": 250,
+        "color": {
+            "x": 0.3804,
+            "y": 0.3767
+        }
+    },
+    "6": {
+        "state": "OFF",
+        "brightness": 102,
+        "color_mode": "xy",
+        "color": {
+            "x": 0.695,
+            "y": 0.297
+        },
+        "color_temp": 159
+    },
+    "7": {
+        "state": "CLOSE",
+        "position": 100
+    },
     "0x00158d000af2af29": {
-        "linkquality": 255,
+        "linkquality": 148,
         "voltage": 3015,
         "battery": 100,
-        "device_temperature": 33,
+        "device_temperature": 35,
         "power_outage_count": 12
     },
     "0x00158d000af29cc0": {
         "voltage": 2985,
         "battery": 90,
-        "device_temperature": 36,
-        "power_outage_count": 13,
-        "linkquality": 248
+        "device_temperature": 34,
+        "power_outage_count": 15,
+        "linkquality": 76
     },
     "0x00158d000ae4c796": {
-        "device_temperature": 32,
-        "power_outage_count": 18,
+        "device_temperature": 33,
+        "power_outage_count": 22,
         "state": "OFF",
         "power": 0,
         "energy": 6.44,
         "consumption": 6.443460464477539,
-        "linkquality": 156,
-        "update": {
-            "state": "idle",
-            "installed_version": 17,
-            "latest_version": 17
-        },
+        "linkquality": 108,
         "power_outage_memory": true
     },
     "0x282c02bfffea87df": {
-        "battery": 86,
-        "voltage": 2900,
-        "occupancy": false,
+        "battery": 64,
+        "voltage": 2700,
+        "occupancy": true,
         "tamper": false,
         "battery_low": false,
+        "linkquality": 144,
         "update": {
             "state": "idle",
             "installed_version": 79,
-            "latest_version": 79
-        },
-        "linkquality": 232
-    },
-    "0x54ef441000b40c41": {
-        "device_temperature": 31,
-        "power_outage_count": 6,
-        "state": "ON",
-        "energy": 81.4,
-        "consumption": 81.39533996582031,
-        "voltage": 117,
-        "current": 0.22136752319335937,
-        "power": 25.9,
-        "state_top": "ON",
-        "state_bottom": "OFF",
-        "power_outage_memory": true,
-        "linkquality": 255,
-        "update": {
-            "state": "idle",
-            "installed_version": 31,
-            "latest_version": 31
-        },
-        "flip_indicator_light": "OFF",
-        "operation_mode_top": "control_relay",
-        "operation_mode_bottom": "control_relay"
-    },
-    "0x54ef441000c1437e": {
-        "operation_mode": "decoupled",
-        "device_temperature": 26,
-        "power_outage_count": 10,
-        "state": "ON",
-        "power_outage_memory": true,
-        "linkquality": 116,
-        "update": {
-            "state": "idle",
-            "installed_version": 34,
-            "latest_version": 32
-        },
-        "mode_switch": "anti_flicker_mode",
-        "flip_indicator_light": "OFF"
+            "latest_version": 79,
+            "latest_source": "https://raw.githubusercontent.com/Koenkk/zigbee-OTA/master/images/ThirdReality/Motion_Sensor_PROD_OTA_V79_v1.00.79.ota",
+            "latest_release_notes": null
+        }
     },
     "0x54ef441000a62632": {
         "operation_mode": "decoupled",
         "state": "ON",
-        "device_temperature": 27,
-        "power_outage_count": 10,
-        "linkquality": 248,
-        "update": {
-            "state": "idle",
-            "installed_version": 34,
-            "latest_version": 32
-        },
+        "device_temperature": 24,
+        "power_outage_count": 16,
+        "linkquality": 84,
         "flip_indicator_light": "OFF",
-        "power_outage_memory": false,
+        "power_outage_memory": true,
         "mode_switch": "anti_flicker_mode"
     },
     "0x282c02bfffea7bf4": {
-        "battery": 89,
-        "occupancy": false,
+        "battery": 74,
+        "occupancy": true,
         "tamper": false,
         "battery_low": false,
-        "linkquality": 164,
-        "voltage": 2900,
+        "linkquality": 140,
+        "voltage": 2800,
         "update": {
             "state": "idle",
             "installed_version": 79,
-            "latest_version": 79
+            "latest_version": 79,
+            "latest_source": "https://raw.githubusercontent.com/Koenkk/zigbee-OTA/master/images/ThirdReality/Motion_Sensor_PROD_OTA_V79_v1.00.79.ota",
+            "latest_release_notes": null
         }
     },
     "0x001788010d8258e8": {
@@ -112,36 +138,44 @@
         "state": "OFF",
         "color_temp": 153,
         "brightness": 139,
+        "linkquality": 140,
         "update": {
             "state": "idle",
-            "installed_version": 16787202,
-            "latest_version": 16787202
+            "installed_version": 16787456,
+            "latest_version": 16787456,
+            "latest_source": "https://raw.githubusercontent.com/Koenkk/zigbee-OTA/master/images/Hue/100B-0114-01002800-ConfLightBLE-Lamps-EFR32MG21.zigbee",
+            "latest_release_notes": null
         },
-        "linkquality": 248
+        "philips_raw": "07000001a600"
     },
     "0x001788010de9af2f": {
         "state": "OFF",
-        "brightness": 64,
+        "brightness": 129,
         "power_on_behavior": "off",
+        "linkquality": 92,
         "update": {
             "state": "idle",
-            "installed_version": 16787202,
-            "latest_version": 16787202
+            "installed_version": 16787456,
+            "latest_version": 16787456,
+            "latest_source": "https://raw.githubusercontent.com/Koenkk/zigbee-OTA/master/images/Hue/100B-0114-01002800-ConfLightBLE-Lamps-EFR32MG21.zigbee",
+            "latest_release_notes": null
         },
-        "linkquality": 128
+        "philips_raw": "03000001"
     },
     "0x001788010d82560a": {
         "color_mode": "color_temp",
         "power_on_behavior": "off",
         "color_temp": 153,
         "state": "OFF",
+        "linkquality": 144,
+        "brightness": 139,
         "update": {
             "state": "idle",
-            "installed_version": 16787202,
-            "latest_version": 16787202
-        },
-        "linkquality": 216,
-        "brightness": 139
+            "installed_version": 16787456,
+            "latest_version": 16787456,
+            "latest_source": "https://raw.githubusercontent.com/Koenkk/zigbee-OTA/master/images/Hue/100B-0114-01002800-ConfLightBLE-Lamps-EFR32MG21.zigbee",
+            "latest_release_notes": null
+        }
     },
     "0x54ef441000c140fa": {
         "operation_mode": "control_relay",
@@ -149,12 +183,7 @@
         "power_outage_count": 23,
         "state": "ON",
         "power_outage_memory": true,
-        "linkquality": 124,
-        "update": {
-            "state": "idle",
-            "installed_version": 34,
-            "latest_version": 32
-        }
+        "linkquality": 124
     },
     "0x001788010cce8600": {
         "color_mode": "color_temp",
@@ -162,12 +191,15 @@
         "state": "OFF",
         "color_temp": 153,
         "brightness": 139,
+        "linkquality": 180,
         "update": {
             "state": "idle",
-            "installed_version": 16787202,
-            "latest_version": 16787202
+            "installed_version": 16787456,
+            "latest_version": 16787456,
+            "latest_source": "https://raw.githubusercontent.com/Koenkk/zigbee-OTA/master/images/Hue/100B-0114-01002800-ConfLightBLE-Lamps-EFR32MG21.zigbee",
+            "latest_release_notes": null
         },
-        "linkquality": 236
+        "philips_raw": "070000019900"
     },
     "0x001788010d58db09": {
         "color_mode": "color_temp",
@@ -179,12 +211,14 @@
             "x": 0.3131,
             "y": 0.3232
         },
+        "linkquality": 92,
         "update": {
             "state": "idle",
-            "installed_version": 16787202,
-            "latest_version": 16787202
-        },
-        "linkquality": 132
+            "installed_version": 16787456,
+            "latest_version": 16787456,
+            "latest_source": "https://raw.githubusercontent.com/Koenkk/zigbee-OTA/master/images/Hue/100B-0114-01002800-ConfLightBLE-Lamps-EFR32MG21.zigbee",
+            "latest_release_notes": null
+        }
     },
     "0x00158d000af1fb01": {
         "temperature": 18.44,
@@ -205,12 +239,12 @@
         "power_outage_count": 15
     },
     "0x00158d008afe1557": {
-        "temperature": 27.09,
-        "humidity": 55.5,
-        "pressure": 1009.8,
-        "linkquality": 116,
-        "voltage": 3005,
-        "battery": 100,
+        "temperature": 21.95,
+        "humidity": 51.93,
+        "pressure": 1014.5,
+        "linkquality": 104,
+        "voltage": 2905,
+        "battery": 37,
         "power_outage_count": 8
     },
     "0x00158d000af1d167": {
@@ -224,21 +258,16 @@
     },
     "0x54ef4410009410c9": {
         "device_temperature": 30,
-        "power_outage_count": 0,
+        "power_outage_count": 6,
         "state": "ON",
         "voltage": 118,
-        "current": 0.004754237174987793,
-        "power": 0.56,
-        "linkquality": 176,
+        "current": 0.004296610832214356,
+        "power": 0.51,
+        "linkquality": 84,
         "power_outage_memory": false,
         "operation_mode": "decoupled",
-        "energy": 1.5,
-        "consumption": 1.4968575239181519,
-        "update": {
-            "state": "idle",
-            "installed_version": 31,
-            "latest_version": 31
-        },
+        "energy": 5.11,
+        "consumption": 5.1149516105651855,
         "flip_indicator_light": "OFF"
     },
     "0x54ef441000c14385": {
@@ -253,181 +282,153 @@
     "0x001788010de9bab9": {
         "state": "OFF",
         "power_on_behavior": "off",
-        "linkquality": 132,
+        "linkquality": 108,
+        "brightness": 254,
         "update": {
             "state": "idle",
-            "installed_version": 16787202,
-            "latest_version": 16787202
-        },
-        "brightness": 254
+            "installed_version": 16787456,
+            "latest_version": 16787456,
+            "latest_source": "https://raw.githubusercontent.com/Koenkk/zigbee-OTA/master/images/Hue/100B-0114-01002800-ConfLightBLE-Lamps-EFR32MG21.zigbee",
+            "latest_release_notes": null
+        }
     },
     "0x001788010d941fa1": {
         "color_mode": "color_temp",
         "state": "OFF",
         "power_on_behavior": "off",
-        "update": {
-            "state": "idle",
-            "installed_version": 16787202,
-            "latest_version": 16787202
-        },
         "brightness": 254,
         "color": {
             "x": 0.3131,
             "y": 0.3232
         },
-        "linkquality": 176,
-        "color_temp": 153
+        "linkquality": 140,
+        "color_temp": 153,
+        "update": {
+            "state": "idle",
+            "installed_version": 16787456,
+            "latest_version": 16787456,
+            "latest_source": "https://raw.githubusercontent.com/Koenkk/zigbee-OTA/master/images/Hue/100B-0114-01002800-ConfLightBLE-Lamps-EFR32MG21.zigbee",
+            "latest_release_notes": null
+        }
     },
     "0xa4c138f58ed785a9": {
         "state": "OFF",
         "power_on_behavior": "off",
-        "linkquality": 132
+        "linkquality": 108
     },
     "0x881a14fffe4212dc": {
-        "update": {
-            "state": "idle",
-            "installed_version": 67174657,
-            "latest_version": 67174657
-        },
-        "state": "ON",
+        "state": "OFF",
         "fan_state": "OFF",
         "rampRateOnToOffRemote": 127,
         "brightness": 254,
-        "linkquality": 124,
+        "linkquality": 188,
         "fan_mode": "low",
-        "outputMode_2": "Ceiling Fan (3-Speed)"
+        "outputMode_2": "Ceiling Fan (3-Speed)",
+        "update": {
+            "state": "idle",
+            "installed_version": 67174657,
+            "latest_version": 67174657,
+            "latest_source": "https://raw.githubusercontent.com/Koenkk/zigbee-OTA/master/images/Inovelli/VZM36_1.01-Beta.ota",
+            "latest_release_notes": null
+        },
+        "onOff": 0
     },
     "0x00158d000af2ca9d": {
         "voltage": 3015,
         "battery": 100,
-        "device_temperature": 21,
+        "device_temperature": 29,
         "power_outage_count": 29,
-        "linkquality": 172
-    },
-    "0x001788010e2f121a": {
-        "color_mode": "xy",
-        "linkquality": 132,
-        "brightness": 92,
-        "state": "OFF",
-        "power_on_behavior": "off",
-        "color": {
-            "x": 0.33,
-            "y": 0.357
-        },
-        "color_temp": 179,
-        "update": {
-            "state": "idle",
-            "installed_version": 16786946,
-            "latest_version": 16786946
-        }
-    },
-    "0x001788010e2f1299": {
-        "color_mode": "xy",
-        "power_on_behavior": "off",
-        "color_temp_startup": 153,
-        "color_temp": 262,
-        "state": "ON",
-        "brightness": 20,
-        "linkquality": 132,
-        "color": {
-            "x": 0.391,
-            "y": 0.388
-        },
-        "update": {
-            "state": "idle",
-            "installed_version": 16786946,
-            "latest_version": 16786946
-        }
-    },
-    "0x282c02bfffec2808": {
-        "update": {
-            "state": "idle",
-            "installed_version": 268513368,
-            "latest_version": 268513368
-        },
-        "state": "OFF",
-        "power_on_behavior": "off",
-        "linkquality": 128
+        "linkquality": 136
     },
     "0x282c02bfffec2e16": {
         "state": "OFF",
         "power_on_behavior": "off",
+        "linkquality": 100,
         "update": {
             "state": "idle",
-            "installed_version": 268513368,
-            "latest_version": 268513368
-        },
-        "linkquality": 164
+            "installed_version": 268513381,
+            "latest_version": 268513381,
+            "latest_source": "https://raw.githubusercontent.com/Koenkk/zigbee-OTA/master/images/ThirdReality/SmartPlug_Zigbee_PROD_OTA_V101_1.01.01.ota",
+            "latest_release_notes": null
+        }
     },
     "0x001788010e1bc4f2": {
         "color_mode": "color_temp",
         "state": "OFF",
-        "brightness": 74,
+        "brightness": 254,
         "color_temp": 267,
+        "linkquality": 112,
+        "power_on_behavior": "off",
         "update": {
             "state": "idle",
             "installed_version": 16787202,
-            "latest_version": 16787202
-        },
-        "linkquality": 172,
-        "power_on_behavior": "off"
+            "latest_version": 16787202,
+            "latest_source": "https://raw.githubusercontent.com/Koenkk/zigbee-OTA/master/images/Hue/100B-0114-01002702-ConfLightBLE-Lamps-EFR32MG21.zigbee",
+            "latest_release_notes": null
+        }
     },
     "0x001788010e1bc3d5": {
         "color_mode": "color_temp",
         "state": "OFF",
-        "brightness": 74,
+        "brightness": 254,
         "color_temp": 267,
+        "linkquality": 160,
         "update": {
             "state": "idle",
             "installed_version": 16787202,
-            "latest_version": 16787202
-        },
-        "linkquality": 164
+            "latest_version": 16787202,
+            "latest_source": "https://raw.githubusercontent.com/Koenkk/zigbee-OTA/master/images/Hue/100B-0114-01002702-ConfLightBLE-Lamps-EFR32MG21.zigbee",
+            "latest_release_notes": null
+        }
     },
     "0x001788010e1b5e31": {
         "color_mode": "color_temp",
         "state": "OFF",
-        "brightness": 74,
+        "brightness": 254,
         "color_temp": 267,
+        "linkquality": 116,
         "update": {
             "state": "idle",
             "installed_version": 16787202,
-            "latest_version": 16787202
-        },
-        "linkquality": 232
+            "latest_version": 16787202,
+            "latest_source": "https://raw.githubusercontent.com/Koenkk/zigbee-OTA/master/images/Hue/100B-0114-01002702-ConfLightBLE-Lamps-EFR32MG21.zigbee",
+            "latest_release_notes": null
+        }
     },
     "0xa4c138a3dbf2e16d": {
-        "state_l1": "OFF",
+        "state_l1": "ON",
         "state_l2": "ON",
-        "state_l5": "OFF",
+        "state_l5": "ON",
         "power_outage_memory_l1": "restore",
         "child_lock": "UNLOCK",
         "state_l4": "ON",
         "state_l3": "ON",
-        "linkquality": 148
+        "linkquality": 140
     },
     "0x282c02bfffea87eb": {
         "occupancy": false,
         "tamper": false,
         "battery_low": false,
-        "battery": 91,
-        "voltage": 2900,
+        "battery": 81,
+        "voltage": 2800,
+        "linkquality": 132,
         "update": {
             "state": "idle",
             "installed_version": 79,
-            "latest_version": 79
-        },
-        "linkquality": 180
+            "latest_version": 79,
+            "latest_source": "https://raw.githubusercontent.com/Koenkk/zigbee-OTA/master/images/ThirdReality/Motion_Sensor_PROD_OTA_V79_v1.00.79.ota",
+            "latest_release_notes": null
+        }
     },
     "0x00158d000ad629ce": {
-        "linkquality": 255,
-        "voltage": 3015,
-        "battery": 100,
-        "device_temperature": 35,
+        "linkquality": 108,
+        "voltage": 2995,
+        "battery": 97,
+        "device_temperature": 29,
         "power_outage_count": 52
     },
     "0xa4c1382da018d8ca": {
-        "linkquality": 208,
+        "linkquality": 116,
         "state": "OFF",
         "brightness": 66
     },
@@ -441,60 +442,36 @@
         "power_outage_count": 13
     },
     "0x00158d000af1f50e": {
-        "temperature": 27.83,
-        "humidity": 54.94,
-        "pressure": 1010.1,
-        "linkquality": 120,
-        "voltage": 2885,
-        "battery": 23,
+        "temperature": 26.2,
+        "humidity": 55.38,
+        "pressure": 1010,
+        "linkquality": 88,
+        "voltage": 2875,
+        "battery": 17,
         "power_outage_count": 20
     },
     "0x54ef441000c64199": {
-        "voltage": 2986,
-        "battery": 91,
-        "detection_interval": 30,
-        "motion_sensitivity": "medium",
-        "trigger_indicator": false,
-        "occupancy": false,
-        "illuminance": 12,
-        "linkquality": 232,
-        "device_temperature": 31,
-        "power_outage_count": 0
-    },
-    "0x54ef441000a443af": {
-        "voltage": 3026,
-        "battery": 100,
-        "detection_interval": 10,
-        "motion_sensitivity": "high",
-        "trigger_indicator": false,
-        "linkquality": 132,
-        "occupancy": false,
-        "illuminance": 12,
-        "device_temperature": 28,
-        "power_outage_count": 0
-    },
-    "0x54ef441000a42bdf": {
-        "voltage": 3032,
+        "voltage": 3027,
         "battery": 100,
         "detection_interval": 30,
         "motion_sensitivity": "medium",
         "trigger_indicator": false,
+        "occupancy": true,
+        "illuminance": 16,
         "linkquality": 148,
-        "occupancy": false,
-        "illuminance": 15,
-        "device_temperature": 28,
+        "device_temperature": 29,
         "power_outage_count": 0
     },
     "0x54ef441000c7c7e8": {
-        "voltage": 3021,
-        "battery": 100,
+        "voltage": 2965,
+        "battery": 77,
         "detection_interval": 30,
         "motion_sensitivity": "medium",
         "trigger_indicator": false,
         "occupancy": false,
-        "illuminance": 24,
-        "linkquality": 240,
-        "device_temperature": 29,
+        "illuminance": 10,
+        "linkquality": 180,
+        "device_temperature": 31,
         "power_outage_count": 0
     },
     "0x001788010cb76828": {
@@ -504,29 +481,33 @@
             "x": 0.695,
             "y": 0.297
         },
-        "update": {
-            "state": "idle",
-            "installed_version": 16786690,
-            "latest_version": 16786690
-        },
-        "linkquality": 216,
-        "brightness": 102
-    },
-    "0x001788010d1a24f1": {
-        "state": "OFF",
+        "linkquality": 120,
         "brightness": 102,
         "update": {
             "state": "idle",
             "installed_version": 16786690,
-            "latest_version": 16786690
-        },
+            "latest_version": 16786690,
+            "latest_source": "https://raw.githubusercontent.com/Koenkk/zigbee-OTA/master/images/Hue/100B-0120-01002502-ConfLightBLE-PortableV3-EFR32MG21.zigbee",
+            "latest_release_notes": null
+        }
+    },
+    "0x001788010d1a24f1": {
+        "state": "OFF",
+        "brightness": 102,
         "color_mode": "xy",
         "color": {
             "x": 0.695,
             "y": 0.297
         },
         "color_temp": 159,
-        "linkquality": 232
+        "linkquality": 88,
+        "update": {
+            "state": "idle",
+            "installed_version": 16786690,
+            "latest_version": 16786690,
+            "latest_source": "https://raw.githubusercontent.com/Koenkk/zigbee-OTA/master/images/Hue/100B-0120-01002502-ConfLightBLE-PortableV3-EFR32MG21.zigbee",
+            "latest_release_notes": null
+        }
     },
     "0x54ef441000d7b10e": {
         "color_rgb": {
@@ -535,8 +516,8 @@
         },
         "color_mode_rgb": "xy",
         "power_on_behaviour": "off",
-        "device_temperature": 39,
-        "power_outage_count": 14,
+        "device_temperature": 42,
+        "power_outage_count": 18,
         "state": "OFF",
         "state_rgb": "OFF",
         "state_white": "OFF",
@@ -544,31 +525,530 @@
         "color_mode_white": "color_temp",
         "color_temp_white": 251,
         "brightness_rgb": 1,
-        "linkquality": 172
+        "linkquality": 92
     },
     "0x0ceff6fffe59fa5b": {
-        "battery": 43,
-        "temperature": 25.5,
-        "humidity": 53.9,
+        "battery": 29,
+        "temperature": 15.7,
+        "humidity": 62.1,
         "comfort_temperature_min": 19,
         "comfort_temperature_max": 27,
         "comfort_humidity_min": 40,
         "comfort_humidity_max": 60,
         "temperature_units": "fahrenheit",
+        "linkquality": 140,
         "update": {
             "state": "idle",
             "installed_version": 8960,
-            "latest_version": 8960
-        },
-        "linkquality": 255
+            "latest_version": 8960,
+            "latest_source": "https://raw.githubusercontent.com/Koenkk/zigbee-OTA/master/images/Sonoff/snzb-02d_v2.3.0.ota",
+            "latest_release_notes": null
+        }
     },
     "0x282c02bfffec60c8": {
         "state": "OFF",
-        "linkquality": 216,
+        "linkquality": 140,
+        "power_on_behavior": "previous",
         "update": {
             "state": "idle",
-            "installed_version": 268513378,
-            "latest_version": 268513378
+            "installed_version": 268513381,
+            "latest_version": 268513381,
+            "latest_source": "https://raw.githubusercontent.com/Koenkk/zigbee-OTA/master/images/ThirdReality/SmartPlug_Zigbee_PROD_OTA_V101_1.01.01.ota",
+            "latest_release_notes": null
         }
+    },
+    "0x0ceff6fffe400692": {
+        "battery": 65,
+        "temperature": 27.8,
+        "humidity": 47.3,
+        "comfort_temperature_min": 19,
+        "comfort_temperature_max": 27,
+        "comfort_humidity_min": 40,
+        "comfort_humidity_max": 60,
+        "temperature_units": "celsius",
+        "linkquality": 64,
+        "temperature_calibration": 0,
+        "humidity_calibration": 0,
+        "update": {
+            "state": "idle",
+            "installed_version": 8960,
+            "latest_version": 8960,
+            "latest_source": "https://raw.githubusercontent.com/Koenkk/zigbee-OTA/master/images/Sonoff/snzb-02d_v2.3.0.ota",
+            "latest_release_notes": null
+        }
+    },
+    "0x001788010f47b3f5": {
+        "state": "ON",
+        "brightness": 254,
+        "color_mode": "color_temp",
+        "color_temp": 240,
+        "color": {
+            "x": 0.3736,
+            "y": 0.3724,
+            "hue": 41,
+            "saturation": 45,
+            "h": 41,
+            "s": 45
+        },
+        "linkquality": 152,
+        "power_on_behavior": "off",
+        "update": {
+            "state": "idle",
+            "installed_version": 16786946,
+            "latest_version": 16786946,
+            "latest_source": "https://raw.githubusercontent.com/Koenkk/zigbee-OTA/master/images/Hue/100B-011F-01002602-ConfLightBLE-ModuLumV3-EFR32MG21.zigbee",
+            "latest_release_notes": null
+        }
+    },
+    "0x001788010f47b3ff": {
+        "state": "ON",
+        "linkquality": 132,
+        "color_mode": "color_temp",
+        "color": {
+            "x": 0.3736,
+            "y": 0.3724,
+            "hue": 41,
+            "saturation": 45,
+            "h": 41,
+            "s": 45
+        },
+        "brightness": 254,
+        "color_temp": 240,
+        "power_on_behavior": "off",
+        "update": {
+            "state": "idle",
+            "installed_version": 16786946,
+            "latest_version": 16786946,
+            "latest_source": "https://raw.githubusercontent.com/Koenkk/zigbee-OTA/master/images/Hue/100B-011F-01002602-ConfLightBLE-ModuLumV3-EFR32MG21.zigbee",
+            "latest_release_notes": null
+        }
+    },
+    "0x00158d008bb47557": {
+        "voltage": 2975,
+        "battery": 83,
+        "device_temperature": 30,
+        "power_outage_count": 15,
+        "trigger_count": 0,
+        "linkquality": 140,
+        "water_leak": false,
+        "battery_low": false
+    },
+    "0x00158d008bb5a82c": {
+        "voltage": 3005,
+        "battery": 100,
+        "device_temperature": 23,
+        "power_outage_count": 9,
+        "trigger_count": 0,
+        "linkquality": 136
+    },
+    "0x282c02bfffec2808": {
+        "state": "ON",
+        "power_on_behavior": "off",
+        "linkquality": 100
+    },
+    "0x282c02bfffec27ac": {
+        "state": "OFF",
+        "power_on_behavior": "previous",
+        "linkquality": 188,
+        "update": {
+            "state": "idle",
+            "installed_version": 268513381,
+            "latest_version": 268513381,
+            "latest_source": "https://raw.githubusercontent.com/Koenkk/zigbee-OTA/master/images/ThirdReality/SmartPlug_Zigbee_PROD_OTA_V101_1.01.01.ota",
+            "latest_release_notes": null
+        }
+    },
+    "0x54ef44100156338d": {
+        "state_up": "OFF",
+        "state_down": "ON",
+        "led_disabled_night": false,
+        "flip_indicator_light": "OFF",
+        "mode_switch": "anti_flicker_mode",
+        "device_temperature": 23,
+        "power_outage_count": 5,
+        "state": "OFF",
+        "energy": 0.05750005692243576,
+        "consumption": 0.05750005692243576,
+        "current": 0.03447999954223633,
+        "power": 0,
+        "operation_mode_up": "control_relay",
+        "lock_relay": true,
+        "operation_mode_down": "control_relay",
+        "operation_mode": "control_relay",
+        "linkquality": 216,
+        "lock_relay_up": true,
+        "power_on_behavior": "off",
+        "lock_relay_down": true
+    },
+    "0x001788010eb76b0a": {
+        "state": "OFF",
+        "brightness": 254,
+        "color_mode": "xy",
+        "color": {
+            "x": 0.319,
+            "y": 0.326
+        },
+        "color_temp": 162,
+        "linkquality": 176,
+        "update": {
+            "state": "idle",
+            "installed_version": 16787202,
+            "latest_version": 16787202,
+            "latest_source": "https://raw.githubusercontent.com/Koenkk/zigbee-OTA/master/images/Hue/100B-0114-01002702-ConfLightBLE-Lamps-EFR32MG21.zigbee",
+            "latest_release_notes": null
+        }
+    },
+    "0x001788010eb76084": {
+        "brightness": 254,
+        "state": "OFF",
+        "color_mode": "xy",
+        "color": {
+            "x": 0.319,
+            "y": 0.326
+        },
+        "color_temp": 162,
+        "linkquality": 252,
+        "update": {
+            "state": "idle",
+            "installed_version": 16787202,
+            "latest_version": 16787202,
+            "latest_source": "https://raw.githubusercontent.com/Koenkk/zigbee-OTA/master/images/Hue/100B-0114-01002702-ConfLightBLE-Lamps-EFR32MG21.zigbee",
+            "latest_release_notes": null
+        }
+    },
+    "0x001788010ebdb851": {
+        "state": "OFF",
+        "update": {
+            "state": "idle",
+            "installed_version": 16787456,
+            "latest_version": 16787456,
+            "latest_source": "https://raw.githubusercontent.com/Koenkk/zigbee-OTA/master/images/Hue/100B-0114-01002800-ConfLightBLE-Lamps-EFR32MG21.zigbee",
+            "latest_release_notes": null
+        },
+        "brightness": 254,
+        "color_temp": 267,
+        "color_mode": "color_temp",
+        "color": {
+            "x": 0.3926,
+            "y": 0.384,
+            "hue": 39,
+            "saturation": 56,
+            "h": 39,
+            "s": 56
+        },
+        "linkquality": 144
+    },
+    "0x001788010ebdb89c": {
+        "linkquality": 88,
+        "state": "OFF",
+        "color_mode": "color_temp",
+        "color": {
+            "x": 0.3926,
+            "y": 0.384,
+            "hue": 39,
+            "saturation": 56,
+            "h": 39,
+            "s": 56
+        },
+        "color_temp": 267,
+        "update": {
+            "state": "idle",
+            "installed_version": 16787456,
+            "latest_version": 16787456,
+            "latest_source": "https://raw.githubusercontent.com/Koenkk/zigbee-OTA/master/images/Hue/100B-0114-01002800-ConfLightBLE-Lamps-EFR32MG21.zigbee",
+            "latest_release_notes": null
+        },
+        "brightness": 254
+    },
+    "0x001788010ebdb8a1": {
+        "update": {
+            "state": "idle",
+            "installed_version": 16787456,
+            "latest_version": 16787456,
+            "latest_source": "https://raw.githubusercontent.com/Koenkk/zigbee-OTA/master/images/Hue/100B-0114-01002800-ConfLightBLE-Lamps-EFR32MG21.zigbee",
+            "latest_release_notes": null
+        },
+        "linkquality": 84,
+        "state": "OFF",
+        "color_mode": "color_temp",
+        "color": {
+            "x": 0.3926,
+            "y": 0.384,
+            "hue": 39,
+            "saturation": 56,
+            "h": 39,
+            "s": 56
+        },
+        "color_temp": 267,
+        "brightness": 254
+    },
+    "0x001788010ebdb963": {
+        "linkquality": 68,
+        "state": "OFF",
+        "color_mode": "color_temp",
+        "color": {
+            "x": 0.3926,
+            "y": 0.384,
+            "hue": 39,
+            "saturation": 56,
+            "h": 39,
+            "s": 56
+        },
+        "color_temp": 267,
+        "update": {
+            "state": "idle",
+            "installed_version": 16787456,
+            "latest_version": 16787456,
+            "latest_source": "https://raw.githubusercontent.com/Koenkk/zigbee-OTA/master/images/Hue/100B-0114-01002800-ConfLightBLE-Lamps-EFR32MG21.zigbee",
+            "latest_release_notes": null
+        },
+        "brightness": 254
+    },
+    "0x001788010ebdba3a": {
+        "update": {
+            "state": "idle",
+            "installed_version": 16787456,
+            "latest_version": 16787456,
+            "latest_source": "https://raw.githubusercontent.com/Koenkk/zigbee-OTA/master/images/Hue/100B-0114-01002800-ConfLightBLE-Lamps-EFR32MG21.zigbee",
+            "latest_release_notes": null
+        },
+        "linkquality": 108,
+        "state": "OFF",
+        "brightness": 254,
+        "color_mode": "color_temp",
+        "color_temp": 250,
+        "color": {
+            "x": 0.3804,
+            "y": 0.3767
+        }
+    },
+    "0x001788010ebdba19": {
+        "update": {
+            "state": "idle",
+            "installed_version": 16787456,
+            "latest_version": 16787456,
+            "latest_source": "https://raw.githubusercontent.com/Koenkk/zigbee-OTA/master/images/Hue/100B-0114-01002800-ConfLightBLE-Lamps-EFR32MG21.zigbee",
+            "latest_release_notes": null
+        },
+        "linkquality": 140,
+        "state": "OFF",
+        "brightness": 254,
+        "color_mode": "color_temp",
+        "color_temp": 250,
+        "color": {
+            "x": 0.3804,
+            "y": 0.3767
+        },
+        "philips_raw": "070000fefa00"
+    },
+    "0x001788010ec00123": {
+        "update": {
+            "state": "idle",
+            "installed_version": 16787456,
+            "latest_version": 16787456,
+            "latest_source": "https://raw.githubusercontent.com/Koenkk/zigbee-OTA/master/images/Hue/100B-0114-01002800-ConfLightBLE-Lamps-EFR32MG21.zigbee",
+            "latest_release_notes": null
+        },
+        "linkquality": 84,
+        "state": "OFF",
+        "brightness": 254,
+        "color_mode": "color_temp",
+        "color_temp": 250,
+        "color": {
+            "x": 0.3804,
+            "y": 0.3767
+        }
+    },
+    "0x001788010ebffcad": {
+        "update": {
+            "state": "idle",
+            "installed_version": 16787456,
+            "latest_version": 16787456,
+            "latest_source": "https://raw.githubusercontent.com/Koenkk/zigbee-OTA/master/images/Hue/100B-0114-01002800-ConfLightBLE-Lamps-EFR32MG21.zigbee",
+            "latest_release_notes": null
+        },
+        "linkquality": 140,
+        "state": "OFF",
+        "brightness": 254,
+        "color_mode": "color_temp",
+        "color_temp": 250,
+        "color": {
+            "x": 0.3804,
+            "y": 0.3767
+        }
+    },
+    "0x001788010ebffccb": {
+        "update": {
+            "state": "idle",
+            "installed_version": 16787456,
+            "latest_version": 16787456,
+            "latest_source": "https://raw.githubusercontent.com/Koenkk/zigbee-OTA/master/images/Hue/100B-0114-01002800-ConfLightBLE-Lamps-EFR32MG21.zigbee",
+            "latest_release_notes": null
+        },
+        "linkquality": 136,
+        "state": "OFF",
+        "brightness": 254,
+        "color_mode": "color_temp",
+        "color_temp": 250,
+        "color": {
+            "x": 0.3804,
+            "y": 0.3767
+        }
+    },
+    "0x001788010ebff971": {
+        "update": {
+            "state": "idle",
+            "installed_version": 16787456,
+            "latest_version": 16787456,
+            "latest_source": "https://raw.githubusercontent.com/Koenkk/zigbee-OTA/master/images/Hue/100B-0114-01002800-ConfLightBLE-Lamps-EFR32MG21.zigbee",
+            "latest_release_notes": null
+        },
+        "linkquality": 108,
+        "state": "OFF",
+        "brightness": 254,
+        "color_mode": "color_temp",
+        "color_temp": 250,
+        "color": {
+            "x": 0.3804,
+            "y": 0.3767
+        }
+    },
+    "0x001788010efd1b08": {
+        "update": {
+            "state": "idle",
+            "installed_version": 16786946,
+            "latest_version": 16786946,
+            "latest_source": "https://raw.githubusercontent.com/Koenkk/zigbee-OTA/master/images/Hue/100B-011F-01002602-ConfLightBLE-ModuLumV3-EFR32MG21.zigbee",
+            "latest_release_notes": null
+        },
+        "linkquality": 200,
+        "brightness": 254,
+        "state": "OFF",
+        "color_mode": "xy",
+        "color": {
+            "x": 0.319,
+            "y": 0.326
+        },
+        "color_temp": 162
+    },
+    "0x001788010efd1713": {
+        "update": {
+            "state": "idle",
+            "installed_version": 16786946,
+            "latest_version": 16786946,
+            "latest_source": "https://raw.githubusercontent.com/Koenkk/zigbee-OTA/master/images/Hue/100B-011F-01002602-ConfLightBLE-ModuLumV3-EFR32MG21.zigbee",
+            "latest_release_notes": null
+        },
+        "brightness": 254,
+        "state": "OFF",
+        "color_mode": "xy",
+        "color": {
+            "x": 0.319,
+            "y": 0.326
+        },
+        "color_temp": 162,
+        "linkquality": 220
+    },
+    "0xffffb40e06078021": {
+        "countdown_to_turn_off": 0,
+        "state": "OFF",
+        "countdown_to_turn_on": 0,
+        "current": 0,
+        "energy": 0.45,
+        "ac_frequency": 60,
+        "voltage": 118.8,
+        "update": {
+            "state": "idle",
+            "installed_version": 268513381,
+            "latest_version": 268513381,
+            "latest_source": "https://raw.githubusercontent.com/Koenkk/zigbee-OTA/master/images/ThirdReality/SmartPlug_Zigbee_PROD_OTA_V101_1.01.01.ota",
+            "latest_release_notes": null
+        },
+        "power": 0,
+        "power_factor": 0,
+        "linkquality": 156
+    },
+    "0x001788010e2f1299": {
+        "state": "OFF",
+        "linkquality": 116,
+        "brightness": 20,
+        "color_temp": 175,
+        "color_mode": "xy",
+        "color": {
+            "x": 0.666,
+            "y": 0.295,
+            "hue": 359,
+            "saturation": 98,
+            "h": 359,
+            "s": 98
+        },
+        "update": {
+            "state": "idle",
+            "installed_version": 16786946,
+            "latest_version": 16786946,
+            "latest_source": "https://raw.githubusercontent.com/Koenkk/zigbee-OTA/master/images/Hue/100B-011F-01002602-ConfLightBLE-ModuLumV3-EFR32MG21.zigbee",
+            "latest_release_notes": null
+        }
+    },
+    "0x001788010ef8f7be": {
+        "state": "OFF",
+        "color_mode": "xy",
+        "color": {
+            "x": 0.313,
+            "y": 0.21
+        },
+        "brightness": 36,
+        "update": {
+            "state": "idle",
+            "installed_version": 16786946,
+            "latest_version": 16786946,
+            "latest_source": "https://raw.githubusercontent.com/Koenkk/zigbee-OTA/master/images/Hue/100B-011F-01002602-ConfLightBLE-ModuLumV3-EFR32MG21.zigbee",
+            "latest_release_notes": null
+        },
+        "color_temp": 153,
+        "linkquality": 140,
+        "philips_raw": "0b0000242d50e135"
+    },
+    "0x3c2ef5fffe31a817": {
+        "battery": 100,
+        "position": 0,
+        "state": "CLOSE",
+        "linkquality": 160
+    },
+    "0x3c2ef5fffe318297": {
+        "battery": 95,
+        "position": 0,
+        "state": "CLOSE",
+        "linkquality": 104
+    },
+    "0x54ef441000a42bdf": {
+        "voltage": 2943,
+        "battery": 62,
+        "device_temperature": 31,
+        "power_outage_count": 0,
+        "illuminance": 12,
+        "detection_interval": 30,
+        "motion_sensitivity": "medium",
+        "trigger_indicator": false,
+        "occupancy": false
+    },
+    "0x001788010fd3780c": {
+        "philips_raw": "070000fee803",
+        "state": "OFF",
+        "brightness": 254,
+        "color_temp": 1000,
+        "color_mode": "color_temp",
+        "color": {
+            "x": 0.6528,
+            "y": 0.3445
+        },
+        "update": {
+            "state": "idle",
+            "installed_version": 16785408,
+            "latest_version": 16785408,
+            "latest_source": null,
+            "latest_release_notes": null
+        },
+        "linkquality": 196
     }
 }

@@ -87,3 +87,6 @@ alexa_media*.html
 IRKS
 www/community/
 zigbee2mqtt/device_icons/
+Sonoff-Dongle-Flasher-For-IHost/
+zigbee2mqtt/coordinator_backup.json
+home-assistant.log*

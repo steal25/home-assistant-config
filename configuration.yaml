@@ -149,6 +149,9 @@ shell_command:
   # Run Roomba script
   ##update_roomba_pmapv: /root/update_roomba_pmapv.sh
   update_roomba_pmapv: "ssh -i /config/id_rsa -o StrictHostKeyChecking=no -o ConnectTimeout=10 root@172.25.14.50 'pct exec 100 -- nohup /root/update_roomba_pmapv.sh > /root/roomba_pmapv.log 2>&1 &'"
+  ## GITHUB ###
+  git_push: "cd /config && git add . && git commit -m 'HA sync' && git push origin main"
+  git_pull: "cd /config && git pull origin main"
   
 rest_command:
   reolink_front_push_off:
