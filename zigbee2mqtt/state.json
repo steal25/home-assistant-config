@@ -38,7 +38,7 @@
         "color_temp": 162
     },
     "4": {
-        "state": "ON",
+        "state": "OFF",
         "brightness": 139,
         "color_mode": "color_temp",
         "color_temp": 153,
@@ -95,7 +95,7 @@
     "0x282c02bfffea87df": {
         "battery": 64,
         "voltage": 2700,
-        "occupancy": false,
+        "occupancy": true,
         "tamper": false,
         "battery_low": false,
         "linkquality": 140,
@@ -135,7 +135,7 @@
     "0x001788010d8258e8": {
         "color_mode": "color_temp",
         "power_on_behavior": "off",
-        "state": "ON",
+        "state": "OFF",
         "color_temp": 153,
         "brightness": 139,
         "linkquality": 148,
@@ -166,7 +166,7 @@
         "color_mode": "color_temp",
         "power_on_behavior": "off",
         "color_temp": 153,
-        "state": "ON",
+        "state": "OFF",
         "linkquality": 144,
         "brightness": 139,
         "update": {
@@ -188,7 +188,7 @@
     "0x001788010cce8600": {
         "color_mode": "color_temp",
         "power_on_behavior": "off",
-        "state": "ON",
+        "state": "OFF",
         "color_temp": 153,
         "brightness": 139,
         "linkquality": 180,
@@ -261,13 +261,13 @@
         "power_outage_count": 6,
         "state": "ON",
         "voltage": 118,
-        "current": 0.004101695060729981,
-        "power": 0.48,
+        "current": 0.004305084705352783,
+        "power": 0.51,
         "linkquality": 84,
         "power_outage_memory": false,
         "operation_mode": "decoupled",
         "energy": 5.12,
-        "consumption": 5.115251541137695,
+        "consumption": 5.116017818450928,
         "flip_indicator_light": "OFF"
     },
     "0x54ef441000c14385": {
@@ -468,8 +468,8 @@
         "detection_interval": 30,
         "motion_sensitivity": "medium",
         "trigger_indicator": false,
-        "occupancy": true,
-        "illuminance": 15,
+        "occupancy": false,
+        "illuminance": 9,
         "linkquality": 184,
         "device_temperature": 32,
         "power_outage_count": 0
@@ -516,7 +516,7 @@
         },
         "color_mode_rgb": "xy",
         "power_on_behaviour": "off",
-        "device_temperature": 41,
+        "device_temperature": 42,
         "power_outage_count": 18,
         "state": "OFF",
         "state_rgb": "OFF",
@@ -559,7 +559,7 @@
     },
     "0x0ceff6fffe400692": {
         "battery": 65,
-        "temperature": 29,
+        "temperature": 29.2,
         "humidity": 44.3,
         "comfort_temperature_min": 19,
         "comfort_temperature_max": 27,
@@ -956,7 +956,7 @@
         "current": 0,
         "energy": 0.45,
         "ac_frequency": 60,
-        "voltage": 121.5,
+        "voltage": 120.9,
         "update": {
             "state": "idle",
             "installed_version": 268513381,
